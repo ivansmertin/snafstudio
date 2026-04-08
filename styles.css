@@ -12,7 +12,7 @@ body {
     padding: 0 20px;
 }
 
-/* Шапка */
+/* --- Шапка --- */
 .header {
     background-color: #FFFFFF;
     padding: 20px 0;
@@ -105,12 +105,34 @@ body {
     gap: 30px;
 }
 
-/* === ЛЕВАЯ КАРТОЧКА === */
+/* === ЛЕВАЯ КАРТОЧКА И ПРАВЫЕ ПЛИТКИ (Общие стили и анимация) === */
+.stat-card, .author-main-card {
+    border-radius: 32px; /* Плавные скругления из макета */
+    overflow: hidden; /* Обрезает фото и фон по углам карточки */
+    
+    /* Подготовка к анимации появления */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Класс, который JS добавит при появлении на экране */
+.stat-card.visible, .author-main-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Эффект "лесенки": карточки появляются одна за другой */
+.author-main-card { transition-delay: 0.1s; }
+.stats-grid .stat-card:nth-child(1) { transition-delay: 0.2s; }
+.stats-grid .stat-card:nth-child(2) { transition-delay: 0.3s; }
+.stats-grid .stat-card:nth-child(3) { transition-delay: 0.4s; }
+.stats-grid .stat-card:nth-child(4) { transition-delay: 0.5s; }
+
+/* === ЛЕВАЯ КАРТОЧКА (Специфичные стили) === */
 .author-main-card {
-    flex: 1; /* Левая карточка */
+    flex: 1; /* Левая карточка занимает часть ширины */
     background-color: #F5F5F5;
-    border-radius: 24px;
-    overflow: hidden; /* Обрезает фото по углам карточки */
     display: flex;
     flex-direction: column;
 }
@@ -149,7 +171,6 @@ body {
 }
 
 .stat-card {
-    border-radius: 24px;
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -160,16 +181,26 @@ body {
 .bg-green { background-color: #79CBC4; }
 .bg-gray { background-color: #F9FAFB; }
 
-/* Текстовые стили для плиток */
+/* Фон с волной для карточки 500+ */
+.wave-bg {
+    background-image: url('images/wave.svg');
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Текстовые стили для цифр и описаний */
 .stat-number {
-    font-size: 72px;
-    font-weight: 700;
+    font-size: 76px;
+    font-weight: 800; /* Самый жирный шрифт */
     line-height: 1;
     margin-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .stat-text-large {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
     margin-bottom: 15px;
 }
@@ -185,11 +216,12 @@ body {
     font-weight: 500;
 }
 
-/* Модификаторы для специфичных плиток */
+/* Модификаторы для широких плиток */
 .stat-wide {
     grid-column: span 2; /* Растягивает карточку на обе колонки сетки */
 }
 
+/* Модификатор для карточки с цитатой */
 .stat-quote {
     flex-direction: row; /* Иконка и текст стоят в один ряд */
     align-items: center;
