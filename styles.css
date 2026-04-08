@@ -1,3 +1,12 @@
+Проблема ясна: на мобильных устройствах десктопное правило для белого текста (`.nav-link.is-pill-active`) оказывалось сильнее, из-за чего слово пропадало. А «моргание синим» при тапе — это либо фон, который мы задали ранее, либо стандартная подсветка браузера на телефонах (особенно на iOS/Android).
+
+Чтобы решить эту проблему **раз и навсегда**, мы сделаем две вещи:
+1. Завернем правило с белым цветом в медиазапрос `@media (min-width: 769px)`. Теперь белый текст физически **не сможет** появиться на мобильных устройствах, как бы скрипт ни старался.
+2. Уберем синий фон у активного пункта меню на мобильных и добавим `-webkit-tap-highlight-color: transparent;`, чтобы телефон перестал «моргать» системным синим квадратом при касании экрана.
+
+Вот полностью готовый и вычищенный `styles.css`. Замените им текущий код:
+
+```css
 :root {
     --background: #f8fcff;
     --surface: #ffffff;
@@ -84,9 +93,12 @@ body {
     color: var(--accent);
 }
 
-.nav-link.is-pill-active {
-    color: #ffffff !important;
-    transition: color 0.1s ease 0.15s;
+/* Белый текст при активной плашке работает ТОЛЬКО на десктопе */
+@media (min-width: 769px) {
+    .nav-link.is-pill-active {
+        color: #ffffff !important;
+        transition: color 0.1s ease 0.15s;
+    }
 }
 
 .nav-highlight {
@@ -129,6 +141,7 @@ body {
     height: 44px;
     z-index: 101;
     position: relative;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .burger-btn span {
@@ -288,6 +301,7 @@ body {
     align-items: center;
     color: var(--text-primary);
     transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .slider-btn:hover { border-color: var(--accent); color: var(--accent); }
@@ -361,6 +375,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .faq-toggle {
@@ -477,14 +492,15 @@ body {
         text-align: center;
         padding: 15px;
         font-size: 18px;
+        color: var(--text-primary) !important; /* Насильно делаем текст темным */
+        -webkit-tap-highlight-color: transparent; /* Убирает моргание системным квадратом при клике */
     }
     
-    /* ФИКС: Возвращаем акцентный цвет текста, перебивая десктопный белый */
     .nav-link.active,
-    .nav-link.is-pill-active {
-        color: var(--accent) !important;
-        background: #f0f9ff;
-        border-radius: 12px;
+    .nav-link.is-pill-active,
+    .nav-link:active {
+        color: var(--accent) !important; /* При активации/касании текст просто становится синим */
+        background: transparent !important; /* Без синей подложки */
     }
 
     .stats-grid { grid-template-columns: 1fr; }
@@ -494,3 +510,4 @@ body {
     .section-title { font-size: 32px; }
     .benefits-header { flex-direction: column; align-items: flex-start; }
 }
+```
