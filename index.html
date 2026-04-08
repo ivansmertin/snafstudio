@@ -16,7 +16,7 @@
         rel="stylesheet"
     >
 </head>
-<body class="theme-tech">
+<body>
     <header class="header" id="top">
         <div class="container header-inner">
             <a href="#top" class="logo" aria-label="На главную">
@@ -412,6 +412,10 @@
                             animatedCounters.add(counter);
 
                             const target = Number(counter.dataset.target);
+                            if (target <= 1) {
+                                counter.textContent = target;
+                                return;
+                            }
                             const duration = 1800;
                             let startTime = null;
 
