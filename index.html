@@ -23,12 +23,18 @@
                 <img src="images/logo.svg" alt="Логотип Ивана Смертина">
             </a>
 
-            <nav class="main-nav" aria-label="Основная навигация">
-                <a href="#services" class="nav-link">Услуги</a>
-                <a href="#about" class="nav-link">Обо мне</a>
-                <a href="#value" class="nav-link">Что вы получите</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-            </nav>
+            <button class="burger-btn" type="button" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+            </button>
+
+            <div class="main-nav-wrap">
+                <nav class="main-nav" aria-label="Основная навигация">
+                    <a href="#services" class="nav-link">Услуги</a>
+                    <a href="#about" class="nav-link">Обо мне</a>
+                    <a href="#value" class="nav-link">Что вы получите</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                </nav>
+            </div>
 
             <div class="contacts">
                 <a href="tel:+79217657711" class="phone">+7 921 765 77 11</a>
@@ -417,6 +423,40 @@
                 return { setCurrentActiveLink, moveHighlight };
             };
 
+            const initMobileMenu = () => {
+                const burgerButton = document.querySelector(".burger-btn");
+                const navWrap = document.querySelector(".main-nav-wrap");
+                const nav = document.querySelector(".main-nav");
+
+                if (!burgerButton || !navWrap || !nav) return;
+
+                const closeMenu = () => {
+                    navWrap.classList.remove("is-open");
+                    nav.classList.remove("is-open");
+                    burgerButton.classList.remove("is-active");
+                    burgerButton.setAttribute("aria-expanded", "false");
+                };
+
+                const toggleMenu = () => {
+                    const isOpen = navWrap.classList.toggle("is-open");
+                    nav.classList.toggle("is-open", isOpen);
+                    burgerButton.classList.toggle("is-active", isOpen);
+                    burgerButton.setAttribute("aria-expanded", String(isOpen));
+                };
+
+                burgerButton.addEventListener("click", toggleMenu);
+
+                nav.querySelectorAll(".nav-link").forEach((link) => {
+                    link.addEventListener("click", closeMenu);
+                });
+
+                window.addEventListener("resize", () => {
+                    if (window.innerWidth > 768) {
+                        closeMenu();
+                    }
+                });
+            };
+
             const initScrollSpy = (navHighlightApi) => {
                 const sectionIds = ["services", "about", "value", "faq"];
                 const sections = sectionIds
@@ -614,6 +654,7 @@
             };
 
             const navHighlightApi = initNavHighlight();
+            initMobileMenu();
             initRevealAnimations();
             initScrollSpy(navHighlightApi);
             initCarousel();
