@@ -36,9 +36,7 @@
     <section class="author-section">
         <div class="container">
             <h2 class="section-title">Автор курса</h2>
-
             <div class="author-wrapper">
-                
                 <div class="author-main-card">
                     <img src="images/olga.png" alt="Ольга Журина" class="author-photo">
                     <div class="author-info">
@@ -48,37 +46,35 @@
                 </div>
 
                 <div class="stats-grid">
-                    
                     <div class="stat-card bg-green">
                         <div class="stat-number text-white"><span class="counter" data-target="27">0</span></div>
                         <div class="stat-text-large text-white">лет</div>
                         <p class="stat-desc text-white">педагогического<br>стажа</p>
                     </div>
-
                     <div class="stat-card bg-gray">
                         <div class="stat-number text-coral"><span class="counter" data-target="50">0</span>+</div>
                         <p class="stat-desc">научных статей<br>и пособий</p>
                     </div>
-
                     <div class="stat-card bg-green stat-wide wave-bg">
                         <div class="stat-number text-white"><span class="counter" data-target="500">0</span>+</div>
                         <p class="stat-desc text-white">бакалавров и магистров подготовила</p>
                     </div>
-
                     <div class="stat-card bg-gray stat-quote stat-wide">
                         <img src="images/heart-icon.svg" alt="Моя цель" class="quote-icon">
                         <p class="quote-text">Моя цель — помочь людям раскрыть их потенциал и вдохновить на достижение своих целей</p>
                     </div>
+                </div> 
+            </div> 
+        </div> 
+    </section>
 
-                </div> </div> </div> </section>
-<section class="benefits-section">
+    <section class="benefits-section">
         <div class="container">
             <div class="benefits-header">
                 <div class="benefits-title-wrapper">
                     <h2 class="section-title">После обучения на курсе</h2>
                     <p class="section-subtitle">вы будете чувствовать себя уверенно во всех сферах английской фонетики</p>
                 </div>
-                
                 <div class="slider-controls">
                     <button class="slider-btn prev-btn" aria-label="Назад">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
@@ -90,68 +86,48 @@
             </div>
 
             <div class="carousel-track" id="benefitsCarousel">
-                
                 <div class="carousel-card">
                     <h3 class="card-title">Чистое и правильное произношение</h3>
-                    <p class="card-text">Освоите произношение всех британских и (по желанию) американских звуков в любых комбинациях. Начнете получать удовольствие от своей английской речи, приближенной к уровню носителей языка.</p>
+                    <p class="card-text">Освоите произношение всех британских и (по желанию) американских звуков в любых комбинациях. Начнете получать удовольствие от своей английской речи.</p>
                 </div>
-                
                 <div class="carousel-card">
                     <h3 class="card-title">Уверенное чтение английских слов</h3>
-                    <p class="card-text">Разберетесь в транскрипции и научитесь правильно читать любые слова. С помощью мнемотехники освоите более 150 правил чтения буквенных сочетаний и запомните их исключения.</p>
+                    <p class="card-text">Разберетесь в транскрипции и научитесь правильно читать любые слова. С помощью мнемотехники освоите более 150 правил чтения.</p>
                 </div>
-
                 <div class="carousel-card">
-                    <h3 class="card-title">Чистое и правильное произношение</h3>
-                    <p class="card-text">Освоите произношение всех британских и (по желанию) американских звуков в любых комбинациях. Начнете получать удовольствие от своей английской речи, приближенной к уровню носителей языка.</p>
+                    <h3 class="card-title">Развитие навыков аудирования</h3>
+                    <p class="card-text">Научитесь различать тонкие нюансы произношения носителей языка, что значительно улучшит ваше понимание английской речи на слух.</p>
                 </div>
-
                 <div class="carousel-card">
-                    <h3 class="card-title">Уверенное чтение английских слов</h3>
-                    <p class="card-text">Разберетесь в транскрипции и научитесь правильно читать любые слова. С помощью мнемотехники освоите более 150 правил чтения буквенных сочетаний и запомните их исключения.</p>
+                    <h3 class="card-title">Преодоление языкового барьера</h3>
+                    <p class="card-text">Обретете уверенность в своем звучании, что позволит вам свободнее вступать в диалоги и не бояться совершить ошибку в произношении.</p>
                 </div>
-
             </div>
         </div>
     </section>
-<script>
+
+    <script>
         document.addEventListener("DOMContentLoaded", () => {
-            
-            // ==========================================
-            // 1. Анимация появления карточек и бегущих цифр
-            // ==========================================
-            const observer = new IntersectionObserver((entries, observer) => {
+            // Анимация цифр
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible'); 
-                        
                         const counters = entry.target.querySelectorAll('.counter');
                         counters.forEach(counter => {
                             const target = +counter.getAttribute('data-target'); 
-                            const duration = 2500; // 2.5 секунды
+                            const duration = 2500;
                             let startTime = null;
-                            
-                            // Математическая функция для плавного замедления в конце
                             const easeOut = (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-                            
                             const updateCounter = (currentTime) => {
                                 if (!startTime) startTime = currentTime;
                                 const progress = Math.min((currentTime - startTime) / duration, 1);
-                                
-                                const currentNum = Math.floor(easeOut(progress) * target);
-                                counter.innerText = currentNum;
-                                
-                                if (progress < 1) {
-                                    requestAnimationFrame(updateCounter);
-                                } else {
-                                    counter.innerText = target; 
-                                }
+                                counter.innerText = Math.floor(easeOut(progress) * target);
+                                if (progress < 1) requestAnimationFrame(updateCounter);
+                                else counter.innerText = target;
                             };
-                            
                             requestAnimationFrame(updateCounter);
-                            counter.classList.remove('counter'); 
                         });
-                        
                         observer.unobserve(entry.target); 
                     }
                 });
@@ -159,33 +135,23 @@
 
             document.querySelectorAll('.stat-card, .author-main-card').forEach(el => observer.observe(el));
 
-            // ==========================================
-            // 2. Логика перелистывания карусели
-            // ==========================================
+            // Карусель
             const track = document.getElementById('benefitsCarousel');
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
 
             if (track && prevBtn && nextBtn) {
-                // Вычисляем, на сколько пикселей двигать (ширина карточки + отступ 30px)
                 const getScrollAmount = () => {
                     const card = track.querySelector('.carousel-card');
-                    return card ? card.offsetWidth + 30 : 0; 
+                    const style = window.getComputedStyle(track);
+                    const gap = parseInt(style.columnGap) || 30;
+                    return card ? card.offsetWidth + gap : 0; 
                 };
 
-                // Клик "Вперед"
-                nextBtn.addEventListener('click', () => {
-                    track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-                });
-
-                // Клик "Назад"
-                prevBtn.addEventListener('click', () => {
-                    track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-                });
+                nextBtn.addEventListener('click', () => track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' }));
+                prevBtn.addEventListener('click', () => track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' }));
             }
-            
         });
     </script>
-    
 </body>
 </html>
