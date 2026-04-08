@@ -43,7 +43,7 @@
                     <a href="#" class="social-icon" aria-label="ВКонтакте">
                         <img src="images/vk.svg" alt="Иконка ВКонтакте">
                     </a>
-                    <a href="https://t.me/smrtnivn" class="social-icon" aria-label="Telegram" target="_blank" rel="noopener">
+                    <a href="https://t.me/ivansmertin" class="social-icon" aria-label="Telegram" target="_blank" rel="noopener">
                         <img src="images/tg.svg" alt="Иконка Telegram">
                     </a>
                 </div>
@@ -54,12 +54,15 @@
     <main>
         <section class="hero-section reveal" aria-labelledby="hero-title">
             <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title" id="hero-title">Создаю сайты, которые приводят клиентов</h1>
-                    <p class="hero-subtitle">Проектирую, рисую и запускаю современные лендинги и корпоративные сайты. Чистый дизайн, продуманная структура и внимание к бизнес-задачам.</p>
-                    <div class="hero-actions">
-                        <a href="https://t.me/ivansmertin" class="btn btn--primary" target="_blank" rel="noopener">Обсудить проект</a>
-                        <a href="#about" class="btn btn--outline">Узнать больше</a>
+                <div class="hero-card surface-glow">
+                    <div class="hero-content">
+                        <span class="hero-badge">Сайты под ключ</span>
+                        <h1 class="hero-title" id="hero-title">Создаю сайты,<br>которые приводят клиентов</h1>
+                        <p class="hero-subtitle">Проектирую, рисую и запускаю современные лендинги и корпоративные сайты. Чистый дизайн, продуманная структура и внимание к бизнес-задачам.</p>
+                        <div class="hero-actions">
+                            <a href="https://t.me/ivansmertin" class="btn btn--primary" target="_blank" rel="noopener">Обсудить проект</a>
+                            <a href="#about" class="btn btn--outline">Узнать больше</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -346,6 +349,7 @@
 
             const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
+            // --- Точная синхронизация плашки ---
             const initNavHighlight = () => {
                 const nav = document.querySelector(".main-nav");
                 if (!nav) return null;
@@ -372,7 +376,6 @@
                         currentActiveLink = targetLink;
                         updateActiveState(targetLink);
                     };
-
                     setCurrentActiveLink(currentActiveLink);
                     return { setCurrentActiveLink };
                 }
@@ -381,14 +384,8 @@
                 highlight.className = "nav-highlight";
                 nav.prepend(highlight);
 
-                const setActiveText = (targetLink) => {
-                    links.forEach((link) => {
-                        link.classList.toggle("is-pill-active", link === targetLink);
-                    });
-                };
-
                 const moveHighlight = (targetLink, instant = false) => {
-                    if (!targetLink) return;
+                    if (!targetLink || window.innerWidth <= 768) return;
 
                     if (instant || motionReduced) {
                         highlight.classList.add("nav-highlight--no-transition");
@@ -396,22 +393,23 @@
                         highlight.classList.remove("nav-highlight--no-transition");
                     }
 
-                    const x = targetLink.offsetLeft;
-                    const y = targetLink.offsetTop;
-                    const w = targetLink.offsetWidth;
-                    const h = targetLink.offsetHeight;
+                    // Используем сверхточные координаты относительно самого контейнера .main-nav
+                    const navRect = nav.getBoundingClientRect();
+                    const linkRect = targetLink.getBoundingClientRect();
+
+                    const x = linkRect.left - navRect.left;
+                    const y = linkRect.top - navRect.top;
+                    const w = linkRect.width;
+                    const h = linkRect.height;
 
                     nav.style.setProperty("--pill-x", `${x}px`);
                     nav.style.setProperty("--pill-y", `${y}px`);
                     nav.style.setProperty("--pill-w", `${w}px`);
                     nav.style.setProperty("--pill-h", `${h}px`);
 
-                    setActiveText(targetLink);
-
                     if (instant || motionReduced) {
-                        requestAnimationFrame(() => {
-                            highlight.classList.remove("nav-highlight--no-transition");
-                        });
+                        void highlight.offsetWidth; // Принудительный ререндер убирает скачок
+                        highlight.classList.remove("nav-highlight--no-transition");
                     }
                 };
 
@@ -423,8 +421,12 @@
                 };
 
                 updateActiveState(currentActiveLink);
-                moveHighlight(currentActiveLink, true);
-                nav.classList.add("nav-ready");
+                
+                // Ждем загрузки шрифтов перед первоначальной расстановкой плашки
+                document.fonts.ready.then(() => {
+                    moveHighlight(currentActiveLink, true);
+                    nav.classList.add("nav-ready");
+                });
 
                 links.forEach((link) => {
                     link.addEventListener("mouseenter", () => moveHighlight(link));
@@ -440,7 +442,6 @@
 
                 const refresh = () => moveHighlight(currentActiveLink, true);
                 window.addEventListener("resize", refresh);
-                window.addEventListener("load", refresh);
 
                 return { setCurrentActiveLink, moveHighlight };
             };
@@ -512,7 +513,8 @@
                     if (!best || best[0] === activeSectionId) return;
 
                     activeSectionId = best[0];
-                    navHighlightApi.setCurrentActiveLink(linkById.get(activeSectionId));
+                    // Отключаем скачок при скролле, передавая instant = false
+                    navHighlightApi.setCurrentActiveLink(linkById.get(activeSectionId), false);
                 };
 
                 const observer = new IntersectionObserver((entries) => {
