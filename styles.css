@@ -374,7 +374,7 @@ section[id] {
 }
 
 .mobile-menu-meta {
-    display: none;
+    display: none !important; /* ФИКС: Полностью скрываем этот блок на всех устройствах */
 }
 
 /* ---------------------------------
@@ -1311,14 +1311,14 @@ section[id] {
         display: none;
     }
 
-    /* ФИКС: Убираем изменение font-weight при активации/наведении */
+    /* ФИКС: Убираем font-weight: 800, чтобы меню не скакало при ховере/активации */
     .nav-link {
         min-height: 48px;
         justify-content: center;
         padding: 0 16px;
         border-radius: 14px;
         font-size: 17px;
-        font-weight: 600; /* Изначальный вес остается неизменным */
+        font-weight: 700; /* Изначальный вес. Оставляем его постоянным */
         color: var(--text-primary) !important;
         -webkit-tap-highlight-color: transparent;
     }
@@ -1330,6 +1330,7 @@ section[id] {
         color: var(--accent) !important;
         background: var(--background-soft) !important;
         box-shadow: none !important;
+        font-weight: 700; /* Фикс: вес не меняется, элементы не сдвигаются */
     }
 
     .mobile-menu-meta {
