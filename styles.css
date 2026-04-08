@@ -2,10 +2,10 @@
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: #F5F5F5; /* Светло-серый фон страницы */
+    background-color: #F5F5F5;
 }
 
-/* Контейнер, чтобы контент не разъезжался на широких экранах */
+/* Контейнер */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -16,31 +16,29 @@ body {
 .header {
     background-color: #FFFFFF;
     padding: 20px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Легкая тень для красоты */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .header-inner {
     display: flex;
-    justify-content: space-between; /* Раскидываем Лого, Меню и Контакты по краям */
-    align-items: center; /* Центрируем по вертикали */
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Меню */
 .main-nav {
     display: flex;
-    gap: 30px; /* Расстояние между ссылками */
+    gap: 30px;
     align-items: center;
 }
 
 .nav-link {
     text-decoration: none;
-    color: #29344A; /* Темно-синий цвет из макета */
+    color: #29344A;
     font-size: 16px;
     font-weight: 500;
     transition: 0.3s ease;
 }
 
-/* Ссылка в рамочке (как в макете) */
 .nav-link.active {
     padding: 8px 16px;
     border: 1px solid #E96A53;
@@ -51,7 +49,6 @@ body {
     color: #E96A53;
 }
 
-/* Контакты */
 .contacts {
     display: flex;
     align-items: center;
@@ -60,7 +57,7 @@ body {
 
 .phone {
     text-decoration: none;
-    color: #E96A53; /* Коралловый цвет */
+    color: #E96A53;
     font-size: 16px;
     font-weight: 700;
 }
@@ -70,7 +67,6 @@ body {
     gap: 10px;
 }
 
-/* Квадратики соцсетей */
 .social-icon {
     display: flex;
     justify-content: center;
@@ -99,39 +95,32 @@ body {
     margin: 0 0 40px 0;
 }
 
-/* Обертка делит блок на левую и правую часть */
 .author-wrapper {
     display: flex;
     gap: 30px;
 }
 
-/* === ЛЕВАЯ КАРТОЧКА И ПРАВЫЕ ПЛИТКИ (Общие стили и анимация) === */
 .stat-card, .author-main-card {
-    border-radius: 32px; /* Плавные скругления из макета */
-    overflow: hidden; /* Обрезает фото и фон по углам карточки */
-    
-    /* Подготовка к анимации появления */
+    border-radius: 32px;
+    overflow: hidden;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Класс, который JS добавит при появлении на экране */
 .stat-card.visible, .author-main-card.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Эффект "лесенки": карточки появляются одна за другой */
 .author-main-card { transition-delay: 0.1s; }
 .stats-grid .stat-card:nth-child(1) { transition-delay: 0.2s; }
 .stats-grid .stat-card:nth-child(2) { transition-delay: 0.3s; }
 .stats-grid .stat-card:nth-child(3) { transition-delay: 0.4s; }
 .stats-grid .stat-card:nth-child(4) { transition-delay: 0.5s; }
 
-/* === ЛЕВАЯ КАРТОЧКА (Специфичные стили) === */
 .author-main-card {
-    flex: 1; /* Левая карточка занимает часть ширины */
+    flex: 1;
     background-color: #F5F5F5;
     display: flex;
     flex-direction: column;
@@ -140,7 +129,7 @@ body {
 .author-photo {
     width: 100%;
     height: auto;
-    background-color: #E8E9EA; /* Серый фон под фото, как в макете */
+    background-color: #E8E9EA;
 }
 
 .author-info {
@@ -162,11 +151,10 @@ body {
     margin: 0;
 }
 
-/* === ПРАВАЯ СЕТКА ПЛИТОК (CSS GRID) === */
 .stats-grid {
-    flex: 1.2; /* Правая часть чуть шире левой */
+    flex: 1.2;
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Две одинаковые колонки */
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
@@ -177,11 +165,9 @@ body {
     justify-content: center;
 }
 
-/* Цвета фонов */
 .bg-green { background-color: #79CBC4; }
 .bg-gray { background-color: #F9FAFB; }
 
-/* Фон с волной для карточки 500+ */
 .wave-bg {
     background-image: url('images/wave.svg');
     background-position: bottom right;
@@ -190,14 +176,13 @@ body {
     position: relative;
 }
 
-/* Текстовые стили для цифр и описаний */
 .stat-number {
     font-size: 76px;
-    font-weight: 800; /* Самый жирный шрифт */
+    font-weight: 800;
     line-height: 1;
     margin-bottom: 5px;
     font-family: 'Montserrat', sans-serif;
-    font-variant-numeric: tabular-nums; /* МАГИЯ: Убирает дрожание цифр при анимации */
+    font-variant-numeric: tabular-nums;
 }
 
 .stat-text-large {
@@ -217,14 +202,12 @@ body {
     font-weight: 500;
 }
 
-/* Модификаторы для широких плиток */
 .stat-wide {
-    grid-column: span 2; /* Растягивает карточку на обе колонки сетки */
+    grid-column: span 2;
 }
 
-/* Модификатор для карточки с цитатой */
 .stat-quote {
-    flex-direction: row; /* Иконка и текст стоят в один ряд */
+    flex-direction: row;
     align-items: center;
     gap: 24px;
 }
@@ -232,13 +215,17 @@ body {
 .quote-icon {
     width: 60px;
     height: 60px;
-    flex-shrink: 0; /* Запрещаем иконке сжиматься */
+    flex-shrink: 0;
 }
 
 .quote-text {
     font-size: 16px;
+    line-height: 1.5;
+    color: #29344A;
+    margin: 0;
+}
 
-    /* --- Секция "После обучения" (Карусель) --- */
+/* --- Секция "После обучения" (Карусель) --- */
 .benefits-section {
     padding: 60px 0;
     background-color: #FFFFFF;
@@ -247,7 +234,7 @@ body {
 .benefits-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; /* Прижимаем кнопки к низу, чтобы они были на уровне текста */
+    align-items: flex-end;
     margin-bottom: 40px;
     gap: 20px;
 }
@@ -278,18 +265,17 @@ body {
 }
 
 .slider-btn:hover { opacity: 0.8; }
-.slider-btn:active { transform: scale(0.95); } /* Легкое нажатие */
+.slider-btn:active { transform: scale(0.95); }
 
 /* Трек карусели */
 .carousel-track {
     display: flex;
     gap: 30px;
-    overflow-x: auto; /* Включаем горизонтальный скролл */
-    scroll-snap-type: x mandatory; /* Магия: карточки будут "прилипать" ровно по краям */
-    scroll-behavior: smooth; /* Плавный скролл */
-    padding-bottom: 20px; /* Отступ снизу */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 20px;
     
-    /* Прячем некрасивый системный ползунок скролла */
     scrollbar-width: none; /* Firefox */
 }
 .carousel-track::-webkit-scrollbar {
@@ -298,12 +284,12 @@ body {
 
 /* Сама карточка */
 .carousel-card {
-    min-width: calc(50% - 15px); /* Две карточки на экран (минус половина отступа) */
+    min-width: calc(50% - 15px);
     background-color: #F9FAFB;
     padding: 40px;
     border-radius: 24px;
-    scroll-snap-align: start; /* Точка "прилипания" скролла */
-    flex-shrink: 0; /* Запрещаем карточкам сжиматься */
+    scroll-snap-align: start;
+    flex-shrink: 0;
 }
 
 .card-title {
@@ -317,9 +303,5 @@ body {
     font-size: 16px;
     color: #29344A;
     line-height: 1.5;
-    margin: 0;
-}
-    line-height: 1.5;
-    color: #29344A;
     margin: 0;
 }
