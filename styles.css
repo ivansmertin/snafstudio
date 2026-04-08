@@ -662,6 +662,10 @@ section[id] {
     transform: translate(-50%, -50%) rotate(90deg) scaleX(0.25);
 }
 
+.faq-item.is-open .faq-toggle::before {
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
 .faq-answer {
     height: 0;
     overflow: hidden;
