@@ -183,6 +183,7 @@ body {
     background-color: var(--accent-hover); 
 }
 
+/* ФИКС: Возвращаем белый цвет иконкам */
 .social-icon img, .footer-social img {
     width: 24px;
     height: 24px;
@@ -487,6 +488,7 @@ body {
         -webkit-tap-highlight-color: transparent; /* Убирает моргание системным квадратом при клике */
     }
     
+    /* ФИКС: Возвращаем акцентный цвет текста, перебивая десктопный белый */
     .nav-link.active,
     .nav-link.is-pill-active,
     .nav-link:active {
