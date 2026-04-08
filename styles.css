@@ -118,7 +118,7 @@ body {
 
 .socials { display: flex; gap: 10px; }
 
-/* Бургер-кнопка (скрыта на десктопе) */
+/* Бургер-кнопка */
 .burger-btn {
     display: none;
     background: none;
@@ -162,7 +162,7 @@ body {
 .burger-btn.is-active span::before { transform: translateY(8px) rotate(45deg); }
 .burger-btn.is-active span::after { transform: translateY(-8px) rotate(-45deg); }
 
-/* BUG 1: Иконки ВК и ТГ */
+/* Иконки ВК и ТГ */
 .social-icon, .footer-social {
     display: flex;
     justify-content: center;
@@ -187,7 +187,6 @@ body {
 }
 
 /* --- Секции (ОБЩЕЕ) --- */
-/* BUG 4: Разрывы между блоками */
 .author-section, 
 .benefits-section, 
 .faq-section {
@@ -223,7 +222,7 @@ body {
 
 .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-/* BUG 2: Отступы в карточках */
+/* Отступы в карточках */
 .stat-card {
     padding: 40px;
     border-radius: 28px;
@@ -262,7 +261,6 @@ body {
 }
 
 /* --- Карусель --- */
-/* BUG 3: Без серой подложки */
 .benefits-section {
     background-color: transparent;
 }
@@ -300,7 +298,7 @@ body {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    padding-bottom: 20px; /* Для теней */
+    padding-bottom: 20px;
 }
 .carousel-track::-webkit-scrollbar { display: none; }
 
@@ -414,10 +412,7 @@ body {
 .footer-phone { font-size: 24px; font-weight: 800; color: #fff; display: block; margin-bottom: 12px;}
 .footer-note { font-size: 15px; margin: 0 0 8px 0; color: #cbd5e1;}
 .footer-note--muted { color: #64748b; font-size: 14px;}
-
-/* ДОБАВЛЕНО: Раздвинули иконки в подвале */
 .footer-column--social { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end;}
-.footer-socials { display: flex; gap: 12px; margin-bottom: 16px; } 
 .footer-meta { text-align: right;}
 .footer-copy { font-size: 16px; font-weight: 700; margin: 0 0 4px 0;}
 .footer-rights { font-size: 14px; color: #64748b; margin: 0;}
@@ -475,7 +470,7 @@ body {
         border: none;
     }
     
-    .nav-highlight { display: none; } /* Отключаем плашку на мобильных */
+    .nav-highlight { display: none; }
 
     .nav-link {
         width: 100%;
@@ -484,8 +479,10 @@ body {
         font-size: 18px;
     }
     
-    .nav-link.active {
-        color: var(--accent);
+    /* ФИКС: Возвращаем акцентный цвет текста, перебивая десктопный белый */
+    .nav-link.active,
+    .nav-link.is-pill-active {
+        color: var(--accent) !important;
         background: #f0f9ff;
         border-radius: 12px;
     }
