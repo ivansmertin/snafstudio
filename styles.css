@@ -49,7 +49,7 @@ body {
         var(--background);
     color: var(--text-primary);
     overflow-x: hidden;
-    line-height: 1.5;
+    line-height: 1.6; /* Улучшено для читаемости абзацев */
 }
 
 body.menu-open {
@@ -358,7 +358,7 @@ section[id] {
 .footer-social.social-icon--vk span {
     font-size: 12px;
     font-weight: 800;
-    letter-spacing: -0.04em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
 }
 
@@ -463,6 +463,7 @@ section[id] {
     font-size: 14px;
     font-weight: 700;
     margin-bottom: 24px;
+    letter-spacing: 0.02em; /* Улучшение читаемости бейджа */
 }
 
 .hero-title {
@@ -549,7 +550,7 @@ section[id] {
     margin-left: auto;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--text-secondary);
 }
@@ -594,7 +595,7 @@ section[id] {
 .hero-mini-label {
     display: inline-block;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: rgba(71, 85, 105, 0.82);
@@ -602,7 +603,7 @@ section[id] {
 }
 
 .hero-mini-card--accent .hero-mini-label {
-    color: rgba(255, 255, 255, 0.78);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-mini-card strong {
@@ -614,6 +615,11 @@ section[id] {
     color: inherit;
 }
 
+/* BUG 1: Принудительный белый цвет заголовка на акцентной карточке */
+.hero-mini-card--accent strong {
+    color: #ffffff !important;
+}
+
 .hero-mini-card p {
     margin: 0;
     font-size: 14px;
@@ -622,7 +628,7 @@ section[id] {
 }
 
 .hero-mini-card--accent p {
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.95);
 }
 
 /* ---------------------------------
@@ -1065,6 +1071,18 @@ section[id] {
     box-shadow: 0 20px 50px rgba(2, 6, 23, 0.22);
 }
 
+/* BUG 2: Выравнивание в футере (Десктоп) */
+.footer-column:first-child {
+    text-align: left;
+}
+.footer-column--social {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end; /* Правый край */
+    text-align: right;
+}
+
 .footer-logo img {
     filter: brightness(0) invert(1);
     width: 120px;
@@ -1121,20 +1139,14 @@ section[id] {
     font-size: 14px;
 }
 
-.footer-column--social {
+.footer-socials {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
+    gap: 10px;
 }
 
 .footer-socials .footer-social {
     background: rgba(255, 255, 255, 0.96);
     color: var(--accent);
-}
-
-.footer-meta {
-    text-align: right;
 }
 
 .footer-copy {
@@ -1196,12 +1208,11 @@ section[id] {
         text-align: center;
     }
 
+    /* Сброс выравнивания футера на мобилках */
+    .footer-column:first-child,
     .footer-column--social {
-        align-items: center;
-    }
-
-    .footer-meta {
         text-align: center;
+        align-items: center;
     }
 
     .footer-logo img {
