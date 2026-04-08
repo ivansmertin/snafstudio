@@ -46,11 +46,11 @@
     </header>
 
     <main>
-        <section class="author-section reveal" data-animate="section" id="about" aria-labelledby="about-title">
+        <section class="author-section reveal" id="about" aria-labelledby="about-title">
             <div class="container">
                 <h2 class="section-title" id="about-title">Обо мне</h2>
 
-                <div class="author-wrapper reveal-stagger" data-animate="stagger">
+                <div class="author-wrapper reveal-stagger">
                     <article class="author-main-card surface-glow">
                         <img
                             src="images/ivan.png"
@@ -69,7 +69,7 @@
                         </div>
                     </article>
 
-                    <div class="stats-grid reveal-stagger" data-animate="stagger" id="services" aria-label="Ключевые принципы работы">
+                    <div class="stats-grid" id="services" aria-label="Ключевые принципы работы">
                         <article class="stat-card stat-card--accent surface-glow">
                             <div class="stat-number text-on-accent">
                                 <span class="counter" data-target="3">0</span>
@@ -105,9 +105,9 @@
             </div>
         </section>
 
-        <section class="benefits-section reveal" data-animate="section" id="value" aria-labelledby="value-title">
+        <section class="benefits-section reveal" id="value" aria-labelledby="value-title">
             <div class="container">
-                <div class="benefits-header reveal-stagger" data-animate="stagger">
+                <div class="benefits-header reveal-stagger">
                     <div class="benefits-title-wrapper">
                         <h2 class="section-title" id="value-title">Что вы получите</h2>
                         <p class="section-subtitle">
@@ -131,7 +131,7 @@
                     </div>
                 </div>
 
-                <div class="carousel-track reveal-stagger" data-animate="stagger" id="benefitsCarousel" aria-label="Преимущества работы">
+                <div class="carousel-track reveal-stagger" id="benefitsCarousel" aria-label="Преимущества работы">
                     <article class="carousel-card surface-glow">
                         <h3 class="card-title">Продуманный визуальный образ</h3>
                         <p class="card-text">
@@ -167,11 +167,11 @@
             </div>
         </section>
 
-        <section class="faq-section reveal" data-animate="section" id="faq" aria-labelledby="faq-title">
+        <section class="faq-section reveal" id="faq" aria-labelledby="faq-title">
             <div class="container">
                 <h2 class="section-title" id="faq-title">Часто задаваемые вопросы</h2>
 
-                <div class="faq-list reveal-stagger" data-animate="stagger">
+                <div class="faq-list reveal-stagger">
                     <article class="faq-item surface-glow">
                         <h3 class="faq-question-heading">
                             <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
@@ -269,7 +269,7 @@
         </section>
     </main>
 
-    <footer class="site-footer reveal" data-animate="section" aria-label="Контакты и правовая информация">
+    <footer class="site-footer reveal" aria-label="Контакты и правовая информация">
         <div class="container">
             <div class="footer-card surface-glow">
                 <div class="footer-column footer-column--brand">
@@ -316,18 +316,33 @@
 
             const initNavHighlight = () => {
                 const nav = document.querySelector(".main-nav");
-                if (!nav) return;
+                if (!nav) return null;
 
                 const links = Array.from(nav.querySelectorAll(".nav-link"));
-                if (!links.length) return;
+                if (!links.length) return null;
 
-                const defaultLink = nav.querySelector(".nav-link.active") || links[0];
+                let currentActiveLink = nav.querySelector(".nav-link.active") || links[0];
+
+                const updateActiveState = (targetLink) => {
+                    links.forEach((link) => {
+                        const isCurrent = link === targetLink;
+                        link.classList.toggle("active", isCurrent);
+                        link.setAttribute("aria-current", isCurrent ? "page" : "false");
+                    });
+                };
 
                 if (isCoarsePointer) {
-                    links.forEach((link) => {
-                        link.classList.toggle("is-pill-active", link === defaultLink);
-                    });
-                    return;
+                    const setCurrentActiveLink = (targetLink) => {
+                        if (!targetLink) return;
+                        currentActiveLink = targetLink;
+                        updateActiveState(targetLink);
+                        links.forEach((link) => {
+                            link.classList.toggle("is-pill-active", link === targetLink);
+                        });
+                    };
+
+                    setCurrentActiveLink(currentActiveLink);
+                    return { setCurrentActiveLink };
                 }
 
                 const highlight = document.createElement("span");
@@ -368,7 +383,15 @@
                     }
                 };
 
-                moveHighlight(defaultLink, true);
+                const setCurrentActiveLink = (targetLink, instant = false) => {
+                    if (!targetLink || targetLink === currentActiveLink) return;
+                    currentActiveLink = targetLink;
+                    updateActiveState(targetLink);
+                    moveHighlight(targetLink, instant);
+                };
+
+                updateActiveState(currentActiveLink);
+                moveHighlight(currentActiveLink, true);
                 nav.classList.add("nav-ready");
 
                 links.forEach((link) => {
@@ -376,16 +399,77 @@
                     link.addEventListener("focus", () => moveHighlight(link));
                 });
 
-                nav.addEventListener("mouseleave", () => moveHighlight(defaultLink));
+                nav.addEventListener("mouseleave", () => moveHighlight(currentActiveLink));
                 nav.addEventListener("focusout", (event) => {
                     if (!nav.contains(event.relatedTarget)) {
-                        moveHighlight(defaultLink);
+                        moveHighlight(currentActiveLink);
                     }
                 });
 
-                const refresh = () => moveHighlight(defaultLink, true);
+                const refresh = () => moveHighlight(currentActiveLink, true);
                 window.addEventListener("resize", refresh);
                 window.addEventListener("load", refresh);
+
+                return { setCurrentActiveLink, moveHighlight };
+            };
+
+            const initScrollSpy = (navHighlightApi) => {
+                const sectionIds = ["services", "about", "value", "faq"];
+                const sections = sectionIds
+                    .map((id) => document.getElementById(id))
+                    .filter(Boolean);
+
+                if (!sections.length || !navHighlightApi?.setCurrentActiveLink) return;
+
+                const sectionById = new Map(sections.map((section) => [section.id, section]));
+                const linkById = new Map(
+                    Array.from(document.querySelectorAll(".main-nav .nav-link"))
+                        .map((link) => [link.getAttribute("href")?.slice(1), link])
+                        .filter(([id, link]) => id && link && sectionById.has(id))
+                );
+
+                if (!linkById.size) return;
+
+                const visibility = new Map();
+                let activeSectionId = null;
+
+                const updateActive = () => {
+                    if (!visibility.size) return;
+
+                    const best = Array.from(visibility.entries())
+                        .sort((a, b) => {
+                            const ratioDiff = b[1].ratio - a[1].ratio;
+                            if (Math.abs(ratioDiff) > 0.01) return ratioDiff;
+                            return a[1].top - b[1].top;
+                        })[0];
+
+                    if (!best || best[0] === activeSectionId) return;
+
+                    activeSectionId = best[0];
+                    navHighlightApi.setCurrentActiveLink(linkById.get(activeSectionId));
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (!sectionById.has(entry.target.id)) return;
+
+                        if (entry.isIntersecting) {
+                            visibility.set(entry.target.id, {
+                                ratio: entry.intersectionRatio,
+                                top: Math.max(entry.boundingClientRect.top, 0),
+                            });
+                        } else {
+                            visibility.delete(entry.target.id);
+                        }
+                    });
+
+                    updateActive();
+                }, {
+                    threshold: [0.2, 0.35, 0.5, 0.65],
+                    rootMargin: "-25% 0px -40% 0px",
+                });
+
+                sections.forEach((section) => observer.observe(section));
             };
 
             const initRevealAnimations = () => {
@@ -513,8 +597,9 @@
                 });
             };
 
-            initNavHighlight();
+            const navHighlightApi = initNavHighlight();
             initRevealAnimations();
+            initScrollSpy(navHighlightApi);
             initCarousel();
             initFaq();
         });
