@@ -4,27 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Иван Смертин — дизайн и создание сайтов</title>
-    <meta name="description" content="Иван Смертин — дизайн и создание современных лендингов и сайтов: структура, визуальная подача, адаптивная верстка и помощь с запуском.">
+    <meta
+        name="description"
+        content="Иван Смертин — дизайн и создание современных лендингов и сайтов: структура, визуальная подача, адаптивная верстка и помощь с запуском."
+    >
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 </head>
-<body class="theme-tech">
+<body>
     <header class="header" id="top">
         <div class="container header-inner">
             <a href="#top" class="logo" aria-label="На главную">
                 <img src="images/logo.svg" alt="Логотип Ивана Смертина">
             </a>
 
-            <nav class="main-nav" aria-label="Основная навигация">
-                <a href="#services" class="nav-link active" aria-current="page">Услуги</a>
-                <a href="#about" class="nav-link">Обо мне</a>
-                <a href="#value" class="nav-link">Что вы получите</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-            </nav>
+            <button class="burger-btn" type="button" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+            </button>
 
-            <div class="contacts" id="contacts">
+            <div class="main-nav-wrap">
+                <nav class="main-nav" aria-label="Основная навигация">
+                    <a href="#services" class="nav-link">Услуги</a>
+                    <a href="#about" class="nav-link">Обо мне</a>
+                    <a href="#value" class="nav-link">Что вы получите</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                </nav>
+            </div>
+
+            <div class="contacts">
                 <a href="tel:+79217657711" class="phone">+7 921 765 77 11</a>
 
                 <div class="socials" aria-label="Социальные сети">
@@ -40,24 +52,34 @@
     </header>
 
     <main>
-        <section class="author-section reveal" data-animate="section" id="about" aria-labelledby="about-title">
+        <section class="author-section reveal" id="about" aria-labelledby="about-title">
             <div class="container">
                 <h2 class="section-title" id="about-title">Обо мне</h2>
 
-                <div class="author-wrapper reveal-stagger" data-animate="stagger">
+                <div class="author-wrapper reveal-stagger">
                     <article class="author-main-card surface-glow">
-                        <img src="images/ivan.png" alt="Портрет Ивана Смертина" class="author-photo" loading="eager" decoding="async">
+                        <img
+                            src="images/ivan.png"
+                            alt="Портрет Ивана Смертина"
+                            class="author-photo"
+                            loading="eager"
+                            decoding="async"
+                        >
                         <div class="author-info">
                             <h3 class="author-name">Иван Смертин</h3>
                             <p class="author-regalia">
-                                Веб-дизайнер и разработчик. Создаю современные лендинги и сайты, которые выглядят аккуратно, работают быстро и помогают бизнесу вызывать доверие и привлекать клиентов.
+                                Веб-дизайнер и разработчик. Создаю современные лендинги и сайты,
+                                которые выглядят аккуратно, работают быстро и помогают бизнесу
+                                вызывать доверие и привлекать клиентов.
                             </p>
                         </div>
                     </article>
 
-                    <div class="stats-grid reveal-stagger" id="services" aria-label="Ключевые принципы работы">
+                    <div class="stats-grid" id="services" aria-label="Ключевые принципы работы">
                         <article class="stat-card stat-card--accent surface-glow">
-                            <div class="stat-number text-on-accent"><span class="counter" data-target="3">0</span></div>
+                            <div class="stat-number text-on-accent">
+                                <span class="counter" data-target="3">0</span>
+                            </div>
                             <div class="stat-text-large text-on-accent">направления</div>
                             <p class="stat-desc text-on-accent">дизайн, верстка, запуск</p>
                         </article>
@@ -68,14 +90,20 @@
                         </article>
 
                         <article class="stat-card stat-card--accent stat-wide wave-bg surface-glow floating-accent">
-                            <div class="stat-number text-on-accent"><span class="counter" data-target="1">0</span></div>
-                            <p class="stat-desc text-on-accent">человек ведет проект<br>от идеи до публикации</p>
+                            <div class="stat-number text-on-accent">
+                                <span class="counter" data-target="1">0</span>
+                            </div>
+                            <p class="stat-desc text-on-accent">
+                                человек ведет проект<br>от идеи до публикации
+                            </p>
                         </article>
 
                         <article class="stat-card stat-card--quote stat-wide surface-glow">
                             <img src="images/heart-icon.svg" alt="Иконка сердца" class="quote-icon">
                             <p class="quote-text">
-                                Моя задача — не просто сделать красивый сайт, а собрать понятную, аккуратную и убедительную страницу под конкретную бизнес-задачу.
+                                Моя задача — не просто сделать красивый сайт, а собрать
+                                понятную, аккуратную и убедительную страницу под конкретную
+                                бизнес-задачу.
                             </p>
                         </article>
                     </div>
@@ -83,12 +111,15 @@
             </div>
         </section>
 
-        <section class="benefits-section reveal" data-animate="section" id="value" aria-labelledby="value-title">
+        <section class="benefits-section reveal" id="value" aria-labelledby="value-title">
             <div class="container">
-                <div class="benefits-header reveal-stagger" data-animate="stagger">
+                <div class="benefits-header reveal-stagger">
                     <div class="benefits-title-wrapper">
                         <h2 class="section-title" id="value-title">Что вы получите</h2>
-                        <p class="section-subtitle">Сайт, который выглядит современно, собирает доверие и помогает понятнее продавать ваши услуги</p>
+                        <p class="section-subtitle">
+                            Сайт, который выглядит современно, собирает доверие и помогает
+                            понятнее продавать ваши услуги
+                        </p>
                     </div>
 
                     <div class="slider-controls" aria-label="Управление каруселью">
@@ -97,6 +128,7 @@
                                 <path d="M15 18l-6-6 6-6"/>
                             </svg>
                         </button>
+
                         <button class="slider-btn next-btn" type="button" aria-label="Прокрутить карточки вперед">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M9 18l6-6-6-6"/>
@@ -105,31 +137,51 @@
                     </div>
                 </div>
 
-                <div class="carousel-track reveal-stagger" data-animate="stagger" id="benefitsCarousel" aria-label="Преимущества работы">
+                <div class="carousel-track reveal-stagger" id="benefitsCarousel" aria-label="Преимущества работы">
                     <article class="carousel-card surface-glow">
                         <h3 class="card-title">Продуманный визуальный образ</h3>
-                        <p class="card-text">Соберу аккуратный и современный интерфейс, который соответствует вашей нише и не выглядит шаблонно.</p>
+                        <p class="card-text">
+                            Соберу аккуратный и современный интерфейс, который соответствует
+                            вашей нише и не выглядит шаблонно.
+                        </p>
                     </article>
+
                     <article class="carousel-card surface-glow">
                         <h3 class="card-title">Понятную структуру страницы</h3>
-                        <p class="card-text">Помогу выстроить блоки, акценты и логику подачи так, чтобы посетитель быстро понимал, что именно вы предлагаете.</p>
+                        <p class="card-text">
+                            Помогу выстроить блоки, акценты и логику подачи так, чтобы
+                            посетитель быстро понимал, что именно вы предлагаете.
+                        </p>
                     </article>
+
                     <article class="carousel-card surface-glow">
                         <h3 class="card-title">Чистую адаптивную верстку</h3>
-                        <p class="card-text">Сайт будет корректно выглядеть на компьютере, планшете и телефоне без ощущения сырой или случайной сборки.</p>
+                        <p class="card-text">
+                            Сайт будет корректно выглядеть на компьютере, планшете и телефоне
+                            без ощущения сырой или случайной сборки.
+                        </p>
                     </article>
+
                     <article class="carousel-card surface-glow">
                         <h3 class="card-title">Удобный запуск и доработку</h3>
-                        <p class="card-text">Проект можно будет спокойно развивать дальше: подключать формы, домен, аналитику, новые блоки и дополнительные страницы.</p>
+                        <p class="card-text">
+                            Проект можно будет спокойно развивать дальше: подключать формы,
+                            домен, аналитику, новые блоки и дополнительные страницы.
+                        </p>
                     </article>
+                </div>
+
+                <div class="carousel-progress" aria-hidden="true">
+                    <span class="carousel-progress-fill"></span>
                 </div>
             </div>
         </section>
 
-        <section class="faq-section reveal" data-animate="section" id="faq" aria-labelledby="faq-title">
+        <section class="faq-section reveal" id="faq" aria-labelledby="faq-title">
             <div class="container">
                 <h2 class="section-title" id="faq-title">Часто задаваемые вопросы</h2>
-                <div class="faq-list reveal-stagger" data-animate="stagger">
+
+                <div class="faq-list reveal-stagger">
                     <article class="faq-item surface-glow">
                         <h3 class="faq-question-heading">
                             <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
@@ -138,27 +190,128 @@
                             </button>
                         </h3>
                         <div class="faq-answer" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" aria-hidden="true">
-                            <p>Я могу сделать лендинг, небольшой сайт, промо-страницу или аккуратно переработать уже существующий сайт. Обычно помогаю с визуальной подачей, структурой блоков, версткой и подготовкой проекта к запуску.</p>
+                            <p>
+                                Я могу сделать лендинг, небольшой сайт, промо-страницу или аккуратно
+                                переработать уже существующий сайт. Обычно помогаю с визуальной подачей,
+                                структурой блоков, версткой и подготовкой проекта к запуску.
+                            </p>
                         </div>
                     </article>
-                    </div>
+
+                    <article class="faq-item surface-glow">
+                        <h3 class="faq-question-heading">
+                            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-2" id="faq-button-2">
+                                <span class="faq-question-text">Вы делаете только дизайн или еще и верстку?</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-answer" id="faq-panel-2" role="region" aria-labelledby="faq-button-2" aria-hidden="true">
+                            <p>
+                                И дизайн, и верстку. Могу подключиться только на этапе визуальной концепции,
+                                но чаще беру проект целиком: от структуры и внешнего вида до готовой
+                                адаптивной страницы.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item surface-glow is-open">
+                        <h3 class="faq-question-heading">
+                            <button class="faq-question" type="button" aria-expanded="true" aria-controls="faq-panel-3" id="faq-button-3">
+                                <span class="faq-question-text">Сколько по времени занимает проект?</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-answer" id="faq-panel-3" role="region" aria-labelledby="faq-button-3" aria-hidden="false">
+                            <p>
+                                Зависит от объема. Небольшой лендинг можно собрать сравнительно быстро,
+                                а более детальная работа со структурой, текстами и дополнительными блоками
+                                требует больше времени.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item surface-glow">
+                        <h3 class="faq-question-heading">
+                            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-4" id="faq-button-4">
+                                <span class="faq-question-text">Что нужно от меня для начала работы?</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-answer" id="faq-panel-4" role="region" aria-labelledby="faq-button-4" aria-hidden="true">
+                            <p>
+                                Достаточно коротко описать задачу: чем вы занимаетесь, какой сайт нужен,
+                                есть ли примеры или референсы. Я помогу собрать это в понятную основу.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item surface-glow">
+                        <h3 class="faq-question-heading">
+                            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-5" id="faq-button-5">
+                                <span class="faq-question-text">Можно ли доработать уже существующий сайт?</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-answer" id="faq-panel-5" role="region" aria-labelledby="faq-button-5" aria-hidden="true">
+                            <p>
+                                Да. Необязательно делать все с нуля. Если у вас уже есть страница или
+                                набросок, я могу помочь привести это в более аккуратный вид.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item surface-glow">
+                        <h3 class="faq-question-heading">
+                            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-6" id="faq-button-6">
+                                <span class="faq-question-text">Поможете с запуском сайта?</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-answer" id="faq-panel-6" role="region" aria-labelledby="faq-button-6" aria-hidden="true">
+                            <p>
+                                Да, при необходимости могу помочь с финальной сборкой, публикацией,
+                                подключением домена и форм.
+                            </p>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer reveal" data-animate="section">
+    <footer class="site-footer reveal" aria-label="Контакты и правовая информация">
         <div class="container">
             <div class="footer-card surface-glow">
                 <div class="footer-column footer-column--brand">
-                    <a href="#top" class="footer-logo"><img src="images/logo.svg" alt="Логотип"></a>
+                    <a href="#top" class="footer-logo" aria-label="На главную">
+                        <img src="images/logo.svg" alt="Логотип">
+                    </a>
                     <a href="mailto:hello@ivansmertin.ru" class="footer-link footer-contact">hello@ivansmertin.ru</a>
+                    <div class="footer-legal-links">
+                        <a href="#" class="footer-link footer-link--muted">Политика конфиденциальности</a>
+                        <a href="#" class="footer-link footer-link--muted">Договор-оферта</a>
+                    </div>
                 </div>
+
+                <div class="footer-column footer-column--contacts">
+                    <a href="tel:+79217657711" class="footer-link footer-phone">+7 921 765 77 11</a>
+                    <p class="footer-note">Связаться по поводу проекта</p>
+                    <p class="footer-note footer-note--muted">Самозанятый / работа по договоренности</p>
+                </div>
+
                 <div class="footer-column footer-column--social">
                     <div class="footer-socials">
-                        <a href="#" class="footer-social"><img src="images/vk.svg" alt="ВКонтакте"></a>
-                        <a href="#" class="footer-social"><img src="images/tg.svg" alt="Telegram"></a>
+                        <a href="#" class="footer-social" aria-label="ВКонтакте">
+                            <img src="images/vk.svg" alt="ВКонтакте">
+                        </a>
+                        <a href="#" class="footer-social" aria-label="Telegram">
+                            <img src="images/tg.svg" alt="Telegram">
+                        </a>
                     </div>
-                    <p class="footer-copy">© Иван Смертин, 2026</p>
+                    <div class="footer-meta">
+                        <p class="footer-copy">© Иван Смертин, 2026</p>
+                        <p class="footer-rights">Все права защищены</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -166,42 +319,346 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Инициализация анимаций появления
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-revealed');
-                        // Запуск счетчиков
-                        entry.target.querySelectorAll('.counter').forEach(counter => {
-                            if (counter.dataset.counted) return;
-                            counter.dataset.counted = "true";
-                            const target = +counter.dataset.target;
-                            let start = 0;
-                            const duration = 2000;
-                            const step = (ts) => {
-                                if (!start) start = ts;
-                                const progress = Math.min((ts - start) / duration, 1);
-                                counter.textContent = Math.floor(progress * target);
-                                if (progress < 1) requestAnimationFrame(step);
-                                else counter.textContent = target;
-                            };
-                            requestAnimationFrame(step);
+            const motionReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            const isCoarsePointer = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+            const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
+            const initNavHighlight = () => {
+                const nav = document.querySelector(".main-nav");
+                if (!nav) return null;
+
+                const links = Array.from(nav.querySelectorAll(".nav-link"));
+                if (!links.length) return null;
+
+                let currentActiveLink =
+                    nav.querySelector(".nav-link[aria-current='page']") ||
+                    nav.querySelector(".nav-link.is-pill-active") ||
+                    links[0];
+
+                const updateActiveState = (targetLink) => {
+                    links.forEach((link) => {
+                        const isCurrent = link === targetLink;
+                        link.setAttribute("aria-current", isCurrent ? "page" : "false");
+                        link.classList.toggle("is-pill-active", isCurrent);
+                    });
+                };
+
+                if (isCoarsePointer) {
+                    const setCurrentActiveLink = (targetLink) => {
+                        if (!targetLink) return;
+                        currentActiveLink = targetLink;
+                        updateActiveState(targetLink);
+                    };
+
+                    setCurrentActiveLink(currentActiveLink);
+                    return { setCurrentActiveLink };
+                }
+
+                const highlight = document.createElement("span");
+                highlight.className = "nav-highlight";
+                nav.prepend(highlight);
+
+                const setActiveText = (targetLink) => {
+                    links.forEach((link) => {
+                        link.classList.toggle("is-pill-active", link === targetLink);
+                    });
+                };
+
+                const moveHighlight = (targetLink, instant = false) => {
+                    if (!targetLink) return;
+
+                    if (instant || motionReduced) {
+                        highlight.classList.add("nav-highlight--no-transition");
+                    } else {
+                        highlight.classList.remove("nav-highlight--no-transition");
+                    }
+
+                    const x = targetLink.offsetLeft;
+                    const y = targetLink.offsetTop;
+                    const w = targetLink.offsetWidth;
+                    const h = targetLink.offsetHeight;
+
+                    nav.style.setProperty("--pill-x", `${x}px`);
+                    nav.style.setProperty("--pill-y", `${y}px`);
+                    nav.style.setProperty("--pill-w", `${w}px`);
+                    nav.style.setProperty("--pill-h", `${h}px`);
+
+                    setActiveText(targetLink);
+
+                    if (instant || motionReduced) {
+                        requestAnimationFrame(() => {
+                            highlight.classList.remove("nav-highlight--no-transition");
                         });
                     }
+                };
+
+                const setCurrentActiveLink = (targetLink, instant = false) => {
+                    if (!targetLink || targetLink === currentActiveLink) return;
+                    currentActiveLink = targetLink;
+                    updateActiveState(targetLink);
+                    moveHighlight(targetLink, instant);
+                };
+
+                updateActiveState(currentActiveLink);
+                moveHighlight(currentActiveLink, true);
+                nav.classList.add("nav-ready");
+
+                links.forEach((link) => {
+                    link.addEventListener("mouseenter", () => moveHighlight(link));
+                    link.addEventListener("focus", () => moveHighlight(link));
                 });
-            }, { threshold: 0.15 });
 
-            document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+                nav.addEventListener("mouseleave", () => moveHighlight(currentActiveLink));
+                nav.addEventListener("focusout", (event) => {
+                    if (!nav.contains(event.relatedTarget)) {
+                        moveHighlight(currentActiveLink);
+                    }
+                });
 
-            // Логика карусели
-            const track = document.getElementById('benefitsCarousel');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            if (track && prevBtn && nextBtn) {
-                const getAmount = () => track.querySelector('.carousel-card').offsetWidth + 20;
-                nextBtn.addEventListener('click', () => track.scrollBy({ left: getAmount(), behavior: 'smooth' }));
-                prevBtn.addEventListener('click', () => track.scrollBy({ left: -getAmount(), behavior: 'smooth' }));
-            }
+                const refresh = () => moveHighlight(currentActiveLink, true);
+                window.addEventListener("resize", refresh);
+                window.addEventListener("load", refresh);
+
+                return { setCurrentActiveLink, moveHighlight };
+            };
+
+            const initMobileMenu = () => {
+                const burgerButton = document.querySelector(".burger-btn");
+                const navWrap = document.querySelector(".main-nav-wrap");
+                const nav = document.querySelector(".main-nav");
+
+                if (!burgerButton || !navWrap || !nav) return;
+
+                const closeMenu = () => {
+                    navWrap.classList.remove("is-open");
+                    nav.classList.remove("is-open");
+                    burgerButton.classList.remove("is-active");
+                    burgerButton.setAttribute("aria-expanded", "false");
+                };
+
+                const toggleMenu = () => {
+                    const isOpen = navWrap.classList.toggle("is-open");
+                    nav.classList.toggle("is-open", isOpen);
+                    burgerButton.classList.toggle("is-active", isOpen);
+                    burgerButton.setAttribute("aria-expanded", String(isOpen));
+                };
+
+                burgerButton.addEventListener("click", toggleMenu);
+
+                nav.querySelectorAll(".nav-link").forEach((link) => {
+                    link.addEventListener("click", closeMenu);
+                });
+
+                window.addEventListener("resize", () => {
+                    if (window.innerWidth > 768) {
+                        closeMenu();
+                    }
+                });
+            };
+
+            const initScrollSpy = (navHighlightApi) => {
+                const sectionIds = ["services", "about", "value", "faq"];
+                const sections = sectionIds
+                    .map((id) => document.getElementById(id))
+                    .filter(Boolean);
+
+                if (!sections.length || !navHighlightApi?.setCurrentActiveLink) return;
+
+                const sectionById = new Map(sections.map((section) => [section.id, section]));
+                const linkById = new Map(
+                    Array.from(document.querySelectorAll(".main-nav .nav-link"))
+                        .map((link) => [link.getAttribute("href")?.slice(1), link])
+                        .filter(([id, link]) => id && link && sectionById.has(id))
+                );
+
+                if (!linkById.size) return;
+
+                const visibility = new Map();
+                let activeSectionId = null;
+
+                const updateActive = () => {
+                    if (!visibility.size) return;
+
+                    const best = Array.from(visibility.entries())
+                        .sort((a, b) => {
+                            const ratioDiff = b[1].ratio - a[1].ratio;
+                            if (Math.abs(ratioDiff) > 0.01) return ratioDiff;
+                            return a[1].top - b[1].top;
+                        })[0];
+
+                    if (!best || best[0] === activeSectionId) return;
+
+                    activeSectionId = best[0];
+                    navHighlightApi.setCurrentActiveLink(linkById.get(activeSectionId));
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (!sectionById.has(entry.target.id)) return;
+
+                        if (entry.isIntersecting) {
+                            visibility.set(entry.target.id, {
+                                ratio: entry.intersectionRatio,
+                                top: Math.max(entry.boundingClientRect.top, 0),
+                            });
+                        } else {
+                            visibility.delete(entry.target.id);
+                        }
+                    });
+
+                    updateActive();
+                }, {
+                    threshold: [0.2, 0.35, 0.5, 0.65],
+                    rootMargin: "-25% 0px -40% 0px",
+                });
+
+                sections.forEach((section) => observer.observe(section));
+            };
+
+            const initRevealAnimations = () => {
+                const revealTargets = document.querySelectorAll(".reveal, .reveal-stagger");
+
+                if (motionReduced) {
+                    revealTargets.forEach((el) => el.classList.add("is-revealed"));
+                    document.querySelectorAll(".counter").forEach((counter) => {
+                        counter.textContent = counter.dataset.target || counter.textContent;
+                    });
+                    return;
+                }
+
+                const animatedCounters = new WeakSet();
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+
+                        entry.target.classList.add("is-revealed");
+
+                        entry.target.querySelectorAll(".counter").forEach((counter) => {
+                            if (animatedCounters.has(counter)) return;
+                            animatedCounters.add(counter);
+
+                            const target = Number(counter.dataset.target);
+                            if (target <= 1) {
+                                counter.textContent = target;
+                                return;
+                            }
+                            const duration = 1800;
+                            let startTime = null;
+
+                            const update = (currentTime) => {
+                                if (!startTime) startTime = currentTime;
+                                const progress = Math.min((currentTime - startTime) / duration, 1);
+                                counter.textContent = Math.floor(easeOutExpo(progress) * target);
+
+                                if (progress < 1) {
+                                    requestAnimationFrame(update);
+                                } else {
+                                    counter.textContent = target;
+                                }
+                            };
+
+                            requestAnimationFrame(update);
+                        });
+
+                        observer.unobserve(entry.target);
+                    });
+                }, { threshold: 0.16 });
+
+                revealTargets.forEach((el) => observer.observe(el));
+            };
+
+            const initCarousel = () => {
+                const track = document.getElementById("benefitsCarousel");
+                const prevBtn = document.querySelector(".prev-btn");
+                const nextBtn = document.querySelector(".next-btn");
+                const progressFill = document.querySelector(".carousel-progress-fill");
+
+                if (!track || !prevBtn || !nextBtn) return;
+
+                const getScrollAmount = () => {
+                    const card = track.querySelector(".carousel-card");
+                    if (!card) return 0;
+
+                    const trackStyle = window.getComputedStyle(track);
+                    const gap =
+                        parseFloat(trackStyle.gap) ||
+                        parseFloat(trackStyle.columnGap) ||
+                        20;
+
+                    return card.getBoundingClientRect().width + gap;
+                };
+
+                nextBtn.addEventListener("click", () => {
+                    track.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+                });
+
+                prevBtn.addEventListener("click", () => {
+                    track.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+                });
+
+                const syncProgress = () => {
+                    if (!progressFill) return;
+                    const maxScroll = track.scrollWidth - track.clientWidth;
+                    const progress = maxScroll > 0 ? track.scrollLeft / maxScroll : 0;
+                    progressFill.style.transform = `scaleX(${Math.min(Math.max(progress, 0), 1)})`;
+                };
+
+                track.addEventListener("scroll", syncProgress, { passive: true });
+                window.addEventListener("resize", syncProgress);
+                syncProgress();
+            };
+
+            const initFaq = () => {
+                const items = Array.from(document.querySelectorAll(".faq-item"));
+                if (!items.length) return;
+
+                const applyState = (item, open) => {
+                    const button = item.querySelector(".faq-question");
+                    const panel = item.querySelector(".faq-answer");
+
+                    item.classList.toggle("is-open", open);
+                    button.setAttribute("aria-expanded", String(open));
+                    panel.setAttribute("aria-hidden", String(!open));
+                    panel.style.height = open ? `${panel.scrollHeight}px` : "0px";
+                };
+
+                const openItem = items.find((item) => item.classList.contains("is-open")) || items[2] || null;
+
+                items.forEach((item) => {
+                    applyState(item, item === openItem);
+                });
+
+                items.forEach((item) => {
+                    const button = item.querySelector(".faq-question");
+
+                    button.addEventListener("click", () => {
+                        const isOpen = item.classList.contains("is-open");
+
+                        items.forEach((currentItem) => applyState(currentItem, false));
+
+                        if (!isOpen) {
+                            applyState(item, true);
+                        }
+                    });
+                });
+
+                window.addEventListener("resize", () => {
+                    const opened = items.find((item) => item.classList.contains("is-open"));
+                    if (opened) {
+                        const panel = opened.querySelector(".faq-answer");
+                        panel.style.height = `${panel.scrollHeight}px`;
+                    }
+                });
+            };
+
+            const navHighlightApi = initNavHighlight();
+            initMobileMenu();
+            initRevealAnimations();
+            initScrollSpy(navHighlightApi);
+            initCarousel();
+            initFaq();
         });
     </script>
 </body>
