@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header Component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Основная шапка сайта">
+      <div class="site-header__inner container">
+        <a class="site-logo" href="#" aria-label="На главную">
+          <svg width="132" height="28" viewBox="0 0 132 28" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <path d="M14 0L28 24.5H0L14 0Z" fill="#E96A53"/>
+            <circle cx="45" cy="14" r="11" fill="#29344A"/>
+            <text x="62" y="19" fill="#29344A" font-size="14" font-family="Montserrat, Arial, sans-serif" font-weight="600">BrandName</text>
+          </svg>
+        </a>
+
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#cases">Кейсы</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-contacts" id="contacts">
+          <a class="site-contacts__phone" href="tel:+78001234567">+7 (800) 123-45-67</a>
+          <div class="site-socials" aria-label="Социальные сети">
+            <a href="#" aria-label="VK" class="site-socials__link">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                <circle cx="11" cy="11" r="11" fill="#E96A53"/>
+                <path d="M6 7.5C6.2 11.3 8 14 11 14.2V12.6C11.9 12.7 12.6 13.3 12.9 14.2H15C14.6 12.8 13.7 12 13.2 11.7C13.7 11.4 14.5 10.6 14.7 9.2H12.8C12.5 10.3 11.9 11 11 11.1V7.5H6Z" fill="white"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Telegram" class="site-socials__link">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                <circle cx="11" cy="11" r="11" fill="#29344A"/>
+                <path d="M16.7 6.7L14.9 15.2C14.8 15.8 14.4 16 13.9 15.7L11.2 13.7L9.9 15C9.8 15.2 9.6 15.3 9.3 15.3L9.5 12.5L14.6 7.9C14.8 7.7 14.6 7.6 14.3 7.8L8 11.8L5.3 11C4.8 10.8 4.8 10.4 5.4 10.2L15.8 6.2C16.3 6 16.8 6.3 16.7 6.7Z" fill="white"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>
