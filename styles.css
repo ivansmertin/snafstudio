@@ -161,12 +161,6 @@ section[id] {
         transform 0.22s ease;
 }
 
-.main-nav:not(.nav-ready) .nav-link.active {
-    background: linear-gradient(135deg, var(--accent) 0%, #38bdf8 100%);
-    color: #ffffff;
-    box-shadow: 0 10px 20px rgba(14, 165, 233, 0.24);
-}
-
 .nav-link:hover {
     color: var(--text-primary);
 }
@@ -342,7 +336,7 @@ section[id] {
 
 .author-photo {
     width: 100%;
-    aspect-ratio: 4 / 4.5;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: center 18%;
     background: #edf7ff;
@@ -488,7 +482,7 @@ section[id] {
 
 .benefits-header {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 24px;
     margin-bottom: 36px;
@@ -498,6 +492,7 @@ section[id] {
     display: flex;
     gap: 12px;
     flex-shrink: 0;
+    margin-top: 6px;
 }
 
 .slider-btn {
@@ -536,6 +531,26 @@ section[id] {
 
 .carousel-track::-webkit-scrollbar {
     display: none;
+}
+
+.carousel-progress {
+    margin-top: 16px;
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(14, 165, 233, 0.12);
+    overflow: hidden;
+}
+
+.carousel-progress-fill {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent) 0%, #38bdf8 100%);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.22s ease;
 }
 
 .carousel-card {
@@ -693,7 +708,7 @@ section[id] {
     border-radius: 32px;
     padding: 40px;
     display: grid;
-    grid-template-columns: minmax(220px, 1fr) minmax(220px, 1fr) auto;
+    grid-template-columns: minmax(220px, 1fr) minmax(220px, 1fr) minmax(180px, 1fr);
     gap: 24px;
     color: #ffffff;
     background:
@@ -981,7 +996,6 @@ button:focus-visible {
         text-align: center;
     }
 
-    .main-nav .nav-link.active,
     .main-nav .nav-link.is-pill-active {
         background: linear-gradient(135deg, var(--accent) 0%, #38bdf8 100%);
         color: #ffffff;
