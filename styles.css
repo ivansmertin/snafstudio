@@ -237,6 +237,88 @@ body {
 
 .quote-text {
     font-size: 16px;
+
+    /* --- Секция "После обучения" (Карусель) --- */
+.benefits-section {
+    padding: 60px 0;
+    background-color: #FFFFFF;
+}
+
+.benefits-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Прижимаем кнопки к низу, чтобы они были на уровне текста */
+    margin-bottom: 40px;
+    gap: 20px;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    color: #29344A;
+    margin: 10px 0 0 0;
+}
+
+/* Кнопки управления */
+.slider-controls {
+    display: flex;
+    gap: 15px;
+}
+
+.slider-btn {
+    width: 48px;
+    height: 48px;
+    background-color: #E96A53;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease, transform 0.1s ease;
+}
+
+.slider-btn:hover { opacity: 0.8; }
+.slider-btn:active { transform: scale(0.95); } /* Легкое нажатие */
+
+/* Трек карусели */
+.carousel-track {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto; /* Включаем горизонтальный скролл */
+    scroll-snap-type: x mandatory; /* Магия: карточки будут "прилипать" ровно по краям */
+    scroll-behavior: smooth; /* Плавный скролл */
+    padding-bottom: 20px; /* Отступ снизу */
+    
+    /* Прячем некрасивый системный ползунок скролла */
+    scrollbar-width: none; /* Firefox */
+}
+.carousel-track::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+/* Сама карточка */
+.carousel-card {
+    min-width: calc(50% - 15px); /* Две карточки на экран (минус половина отступа) */
+    background-color: #F9FAFB;
+    padding: 40px;
+    border-radius: 24px;
+    scroll-snap-align: start; /* Точка "прилипания" скролла */
+    flex-shrink: 0; /* Запрещаем карточкам сжиматься */
+}
+
+.card-title {
+    font-size: 22px;
+    color: #29344A;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #29344A;
+    line-height: 1.5;
+    margin: 0;
+}
     line-height: 1.5;
     color: #29344A;
     margin: 0;
