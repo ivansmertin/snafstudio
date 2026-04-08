@@ -114,8 +114,12 @@
             </div>
         </div>
     </section>
-    <script>
+<script>
         document.addEventListener("DOMContentLoaded", () => {
+            
+            // ==========================================
+            // 1. Анимация появления карточек и бегущих цифр
+            // ==========================================
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -154,7 +158,34 @@
             }, { threshold: 0.2 }); 
 
             document.querySelectorAll('.stat-card, .author-main-card').forEach(el => observer.observe(el));
+
+            // ==========================================
+            // 2. Логика перелистывания карусели
+            // ==========================================
+            const track = document.getElementById('benefitsCarousel');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+
+            if (track && prevBtn && nextBtn) {
+                // Вычисляем, на сколько пикселей двигать (ширина карточки + отступ 30px)
+                const getScrollAmount = () => {
+                    const card = track.querySelector('.carousel-card');
+                    return card ? card.offsetWidth + 30 : 0; 
+                };
+
+                // Клик "Вперед"
+                nextBtn.addEventListener('click', () => {
+                    track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+                });
+
+                // Клик "Назад"
+                prevBtn.addEventListener('click', () => {
+                    track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+                });
+            }
+            
         });
     </script>
+    
 </body>
 </html>
