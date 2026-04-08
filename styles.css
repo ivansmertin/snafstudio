@@ -374,7 +374,7 @@ section[id] {
 }
 
 .mobile-menu-meta {
-    display: none !important; /* ФИКС: Полностью скрываем этот блок на всех устройствах */
+    display: none !important;
 }
 
 /* ---------------------------------
@@ -1275,11 +1275,13 @@ section[id] {
         display: none;
     }
 
+    /* ФИКС: Выравниваем меню под бургером (справа) и задаем ему аккуратную ширину */
     .main-nav-wrap {
         position: absolute;
         top: calc(100% + 10px);
-        left: 0;
-        width: 100%;
+        right: 12px; /* Прижали вправо */
+        width: auto; /* Не на всю ширину */
+        min-width: 220px; /* Минимальная комфортная ширина */
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
@@ -1311,14 +1313,13 @@ section[id] {
         display: none;
     }
 
-    /* ФИКС: Убираем font-weight: 800, чтобы меню не скакало при ховере/активации */
     .nav-link {
         min-height: 48px;
-        justify-content: center;
+        justify-content: center; /* Центрируем текст внутри кнопок */
         padding: 0 16px;
         border-radius: 14px;
         font-size: 17px;
-        font-weight: 700; /* Изначальный вес. Оставляем его постоянным */
+        font-weight: 700;
         color: var(--text-primary) !important;
         -webkit-tap-highlight-color: transparent;
     }
@@ -1330,20 +1331,11 @@ section[id] {
         color: var(--accent) !important;
         background: var(--background-soft) !important;
         box-shadow: none !important;
-        font-weight: 700; /* Фикс: вес не меняется, элементы не сдвигаются */
+        font-weight: 700;
     }
 
     .mobile-menu-meta {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-top: 12px;
-        padding: 18px 16px 0;
-        border-top: 1px solid var(--border);
-    }
-
-    .mobile-phone {
-        font-size: 16px;
+        display: none !important;
     }
 
     .hero-section {
