@@ -772,7 +772,6 @@ section[id] {
     color: var(--text-primary);
 }
 
-/* ВОТ ЗДЕСЬ ГЛАВНЫЙ ФИКС */
 .wave-bg {
     position: relative;
     overflow: hidden;
