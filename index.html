@@ -16,7 +16,7 @@
         rel="stylesheet"
     >
 </head>
-<body>
+<body class="theme-tech">
     <header class="header" id="top">
         <div class="container header-inner">
             <a href="#top" class="logo" aria-label="На главную">
@@ -46,12 +46,12 @@
     </header>
 
     <main>
-        <section class="author-section" id="about" aria-labelledby="about-title">
+        <section class="author-section reveal" data-animate="section" id="about" aria-labelledby="about-title">
             <div class="container">
                 <h2 class="section-title" id="about-title">Обо мне</h2>
 
-                <div class="author-wrapper">
-                    <article class="author-main-card">
+                <div class="author-wrapper reveal-stagger" data-animate="stagger">
+                    <article class="author-main-card surface-glow">
                         <img
                             src="images/ivan.png"
                             alt="Портрет Ивана Смертина"
@@ -69,8 +69,8 @@
                         </div>
                     </article>
 
-                    <div class="stats-grid" id="services" aria-label="Ключевые принципы работы">
-                        <article class="stat-card stat-card--accent">
+                    <div class="stats-grid reveal-stagger" id="services" aria-label="Ключевые принципы работы">
+                        <article class="stat-card stat-card--accent surface-glow">
                             <div class="stat-number text-on-accent">
                                 <span class="counter" data-target="3">0</span>
                             </div>
@@ -78,12 +78,12 @@
                             <p class="stat-desc text-on-accent">дизайн, верстка, запуск</p>
                         </article>
 
-                        <article class="stat-card stat-card--muted">
+                        <article class="stat-card stat-card--muted surface-glow">
                             <p class="stat-title text-accent">Чистый<br>современный</p>
                             <p class="stat-desc">дизайн без визуального шума</p>
                         </article>
 
-                        <article class="stat-card stat-card--accent stat-wide wave-bg">
+                        <article class="stat-card stat-card--accent stat-wide wave-bg surface-glow floating-accent">
                             <div class="stat-number text-on-accent">
                                 <span class="counter" data-target="1">0</span>
                             </div>
@@ -92,7 +92,7 @@
                             </p>
                         </article>
 
-                        <article class="stat-card stat-card--quote stat-wide">
+                        <article class="stat-card stat-card--quote stat-wide surface-glow">
                             <img src="images/heart-icon.svg" alt="Иконка сердца" class="quote-icon">
                             <p class="quote-text">
                                 Моя задача — не просто сделать красивый сайт, а собрать
@@ -105,9 +105,9 @@
             </div>
         </section>
 
-        <section class="benefits-section" id="value" aria-labelledby="value-title">
+        <section class="benefits-section reveal" data-animate="section" id="value" aria-labelledby="value-title">
             <div class="container">
-                <div class="benefits-header">
+                <div class="benefits-header reveal-stagger" data-animate="stagger">
                     <div class="benefits-title-wrapper">
                         <h2 class="section-title" id="value-title">Что вы получите</h2>
                         <p class="section-subtitle">
@@ -131,8 +131,8 @@
                     </div>
                 </div>
 
-                <div class="carousel-track" id="benefitsCarousel" aria-label="Преимущества работы">
-                    <article class="carousel-card">
+                <div class="carousel-track reveal-stagger" data-animate="stagger" id="benefitsCarousel" aria-label="Преимущества работы">
+                    <article class="carousel-card surface-glow">
                         <h3 class="card-title">Продуманный визуальный образ</h3>
                         <p class="card-text">
                             Соберу аккуратный и современный интерфейс, который соответствует
@@ -140,7 +140,7 @@
                         </p>
                     </article>
 
-                    <article class="carousel-card">
+                    <article class="carousel-card surface-glow">
                         <h3 class="card-title">Понятную структуру страницы</h3>
                         <p class="card-text">
                             Помогу выстроить блоки, акценты и логику подачи так, чтобы
@@ -148,7 +148,7 @@
                         </p>
                     </article>
 
-                    <article class="carousel-card">
+                    <article class="carousel-card surface-glow">
                         <h3 class="card-title">Чистую адаптивную верстку</h3>
                         <p class="card-text">
                             Сайт будет корректно выглядеть на компьютере, планшете и телефоне
@@ -156,7 +156,7 @@
                         </p>
                     </article>
 
-                    <article class="carousel-card">
+                    <article class="carousel-card surface-glow">
                         <h3 class="card-title">Удобный запуск и доработку</h3>
                         <p class="card-text">
                             Проект можно будет спокойно развивать дальше: подключать формы,
@@ -167,12 +167,12 @@
             </div>
         </section>
 
-        <section class="faq-section" id="faq" aria-labelledby="faq-title">
+        <section class="faq-section reveal" data-animate="section" id="faq" aria-labelledby="faq-title">
             <div class="container">
                 <h2 class="section-title" id="faq-title">Часто задаваемые вопросы</h2>
 
-                <div class="faq-list">
-                    <article class="faq-item">
+                <div class="faq-list reveal-stagger" data-animate="stagger">
+                    <article class="faq-item surface-glow">
                         <h3 class="faq-question-heading">
                             <button
                                 class="faq-question"
@@ -201,7 +201,7 @@
                         </div>
                     </article>
 
-                    <article class="faq-item">
+                    <article class="faq-item surface-glow">
                         <h3 class="faq-question-heading">
                             <button
                                 class="faq-question"
@@ -229,7 +229,7 @@
                         </div>
                     </article>
 
-                    <article class="faq-item is-open">
+                    <article class="faq-item is-open surface-glow">
                         <h3 class="faq-question-heading">
                             <button
                                 class="faq-question"
@@ -258,7 +258,7 @@
                         </div>
                     </article>
 
-                    <article class="faq-item">
+                    <article class="faq-item surface-glow">
                         <h3 class="faq-question-heading">
                             <button
                                 class="faq-question"
@@ -287,7 +287,7 @@
                         </div>
                     </article>
 
-                    <article class="faq-item">
+                    <article class="faq-item surface-glow">
                         <h3 class="faq-question-heading">
                             <button
                                 class="faq-question"
@@ -315,7 +315,7 @@
                         </div>
                     </article>
 
-                    <article class="faq-item">
+                    <article class="faq-item surface-glow">
                         <h3 class="faq-question-heading">
                             <button
                                 class="faq-question"
@@ -347,9 +347,9 @@
         </section>
     </main>
 
-    <footer class="site-footer" aria-label="Контакты и правовая информация">
+    <footer class="site-footer reveal" data-animate="section" aria-label="Контакты и правовая информация">
         <div class="container">
-            <div class="footer-card">
+            <div class="footer-card surface-glow">
                 <div class="footer-column footer-column--brand">
                     <a href="#top" class="footer-logo" aria-label="Вернуться к началу страницы">
                         <img src="images/logo.svg" alt="Логотип Ивана Смертина">
