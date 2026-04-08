@@ -161,7 +161,8 @@ section[id] {
 /* SECTIONS */
 
 .author-section,
-.benefits-section {
+.benefits-section,
+.faq-section {
     padding: 88px 0;
 }
 
@@ -642,7 +643,8 @@ button:focus-visible {
     }
 
     .author-section,
-    .benefits-section {
+    .benefits-section,
+    .faq-section {
         padding: 72px 0;
     }
 
@@ -720,6 +722,23 @@ button:focus-visible {
         font-size: 22px;
     }
 
+    .faq-question {
+        padding: 24px;
+        gap: 16px;
+    }
+
+    .faq-question-text {
+        font-size: clamp(18px, 5vw, 22px);
+    }
+
+    .faq-answer > p {
+        padding: 0 24px;
+    }
+
+    .faq-item.is-open .faq-answer > p {
+        padding: 0 24px 24px;
+    }
+
     .section-subtitle {
         font-size: 16px;
     }
@@ -747,6 +766,20 @@ button:focus-visible {
 
     .author-info {
         padding: 24px;
+    }
+
+    .faq-list {
+        gap: 12px;
+    }
+
+    .faq-toggle {
+        width: 38px;
+        height: 38px;
+    }
+
+    .faq-toggle::before,
+    .faq-toggle::after {
+        width: 12px;
     }
 
     .stat-card {
