@@ -616,7 +616,7 @@ section[id] {
 }
 
 .hero-mini-card--accent strong {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .hero-mini-card p {
@@ -749,8 +749,9 @@ section[id] {
 
 .stat-card--accent .text-on-accent,
 .stat-card--accent .stat-desc {
-    color: #ffffff;
+    color: #ffffff !important; 
 }
+
 
 .stat-card--quote {
     flex-direction: row;
@@ -1310,12 +1311,14 @@ section[id] {
         display: none;
     }
 
+    /* ФИКС: Убираем изменение font-weight при активации/наведении */
     .nav-link {
         min-height: 48px;
         justify-content: center;
         padding: 0 16px;
         border-radius: 14px;
         font-size: 17px;
+        font-weight: 600; /* Изначальный вес остается неизменным */
         color: var(--text-primary) !important;
         -webkit-tap-highlight-color: transparent;
     }
@@ -1327,7 +1330,6 @@ section[id] {
         color: var(--accent) !important;
         background: var(--background-soft) !important;
         box-shadow: none !important;
-        font-weight: 800;
     }
 
     .mobile-menu-meta {
