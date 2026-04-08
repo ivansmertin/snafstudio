@@ -24,13 +24,13 @@
             </a>
 
             <nav class="main-nav" aria-label="Основная навигация">
-                <a href="#services" class="nav-link active" aria-current="page">Услуги</a>
+                <a href="#services" class="nav-link">Услуги</a>
                 <a href="#about" class="nav-link">Обо мне</a>
                 <a href="#value" class="nav-link">Что вы получите</a>
                 <a href="#faq" class="nav-link">FAQ</a>
             </nav>
 
-            <div class="contacts" id="contacts">
+            <div class="contacts">
                 <a href="tel:+79217657711" class="phone">+7 921 765 77 11</a>
 
                 <div class="socials" aria-label="Социальные сети">
@@ -163,6 +163,10 @@
                             домен, аналитику, новые блоки и дополнительные страницы.
                         </p>
                     </article>
+                </div>
+
+                <div class="carousel-progress" aria-hidden="true">
+                    <span class="carousel-progress-fill"></span>
                 </div>
             </div>
         </section>
@@ -321,13 +325,16 @@
                 const links = Array.from(nav.querySelectorAll(".nav-link"));
                 if (!links.length) return null;
 
-                let currentActiveLink = nav.querySelector(".nav-link.active") || links[0];
+                let currentActiveLink =
+                    nav.querySelector(".nav-link[aria-current='page']") ||
+                    nav.querySelector(".nav-link.is-pill-active") ||
+                    links[0];
 
                 const updateActiveState = (targetLink) => {
                     links.forEach((link) => {
                         const isCurrent = link === targetLink;
-                        link.classList.toggle("active", isCurrent);
                         link.setAttribute("aria-current", isCurrent ? "page" : "false");
+                        link.classList.toggle("is-pill-active", isCurrent);
                     });
                 };
 
@@ -336,9 +343,6 @@
                         if (!targetLink) return;
                         currentActiveLink = targetLink;
                         updateActiveState(targetLink);
-                        links.forEach((link) => {
-                            link.classList.toggle("is-pill-active", link === targetLink);
-                        });
                     };
 
                     setCurrentActiveLink(currentActiveLink);
@@ -529,6 +533,7 @@
                 const track = document.getElementById("benefitsCarousel");
                 const prevBtn = document.querySelector(".prev-btn");
                 const nextBtn = document.querySelector(".next-btn");
+                const progressFill = document.querySelector(".carousel-progress-fill");
 
                 if (!track || !prevBtn || !nextBtn) return;
 
@@ -552,6 +557,17 @@
                 prevBtn.addEventListener("click", () => {
                     track.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
                 });
+
+                const syncProgress = () => {
+                    if (!progressFill) return;
+                    const maxScroll = track.scrollWidth - track.clientWidth;
+                    const progress = maxScroll > 0 ? track.scrollLeft / maxScroll : 0;
+                    progressFill.style.transform = `scaleX(${Math.min(Math.max(progress, 0), 1)})`;
+                };
+
+                track.addEventListener("scroll", syncProgress, { passive: true });
+                window.addEventListener("resize", syncProgress);
+                syncProgress();
             };
 
             const initFaq = () => {
