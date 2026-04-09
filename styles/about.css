@@ -1,5 +1,5 @@
 /* ---------------------------------
-   About
+   About Section Styles
 --------------------------------- */
 
 .author-wrapper {
@@ -33,6 +33,7 @@
     line-height: 1.1;
     font-weight: 800;
     letter-spacing: -0.03em;
+    color: var(--text-primary);
 }
 
 .author-regalia {
@@ -42,6 +43,7 @@
     color: var(--text-secondary);
 }
 
+/* Сетка карточек */
 .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -58,17 +60,19 @@
     background: #ffffff;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-soft);
+    position: relative;
 }
 
+/* Акцентные карточки (сине-бирюзовые) */
 .stat-card--accent {
     background:
         radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.18), transparent 24%),
         linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
     border-color: transparent;
-    color: #ffffff;
     box-shadow: var(--shadow-accent);
 }
 
+/* Светлые карточки */
 .stat-card--muted {
     background: linear-gradient(180deg, #ffffff 0%, #f5fbff 100%);
 }
@@ -78,6 +82,7 @@
     min-height: 180px;
 }
 
+/* Типографика внутри карточек */
 .stat-number {
     margin-bottom: 8px;
     font-size: 74px;
@@ -111,56 +116,13 @@
 }
 
 .text-on-accent {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
-.stat-card--accent .text-on-accent,
-.stat-card--accent .stat-desc {
-    color: #ffffff !important; 
-}
-
-/* Блок цитаты с гарантированной звездочкой */
+/* Карточка с цитатой и звездочкой */
 .stat-card--quote {
-    position: relative;
     background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-    overflow: visible; /* Чтобы свечение не обрезалось */
-}
-
-.stat-card--quote::after {
-    content: "✦";
-    position: absolute;
-    top: 24px;
-    right: 28px;
-    font-size: 28px;
-    color: var(--accent);
-    opacity: 0.3; /* Теперь она всегда видна, но приглушена */
-    transform: scale(0.8) rotate(0deg);
-    transition: opacity 0.4s var(--motion-ease), transform 0.4s var(--motion-ease);
-    pointer-events: none;
-    z-index: 10; /* Поверх всего контента */
-}
-
-/* Эффект при наведении на саму карточку */
-.stat-card--quote:hover::after {
-    opacity: 1;
-    transform: scale(1.1);
-    animation: pulse-star 2.5s infinite ease-in-out;
-}
-
-@keyframes pulse-star {
-    0% { 
-        transform: scale(1) rotate(0deg); 
-        color: var(--accent); 
-    }
-    50% { 
-        transform: scale(1.2) rotate(90deg); 
-        color: var(--accent-hover); 
-        text-shadow: 0 0 15px rgba(14, 165, 233, 0.6); 
-    }
-    100% { 
-        transform: scale(1) rotate(180deg); 
-        color: var(--accent); 
-    }
+    overflow: visible;
 }
 
 .quote-text {
@@ -168,15 +130,36 @@
     font-size: 16px;
     line-height: 1.7;
     color: var(--text-secondary);
-    position: relative;
-    z-index: 1;
 }
 
-.wave-bg {
-    position: relative;
-    overflow: hidden;
+/* Звездочка-пасхалка */
+.stat-card--quote::after {
+    content: "✦";
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    font-size: 28px;
+    color: var(--accent);
+    opacity: 0.3;
+    transform: scale(0.8);
+    transition: opacity 0.4s var(--motion-ease), transform 0.4s var(--motion-ease);
+    pointer-events: none;
+    z-index: 10;
 }
 
+.stat-card--quote:hover::after {
+    opacity: 1;
+    transform: scale(1.1);
+    animation: pulse-star 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-star {
+    0% { transform: scale(1) rotate(0deg); color: var(--accent); }
+    50% { transform: scale(1.2) rotate(90deg); color: var(--accent-hover); text-shadow: 0 0 15px rgba(14, 165, 233, 0.6); }
+    100% { transform: scale(1) rotate(180deg); color: var(--accent); }
+}
+
+/* Декоративная волна */
 .wave-bg::after {
     content: "";
     position: absolute;
@@ -195,6 +178,7 @@
     z-index: 1;
 }
 
+/* Отключенная анимация для предотвращения конфликтов */
 .floating-accent {
     animation: none;
 }
