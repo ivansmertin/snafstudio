@@ -177,13 +177,6 @@
         padding: 26px;
     }
 
-    .stat-card--quote {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-    }
-
-
     .benefits-header {
         flex-direction: column;
         align-items: flex-start;
