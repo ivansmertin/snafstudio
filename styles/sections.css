@@ -13,7 +13,7 @@
 }
 
 .section-title {
-    margin: 0 0 16px 0;
+    margin: 0 0 64px 0; /* Было 16px */
     font-size: clamp(36px, 4vw, 58px);
     line-height: 1.04;
     font-weight: 800;
