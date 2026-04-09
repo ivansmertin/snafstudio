@@ -34,6 +34,57 @@
     }
 }
 
+@media (max-height: 900px) and (min-width: 1024px) {
+    .hero-section {
+        padding: 18px 0 52px;
+    }
+
+    .hero-card {
+        padding: 38px;
+    }
+
+    .hero-grid {
+        gap: 22px;
+    }
+
+    .hero-title {
+        font-size: clamp(38px, 4vw, 58px);
+        margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 20px;
+        font-size: 17px;
+    }
+
+    .hero-points {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .hero-point {
+        min-height: 34px;
+        font-size: 13px;
+    }
+
+    .hero-code-card,
+    .hero-mini-card {
+        border-radius: 20px;
+    }
+
+    .hero-code-card {
+        padding: 18px 18px 16px;
+    }
+
+    .hero-mini-card {
+        padding: 18px;
+    }
+
+    .hero-mini-card strong {
+        font-size: 18px;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 0 16px;
