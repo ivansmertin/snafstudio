@@ -7,8 +7,9 @@
     top: 0;
     z-index: 120;
     padding: 14px 0;
-    background: rgba(248, 252, 255, 0.8);
-    backdrop-filter: blur(14px);
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: none;
 }
 
 .header-inner {
