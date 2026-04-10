@@ -49,7 +49,7 @@
 - `styles/faq.css` — FAQ accordion and bottom CTA styles.
 - `styles/footer.css` — Footer layout, links, socials, metadata styles.
 - `styles/motion.css` — Reveal motion classes and reduced-motion overrides.
-- `styles/responsive.css` — Width breakpoint media queries (`1100px`, `768px`, `560px`).
+- `styles/responsive.css` — Width breakpoint media queries (`1100px`, `768px`, `560px`, `430px`) plus touch hover cleanup overrides.
 - `js/main.js` — All interactive behavior (menu, nav highlight/scrollspy, reveal/counters, carousel, FAQ).
 - `images/*` — Static brand/decorative/portrait assets.
 
@@ -64,7 +64,7 @@
 ## JavaScript behavior map (`js/main.js`)
 - Header offset sync for anchor scrolling.
 - Mobile burger menu open/close state and body scroll lock.
-- Nav highlight pill + hover/focus/current state handling.
+- Nav highlight pill + hover/focus/current state handling (desktop), with explicit mobile/tablet highlight disable guard.
 - Scrollspy via IntersectionObserver.
 - Reveal/stagger animations + animated counters.
 - Benefits carousel controls and progress bar sync.

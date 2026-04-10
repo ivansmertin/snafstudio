@@ -112,13 +112,12 @@
         display: none;
     }
 
-    /* ФИКС: Выравниваем меню под бургером (справа) и задаем ему аккуратную ширину */
     .main-nav-wrap {
         position: absolute;
-        top: calc(100% + 10px);
-        right: 12px; /* Прижали вправо */
-        width: auto; /* Не на всю ширину */
-        min-width: 220px; /* Минимальная комфортная ширина */
+        top: calc(100% + 8px);
+        left: 12px;
+        right: 12px;
+        width: auto;
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
@@ -127,6 +126,7 @@
             transform 0.24s ease,
             visibility 0.24s ease;
         pointer-events: none;
+        z-index: 30;
     }
 
     .main-nav-wrap.is-open {
@@ -140,19 +140,23 @@
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
-        padding: 16px;
-        border-radius: 24px;
+        width: 100%;
+        padding: 14px;
+        border-radius: 20px;
         background: rgba(255, 255, 255, 0.98);
         box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
     }
 
+    .nav-highlight,
     .main-nav.has-highlight .nav-highlight {
-        display: none;
+        display: none !important;
     }
 
     .nav-link {
+        width: 100%;
         min-height: 48px;
-        justify-content: center; /* Центрируем текст внутри кнопок */
+        justify-content: center;
+        text-align: center;
         padding: 0 16px;
         border-radius: 14px;
         font-size: 17px;
@@ -163,14 +167,28 @@
 
     .nav-link.is-current,
     .nav-link.is-highlighted,
-    .nav-link:active,
-    .nav-link:hover {
+    .nav-link:active {
         color: var(--accent) !important;
         background: var(--background-soft) !important;
         box-shadow: none !important;
         font-weight: 700;
     }
 
+
+
+    .mobile-menu-meta {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+    }
+
+    .mobile-phone {
+        font-size: 16px;
+    }
 
     .hero-section {
         padding: 18px 0 40px 0;
@@ -280,7 +298,13 @@
     }
 }
 
+
 @media (max-width: 560px) {
+    .main-nav-wrap {
+        left: 8px;
+        right: 8px;
+    }
+
     .hero-title {
         font-size: 34px;
     }
@@ -306,5 +330,51 @@
     .footer-social {
         width: 40px;
         height: 40px;
+    }
+}
+
+@media (max-width: 430px) {
+    .header-inner {
+        padding: 9px 10px;
+    }
+
+    .logo img {
+        width: 118px;
+    }
+
+    .hero-card {
+        padding: 24px 18px;
+    }
+
+    .hero-title {
+        font-size: 32px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .stat-card {
+        padding: 22px;
+    }
+
+    .faq-question {
+        padding: 20px;
+    }
+
+    .faq-answer p {
+        padding: 0 20px 20px;
+    }
+
+    .footer-phone {
+        font-size: 22px;
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (hover: none) {
+    .footer-link:hover {
+        color: inherit;
+        transform: none;
     }
 }

@@ -69,12 +69,21 @@ document.addEventListener("DOMContentLoaded", () => {
         return navHighlight;
     };
 
+    const disableMobileHighlight = () => {
+        hoverNavLink = null;
+        nav.classList.remove("has-highlight");
+        if (navHighlight) {
+            navHighlight.remove();
+            navHighlight = null;
+        }
+        updateNavClasses(currentNavLink, currentNavLink);
+    };
+
     const moveNavHighlight = (targetLink, instant = false) => {
         if (!targetLink) return;
 
         if (!desktopMedia.matches) {
-            nav.classList.remove("has-highlight");
-            updateNavClasses(currentNavLink, currentNavLink);
+            disableMobileHighlight();
             return;
         }
 
@@ -153,6 +162,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const ready = document.fonts?.ready || Promise.resolve();
         ready.then(() => {
             setCurrentNavLink(currentNavLink, true);
+        });
+
+        desktopMedia.addEventListener("change", (event) => {
+            if (event.matches) {
+                moveNavHighlight(currentNavLink, true);
+                return;
+            }
+            disableMobileHighlight();
+            closeMenu();
         });
 
         window.addEventListener("resize", () => {

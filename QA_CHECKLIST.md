@@ -19,8 +19,10 @@ Use this after each frontend patch to guard against regressions.
 ## 3) Mobile layout (< 769px)
 - [ ] Burger button opens/closes menu.
 - [ ] Menu open state locks body scroll and closes after nav link click.
-- [ ] Mobile nav remains aligned and usable.
-- [ ] No sticky hover states on touch for buttons, phone, social icons, footer socials, or slider controls.
+- [ ] Mobile nav remains aligned and usable, opens below header shell, and has no horizontal overflow.
+- [ ] No floating `.nav-highlight`/blue pill artifact appears in mobile/tablet menu.
+- [ ] Mobile nav links are full-width, centered, and keep a stable in-link active state.
+- [ ] No sticky hover states on touch for nav links, buttons, phone, social icons, footer socials, or slider controls.
 
 ## 4) Navigation and anchors
 - [ ] Header links scroll to correct sections (`#services`, `#about`, `#value`, `#faq`).
@@ -43,7 +45,7 @@ Use this after each frontend patch to guard against regressions.
 - [ ] About wave background is visible (path resolves from module CSS via `../images/wave.svg`).
 
 ## 8) Breakpoint regression check
-- [ ] Layout remains identical at `1100px`, `768px`, and `560px` breakpoints.
+- [ ] Layout remains stable at `1024px`, `768px`, `560px`, `428px`, and `390px` widths (desktop visuals unchanged at and above `769px`).
 - [ ] No unintended typography/color/spacing/shadow changes.
 - [ ] No clipping/overflow issues introduced.
 
