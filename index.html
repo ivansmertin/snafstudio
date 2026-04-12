@@ -12,14 +12,20 @@
     <meta property="og:site_name" content="SNAF STUDIO" />
     <meta property="og:title" content="SNAF STUDIO — дизайн и создание сайтов" />
     <meta property="og:description" content="SNAF STUDIO — дизайн и создание современных лендингов и сайтов: структура, визуальная подача, адаптивная верстка и помощь с запуском." />
-    <meta property="og:image" content="images/og-cover.png" />
+    <meta property="og:image" content="https://snafstudio.ru/images/og-cover.png" />
+    <meta property="og:image:alt" content="SNAF STUDIO — дизайн и создание сайтов" />
     <meta property="og:url" content="https://snafstudio.ru/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="SNAF STUDIO — дизайн и создание сайтов" />
     <meta name="twitter:description" content="SNAF STUDIO — дизайн и создание современных лендингов и сайтов: структура, визуальная подача, адаптивная верстка и помощь с запуском." />
-    <meta name="twitter:image" content="images/og-cover.png" />
+    <meta name="twitter:image" content="https://snafstudio.ru/images/og-cover.png" />
     <link rel="canonical" href="https://snafstudio.ru/">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230ea5e9'/><text x='16' y='22' text-anchor='middle' fill='white' font-family='monospace' font-size='16' font-weight='bold'>&lt;/&gt;</text></svg>">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#0ea5e9">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -581,6 +587,21 @@
             </div>
         </div>
     </footer>
+    <div class="cookie-banner" hidden aria-live="polite">
+        <div class="cookie-banner__inner">
+            <p class="cookie-banner__text">
+                Мы используем файлы cookie для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с
+                <a href="privacy.html" class="cookie-banner__link">политикой конфиденциальности</a>.
+            </p>
+
+            <div class="cookie-banner__actions">
+                <button class="btn btn--primary cookie-banner__accept" type="button">Принять</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Яндекс.Метрика / GA4: вставить код счётчика после получения ID -->
+    <script src="js/site-config.js" defer></script>
     <script src="js/main.js" defer></script>
 </body>
 </html>

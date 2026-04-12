@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const siteConfig = window.SNAF_CONFIG || {
+        consentStorageKey: "snafstudio-cookie-consent",
+        analytics: {
+            yandexMetrikaId: "",
+            gaMeasurementId: "",
+            yandexGoalName: "cta_click"
+        }
+    };
+    const analyticsConfig = siteConfig.analytics || {};
+    const consentStorageKey = siteConfig.consentStorageKey || "snafstudio-cookie-consent";
     const motionReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const desktopMedia = window.matchMedia("(min-width: 769px)");
 
@@ -6,17 +16,100 @@ document.addEventListener("DOMContentLoaded", () => {
     const burgerButton = document.querySelector(".burger-btn");
     const navWrap = document.querySelector(".main-nav-wrap");
     const nav = document.querySelector(".main-nav");
-    const navLinks = Array.from(nav.querySelectorAll(".nav-link"));
+    const navLinks = nav ? Array.from(nav.querySelectorAll(".nav-link")) : [];
     const carouselTrack = document.getElementById("benefitsCarousel");
     const prevBtn = document.querySelector(".prev-btn");
     const nextBtn = document.querySelector(".next-btn");
     const progressFill = document.querySelector(".carousel-progress-fill");
+    const cookieBanner = document.querySelector(".cookie-banner");
 
     let navHighlight = null;
     let currentNavLink = navLinks[0] || null;
     let hoverNavLink = null;
+    let analyticsInitialized = false;
 
     const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+    const getCookieConsent = () => {
+        try {
+            return window.localStorage.getItem(consentStorageKey) === "accepted";
+        } catch {
+            return false;
+        }
+    };
+
+    const setCookieConsent = () => {
+        try {
+            window.localStorage.setItem(consentStorageKey, "accepted");
+        } catch {
+            // Ignore storage failures in restrictive browser modes.
+        }
+    };
+
+    const hideCookieBanner = () => {
+        if (!cookieBanner) return;
+        cookieBanner.hidden = true;
+        cookieBanner.classList.add("is-hidden");
+    };
+
+    const showCookieBanner = () => {
+        if (!cookieBanner) return;
+        cookieBanner.hidden = false;
+        cookieBanner.classList.remove("is-hidden");
+    };
+
+    const trackPrimaryCtaClick = () => {
+        const goalName = analyticsConfig.yandexGoalName || "cta_click";
+
+        if (typeof window.ym === "function" && analyticsConfig.yandexMetrikaId) {
+            window.ym(analyticsConfig.yandexMetrikaId, "reachGoal", goalName);
+        }
+
+        if (typeof window.gtag === "function" && analyticsConfig.gaMeasurementId) {
+            window.gtag("event", goalName, {
+                event_category: "engagement",
+                event_label: "primary_cta"
+            });
+        }
+    };
+
+    const initAnalytics = () => {
+        if (analyticsInitialized || !getCookieConsent()) return;
+
+        const hasConfiguredAnalytics = Boolean(
+            analyticsConfig.yandexMetrikaId || analyticsConfig.gaMeasurementId
+        );
+
+        if (!hasConfiguredAnalytics) return;
+
+        document.querySelectorAll(".btn--primary:not(.cookie-banner__accept)").forEach((button) => {
+            button.addEventListener("click", trackPrimaryCtaClick);
+        });
+
+        analyticsInitialized = true;
+    };
+
+    const initCookieBanner = () => {
+        if (!cookieBanner) {
+            initAnalytics();
+            return;
+        }
+
+        const acceptButton = cookieBanner.querySelector(".cookie-banner__accept");
+
+        if (getCookieConsent()) {
+            hideCookieBanner();
+            initAnalytics();
+            return;
+        }
+
+        showCookieBanner();
+
+        acceptButton?.addEventListener("click", () => {
+            setCookieConsent();
+            hideCookieBanner();
+            initAnalytics();
+        });
+    };
 
     const setHeaderOffset = () => {
         const offset = (header?.offsetHeight || 80) + 12;
@@ -61,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const ensureNavHighlight = () => {
-        if (!desktopMedia.matches) return null;
+        if (!desktopMedia.matches || !nav) return null;
         if (!navHighlight) {
             navHighlight = document.createElement("span");
             navHighlight.className = "nav-highlight";
@@ -72,6 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const disableMobileHighlight = () => {
+        if (!nav) return;
         hoverNavLink = null;
         nav.classList.remove("has-highlight");
         if (navHighlight) {
@@ -393,6 +487,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     setHeaderOffset();
+    initCookieBanner();
     initNav();
     initRevealAnimations();
     initScrollSpy();
