@@ -42,8 +42,16 @@
     text-decoration: none;
 }
 
-.cookie-banner__link:hover {
-    color: var(--accent);
+.cookie-banner__link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .cookie-banner__link:hover {
+        color: var(--accent);
+    }
 }
 
 .cookie-banner__actions {
@@ -68,5 +76,12 @@
 
     .cookie-banner__actions {
         width: 100%;
+    }
+}
+
+@media (max-width: 430px) {
+    .cookie-banner__text {
+        font-size: 14px;
+        line-height: 1.6;
     }
 }

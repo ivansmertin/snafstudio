@@ -61,6 +61,9 @@
     --radius-md: 18px;
     --radius-lg: 24px;
     --radius-xl: 32px;
+    --radius-header: 22px;
+    --radius-card: 28px;
+    --radius-hero: 36px;
     --container-width: 1200px;
     --motion-duration-base: 320ms;
     --motion-duration-slow: 720ms;
@@ -70,4 +73,5 @@
     --pill-y: 0px;
     --pill-w: 0px;
     --pill-h: 0px;
+    --overlay-scrim: rgba(15, 23, 42, 0.42);
 }

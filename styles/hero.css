@@ -10,7 +10,7 @@
         radial-gradient(circle at 0% 100%, var(--accent-secondary-overlay-08), transparent 26%),
         linear-gradient(180deg, var(--surface) 0%, var(--background) 100%);
     border: 1px solid var(--border);
-    border-radius: 36px;
+    border-radius: var(--radius-hero);
     padding: 44px;
     box-shadow: var(--shadow-main);
 }
@@ -109,7 +109,7 @@
 .hero-mini-card {
     background: var(--surface-overlay-90);
     border: 1px solid var(--border-overlay-94);
-    border-radius: 24px;
+    border-radius: var(--radius-lg);
     box-shadow: 0 16px 32px var(--shadow-color-05);
     backdrop-filter: blur(10px);
 }

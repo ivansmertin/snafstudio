@@ -35,6 +35,7 @@
     >
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
     <header class="header" id="top">
         <div class="container header-inner">
             <a href="#top" class="logo" aria-label="На главную">
@@ -110,8 +111,9 @@
             </div>
         </div>
     </header>
+    <div class="menu-overlay" aria-hidden="true"></div>
 
-    <main>
+    <main id="main-content">
         <section class="hero-section" id="services" aria-labelledby="hero-title">
             <div class="container">
                 <div class="hero-card surface-glow">
@@ -548,8 +550,8 @@
                     </a>
 
                     <div class="footer-legal-links">
-                        <a href="privacy.html" class="footer-link footer-link--muted" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
-                        <a href="offer.html" class="footer-link footer-link--muted" target="_blank" rel="noopener noreferrer">Договор-оферта</a>
+                        <a href="privacy.html" class="footer-link footer-link--muted">Политика конфиденциальности</a>
+                        <a href="offer.html" class="footer-link footer-link--muted">Договор-оферта</a>
                     </div>
                 </div>
 
@@ -590,7 +592,7 @@
     <div class="cookie-banner" hidden aria-live="polite">
         <div class="cookie-banner__inner">
             <p class="cookie-banner__text">
-                Мы используем файлы cookie для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с
+                Мы используем cookie для работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с
                 <a href="privacy.html" class="cookie-banner__link">политикой конфиденциальности</a>.
             </p>
 

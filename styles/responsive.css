@@ -151,11 +151,7 @@
     }
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 0 16px;
-    }
-
+@media (max-width: 920px) {
     .header {
         padding: 10px 0;
     }
@@ -242,8 +238,6 @@
         font-weight: 700;
     }
 
-
-
     .mobile-menu-meta {
         display: flex !important;
         flex-direction: column;
@@ -259,6 +253,12 @@
     .mobile-phone {
         font-size: 16px;
     }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
 
     .hero-section {
         padding: 18px 0 40px 0;
@@ -266,7 +266,7 @@
 
     .hero-card {
         padding: 28px 22px;
-        border-radius: 28px;
+        border-radius: var(--radius-card);
     }
 
     .hero-title {
@@ -302,7 +302,7 @@
     }
 
     .section-title {
-        margin-bottom: 32px; /* ИЗМЕНЕНО: увеличен отступ для мобилок */
+        margin-bottom: 32px;
         font-size: 34px;
     }
 
@@ -327,11 +327,11 @@
     .benefits-header {
         flex-direction: column;
         align-items: flex-start;
-        margin-bottom: 32px; /* ДОБАВЛЕНО: отступ от шапки карусели до карточек */
+        margin-bottom: 32px;
     }
 
     .benefits-title-wrapper .section-title {
-        margin-bottom: 12px; /* ДОБАВЛЕНО: чтобы заголовок не отрывался от подзаголовка */
+        margin-bottom: 12px;
     }
 
     .slider-controls {
@@ -353,7 +353,7 @@
 
     .cta-bottom {
         padding: 36px 24px;
-        border-radius: 24px;
+        border-radius: var(--radius-lg);
         margin-top: 44px;
     }
 
@@ -408,7 +408,7 @@
 
     .footer-card {
         padding: 30px 24px;
-        border-radius: 24px;
+        border-radius: var(--radius-lg);
         gap: 26px;
     }
 
@@ -458,12 +458,6 @@
 
     .card-title {
         font-size: 22px;
-    }
-
-    .social-icon,
-    .footer-social {
-        width: 40px;
-        height: 40px;
     }
 
     .social-icon--vk span,

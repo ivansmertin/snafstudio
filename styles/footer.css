@@ -13,7 +13,7 @@
         linear-gradient(135deg, var(--surface-inverse-start) 0%, var(--surface-inverse-mid) 48%, var(--surface-inverse-end) 100%);
     color: var(--background);
     padding: 44px;
-    border-radius: 32px;
+    border-radius: var(--radius-xl);
     display: grid;
     grid-template-columns: minmax(220px, 1fr) minmax(220px, 1fr) minmax(180px, 1fr);
     gap: 30px;
@@ -43,6 +43,9 @@
 }
 
 .footer-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     color: var(--text-inverse-soft);
     text-decoration: none;
     font-size: 16px;
@@ -76,7 +79,7 @@
 
 .footer-link--muted {
     font-size: 14px;
-    color: var(--text-muted);
+    color: var(--text-inverse-soft);
 }
 
 .footer-phone {
@@ -95,7 +98,7 @@
 }
 
 .footer-note--muted {
-    color: var(--text-muted);
+    color: var(--text-inverse-soft);
     font-size: 14px;
 }
 
@@ -126,5 +129,5 @@
 .footer-rights {
     margin: 0;
     font-size: 14px;
-    color: var(--text-tertiary);
+    color: var(--text-inverse-soft);
 }

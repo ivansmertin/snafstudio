@@ -42,6 +42,18 @@
     outline-offset: 2px;
 }
 
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
 .btn--outline {
     background-color: var(--surface-overlay-72);
     color: var(--text-primary);

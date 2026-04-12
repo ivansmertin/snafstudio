@@ -10,10 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const analyticsConfig = siteConfig.analytics || {};
     const consentStorageKey = siteConfig.consentStorageKey || "snafstudio-cookie-consent";
     const motionReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const desktopMedia = window.matchMedia("(min-width: 769px)");
+    const desktopMedia = window.matchMedia("(min-width: 921px)");
 
     const header = document.querySelector(".header");
     const burgerButton = document.querySelector(".burger-btn");
+    const menuOverlay = document.querySelector(".menu-overlay");
     const navWrap = document.querySelector(".main-nav-wrap");
     const nav = document.querySelector(".main-nav");
     const navLinks = nav ? Array.from(nav.querySelectorAll(".nav-link")) : [];
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cookieBanner = document.querySelector(".cookie-banner");
 
     let navHighlight = null;
-    let activeNavLink = navLinks[0] || null;
+    let activeNavLink = null;
     let previewNavLink = null;
     let analyticsInitialized = false;
 
@@ -116,9 +117,30 @@ document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.style.setProperty("--header-offset", `${offset}px`);
     };
 
+    const getLinkHash = (linkOrHref) => {
+        const href = typeof linkOrHref === "string"
+            ? linkOrHref
+            : linkOrHref?.getAttribute("href");
+
+        if (!href) return "";
+        if (href.startsWith("#")) return href;
+
+        try {
+            return new URL(href, window.location.href).hash || "";
+        } catch {
+            return "";
+        }
+    };
+
     const getNavLinkByHash = (hash = window.location.hash) => (
-        navLinks.find((link) => link.getAttribute("href") === hash) || null
+        navLinks.find((link) => getLinkHash(link) === hash) || null
     );
+
+    const setMenuOverlayState = (open) => {
+        if (!menuOverlay) return;
+        menuOverlay.classList.toggle("is-visible", open);
+        menuOverlay.setAttribute("aria-hidden", String(!open));
+    };
 
     const closeMenu = () => {
         if (!burgerButton || !navWrap) return;
@@ -127,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
         burgerButton.setAttribute("aria-label", "Открыть меню");
         navWrap.classList.remove("is-open");
         document.body.classList.remove("menu-open");
+        setMenuOverlayState(false);
     };
 
     const openMenu = () => {
@@ -136,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
         burgerButton.setAttribute("aria-label", "Закрыть меню");
         navWrap.classList.add("is-open");
         document.body.classList.add("menu-open");
+        setMenuOverlayState(true);
     };
 
     const toggleMenu = () => {
@@ -148,12 +172,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const updateNavClasses = (currentLink, highlightedLink = currentLink) => {
         navLinks.forEach((link) => {
-            const isCurrent = link === currentLink;
-            const isHighlighted = link === highlightedLink;
+            const isCurrent = Boolean(currentLink && link === currentLink);
+            const isHighlighted = Boolean(highlightedLink && link === highlightedLink);
 
             link.classList.toggle("is-current", isCurrent);
             link.classList.toggle("is-highlighted", isHighlighted);
-            link.setAttribute("aria-current", isCurrent ? "page" : "false");
+            if (isCurrent) {
+                link.setAttribute("aria-current", "location");
+            } else {
+                link.removeAttribute("aria-current");
+            }
         });
     };
 
@@ -178,9 +206,14 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const syncNavUi = (instant = false) => {
-        const currentLink = activeNavLink || navLinks[0] || null;
+        const currentLink = activeNavLink;
         const highlightedLink = previewNavLink || currentLink;
-        if (!currentLink || !highlightedLink) return;
+
+        if (!currentLink && !highlightedLink) {
+            disableNavHighlight();
+            updateNavClasses(null, null);
+            return;
+        }
 
         if (!desktopMedia.matches) {
             previewNavLink = null;
@@ -189,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const targetLink = highlightedLink;
+        const targetLink = highlightedLink || currentLink;
         const pill = ensureNavHighlight();
         if (!pill) return;
 
@@ -223,8 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const setActiveNavLink = (link, instant = false) => {
-        if (!link) return;
-        activeNavLink = link;
+        activeNavLink = link || null;
         syncNavUi(instant);
     };
 
@@ -243,6 +275,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!navLinks.length) return;
 
         burgerButton?.addEventListener("click", toggleMenu);
+        menuOverlay?.addEventListener("click", closeMenu);
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+        });
 
         navLinks.forEach((link) => {
             link.addEventListener("mouseenter", () => {
@@ -307,6 +346,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const hashLink = getNavLinkByHash();
             if (hashLink) {
                 activeNavLink = hashLink;
+            } else if (!document.getElementById("services")) {
+                activeNavLink = null;
             }
             previewNavLink = null;
             syncNavUiAfterLayout(true);
@@ -318,6 +359,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 setActiveNavLink(hashLink, true);
                 return;
             }
+            if (!document.getElementById("services")) {
+                setActiveNavLink(null, true);
+                return;
+            }
             previewNavLink = null;
             syncNavUiAfterLayout(true);
         });
@@ -327,7 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const sectionMap = new Map(
             navLinks
                 .map((link) => {
-                    const id = link.getAttribute("href")?.replace("#", "");
+                    const id = getLinkHash(link).replace("#", "");
                     const section = id ? document.getElementById(id) : null;
                     return [section, link];
                 })

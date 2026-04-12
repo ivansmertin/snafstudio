@@ -11,10 +11,9 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 24px;
-    margin-bottom: 64px; /* Было 30px */
+    margin-bottom: 64px;
 }
 
-/* Добавляем это правило, чтобы заголовок и подзаголовок не разъезжались */
 .benefits-title-wrapper .section-title {
     margin-bottom: 16px;
 }
@@ -61,6 +60,10 @@
     outline-offset: 2px;
 }
 
+.slider-btn:active {
+    transform: translateY(0);
+}
+
 @media (hover: hover) and (pointer: fine) {
     .slider-btn:hover {
         transform: translateY(-2px);
@@ -87,7 +90,7 @@
 .carousel-card {
     flex: 0 0 calc(50% - 10px);
     padding: 36px;
-    border-radius: 28px;
+    border-radius: var(--radius-card);
     scroll-snap-align: start;
     border: 1px solid var(--border);
     box-sizing: border-box;
