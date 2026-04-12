@@ -8,8 +8,8 @@ window.SNAF_CONFIG = {
     },
     admin: {
         // Заполните данными вашего GitHub-репозитория.
-        repoOwner: "",
-        repoName: "",
+        repoOwner: "ivansmertin",
+        repoName: "snafstudio",
         contentPath: "data/content.json"
     }
 };
