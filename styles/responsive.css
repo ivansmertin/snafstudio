@@ -278,6 +278,11 @@
         grid-template-columns: 1fr;
     }
 
+    .author-photo {
+        height: clamp(300px, 72vw, 420px);
+        object-position: center 10%;
+    }
+
     .stat-wide {
         grid-column: span 1;
     }
@@ -402,8 +407,8 @@
     }
 
     .author-photo {
-        aspect-ratio: 1 / 1;
-        object-position: center 14%;
+        height: clamp(260px, 78vw, 340px);
+        object-position: center 9%;
     }
 
     .stat-number {
