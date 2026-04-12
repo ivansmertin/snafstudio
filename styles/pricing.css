@@ -3,7 +3,7 @@
 --------------------------------- */
 
 .pricing-section {
-    padding: 80px 0;
+    padding: 56px 0 36px;
 }
 
 .pricing-header {
@@ -12,7 +12,7 @@
 }
 
 .pricing-header .section-title {
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 }
 
 .pricing-header .section-subtitle {
@@ -134,7 +134,7 @@
 }
 
 .pricing-note {
-    margin: 32px 0 0 0;
+    margin: 24px 0 0 0;
     text-align: center;
     font-size: 15px;
     color: var(--text-secondary);

@@ -7,9 +7,12 @@
 }
 
 .author-section,
-.benefits-section,
-.faq-section {
+.benefits-section {
     padding: 64px 0;
+}
+
+.faq-section {
+    padding: 44px 0 64px;
 }
 
 .section-title {
