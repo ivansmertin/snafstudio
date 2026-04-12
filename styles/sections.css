@@ -1,0 +1,30 @@
+/* ---------------------------------
+   Sections
+--------------------------------- */
+
+.hero-section {
+    padding: 24px 0 64px;
+}
+
+.author-section,
+.benefits-section,
+.faq-section {
+    padding: 64px 0;
+}
+
+.section-title {
+    margin: 0 0 64px 0; /* Было 16px */
+    font-size: clamp(36px, 4vw, 58px);
+    line-height: 1.04;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--text-primary);
+}
+
+.section-subtitle {
+    margin: 8px 0 0 0;
+    max-width: 720px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+}

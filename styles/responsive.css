@@ -1,0 +1,454 @@
+/* ---------------------------------
+   Responsive
+--------------------------------- */
+
+@media (max-width: 1100px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+        max-width: 680px;
+    }
+
+    .author-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-card {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        text-align: center;
+    }
+
+    .footer-column:first-child,
+    .footer-column:nth-child(2),
+    .footer-column:last-child {
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-logo img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-height: 900px) and (min-width: 1024px) {
+    .hero-section {
+        padding: 18px 0 52px;
+    }
+
+    .hero-card {
+        padding: 38px;
+    }
+
+    .hero-grid {
+        gap: 22px;
+    }
+
+    .hero-badge {
+        margin-bottom: 16px;
+    }
+
+    .hero-title {
+        font-size: clamp(38px, 4vw, 58px);
+        margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 20px;
+        font-size: 17px;
+    }
+
+    .hero-points {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .hero-point {
+        min-height: 34px;
+        font-size: 13px;
+    }
+
+    .hero-visual {
+        gap: 14px;
+    }
+
+    .hero-code-card,
+    .hero-mini-card {
+        border-radius: 20px;
+    }
+
+    .hero-code-card {
+        padding: 18px 18px 16px;
+    }
+
+    .hero-mini-card {
+        padding: 18px;
+    }
+
+    .hero-mini-card strong {
+        font-size: 18px;
+    }
+
+    .hero-mini-card p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .hero-stack {
+        gap: 14px;
+    }
+}
+
+@media (max-width: 1100px) and (min-width: 769px) {
+    .process-steps {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pricing-grid .pricing-card:last-child {
+        grid-column: span 2;
+        max-width: 480px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .header {
+        padding: 10px 0;
+    }
+
+    .header-inner {
+        padding: 10px 12px;
+        gap: 12px;
+    }
+
+    .logo img {
+        width: 128px;
+    }
+
+    .burger-btn {
+        display: inline-flex;
+        margin-left: auto;
+    }
+
+    .contacts {
+        display: none;
+    }
+
+    .main-nav-wrap {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 12px;
+        right: 12px;
+        width: auto;
+        flex-direction: column;
+        align-items: stretch;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition:
+            opacity 0.24s ease,
+            transform 0.24s ease,
+            visibility 0.24s ease;
+        pointer-events: none;
+        z-index: 30;
+    }
+
+    .main-nav-wrap.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        width: 100%;
+        padding: 14px;
+        border-radius: 20px;
+        background: var(--surface-overlay-96);
+        box-shadow: var(--shadow-main);
+    }
+
+    .nav-highlight,
+    .main-nav.has-highlight .nav-highlight {
+        display: none !important;
+    }
+
+    .nav-link {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+        text-align: center;
+        padding: 0 16px;
+        border-radius: 14px;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--text-primary) !important;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-link.is-current,
+    .nav-link.is-highlighted,
+    .nav-link:active {
+        color: var(--accent) !important;
+        background: var(--background-soft) !important;
+        box-shadow: none !important;
+        font-weight: 700;
+    }
+
+
+
+    .mobile-menu-meta {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        margin-top: 8px;
+        padding: 16px 14px 14px;
+        border-radius: 20px;
+        background: var(--surface-overlay-96);
+        box-shadow: var(--shadow-main);
+    }
+
+    .mobile-phone {
+        font-size: 16px;
+    }
+
+    .hero-section {
+        padding: 18px 0 40px 0;
+    }
+
+    .hero-card {
+        padding: 28px 22px;
+        border-radius: 28px;
+    }
+
+    .hero-title {
+        font-size: 40px;
+    }
+
+    .hero-subtitle {
+        font-size: 17px;
+        line-height: 1.65;
+    }
+
+    .hero-stack {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-actions,
+    .cta-bottom-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .author-section,
+    .benefits-section,
+    .faq-section {
+        padding: 44px 0;
+    }
+
+    .section-title {
+        margin-bottom: 32px; /* ИЗМЕНЕНО: увеличен отступ для мобилок */
+        font-size: 34px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-wide {
+        grid-column: span 1;
+    }
+
+    .stat-card {
+        min-height: 180px;
+        padding: 26px;
+    }
+
+    .benefits-header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 32px; /* ДОБАВЛЕНО: отступ от шапки карусели до карточек */
+    }
+
+    .benefits-title-wrapper .section-title {
+        margin-bottom: 12px; /* ДОБАВЛЕНО: чтобы заголовок не отрывался от подзаголовка */
+    }
+
+    .slider-controls {
+        padding-top: 0;
+    }
+
+    .carousel-card {
+        flex: 0 0 88%;
+        padding: 28px;
+    }
+
+    .faq-question {
+        padding: 22px 24px;
+    }
+
+    .faq-answer p {
+        padding: 0 24px 24px;
+    }
+
+    .cta-bottom {
+        padding: 36px 24px;
+        border-radius: 24px;
+        margin-top: 44px;
+    }
+
+    .cta-bottom-title {
+        font-size: 28px;
+    }
+
+    .cta-bottom-text {
+        font-size: 16px;
+    }
+
+    .process-section,
+    .pricing-section {
+        padding: 44px 0;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr;
+        margin-top: 32px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-card {
+        padding: 28px;
+    }
+
+    .pricing-price {
+        font-size: 32px;
+    }
+
+    .pricing-header .section-subtitle {
+        font-size: 16px;
+    }
+
+    .site-footer {
+        padding: 26px 0 46px 0;
+    }
+
+    .footer-card {
+        padding: 30px 24px;
+        border-radius: 24px;
+        gap: 26px;
+    }
+}
+
+
+@media (max-width: 560px) {
+    .main-nav-wrap {
+        left: 8px;
+        right: 8px;
+    }
+
+    .hero-title {
+        font-size: 34px;
+    }
+
+    .hero-badge,
+    .hero-point {
+        font-size: 14px;
+    }
+
+    .hero-code-label,
+    .hero-mini-label {
+        font-size: 14px;
+    }
+
+    .author-name {
+        font-size: 26px;
+    }
+
+    .stat-number {
+        font-size: 58px;
+    }
+
+    .card-title {
+        font-size: 22px;
+    }
+
+    .social-icon,
+    .footer-social {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-icon--vk span,
+    .footer-social.social-icon--vk span {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 430px) {
+    .header-inner {
+        padding: 9px 10px;
+    }
+
+    .logo img {
+        width: 118px;
+    }
+
+    .hero-card {
+        padding: 24px 18px;
+    }
+
+    .hero-title {
+        font-size: 32px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .stat-card {
+        padding: 22px;
+    }
+
+    .faq-question {
+        padding: 20px;
+    }
+
+    .faq-answer p {
+        padding: 0 20px 20px;
+    }
+
+    .footer-phone {
+        font-size: 22px;
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (hover: none) {
+    .footer-link:hover {
+        color: inherit;
+        transform: none;
+    }
+}

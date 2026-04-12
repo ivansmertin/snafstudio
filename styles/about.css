@@ -1,0 +1,218 @@
+/* ---------------------------------
+   About Section Styles
+--------------------------------- */
+
+.author-wrapper {
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) minmax(360px, 1.2fr);
+    gap: 30px;
+}
+
+.author-main-card {
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
+    border-radius: 32px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+}
+
+.author-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 18%;
+}
+
+.author-info {
+    padding: 30px;
+}
+
+.author-name {
+    margin: 0 0 12px 0;
+    font-size: 30px;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+}
+
+.author-regalia {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+/* Сетка карточек */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 210px;
+    padding: 36px;
+    border-radius: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+}
+
+/* Акцентные карточки (сине-бирюзовые) */
+.stat-card--accent {
+    background:
+        radial-gradient(circle at 86% 18%, var(--surface-overlay-18), transparent 24%),
+        linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+    border-color: transparent;
+    box-shadow: var(--shadow-accent);
+}
+
+/* Светлые карточки */
+.stat-card--muted {
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-muted-alt) 100%);
+}
+
+.stat-wide {
+    grid-column: span 2;
+    min-height: 180px;
+}
+
+/* Типографика внутри карточек */
+.stat-number {
+    margin-bottom: 8px;
+    font-size: 74px;
+    line-height: 0.95;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-text-large {
+    margin-bottom: 12px;
+    font-size: 24px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.stat-title {
+    margin: 0 0 12px 0;
+    font-size: 30px;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+}
+
+.stat-desc {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.text-on-accent {
+    color: var(--surface) !important;
+}
+
+/* Карточка с цитатой и звездочкой */
+.stat-card--quote {
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
+    overflow: visible;
+}
+
+.quote-text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+/* Звездочка-пасхалка */
+.stat-card--quote::after {
+    content: "✦";
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    font-size: 28px;
+    color: var(--accent);
+    opacity: 0.3;
+    transform: scale(0.8);
+    transition: opacity 0.4s var(--motion-ease), transform 0.4s var(--motion-ease);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.stat-card--quote:hover::after {
+    opacity: 1;
+    transform: scale(1.1);
+    animation: pulse-star 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-star {
+    0% { transform: scale(1) rotate(0deg); color: var(--accent); }
+    50% { transform: scale(1.2) rotate(90deg); color: var(--accent-hover); text-shadow: 0 0 15px var(--accent-overlay-60); }
+    100% { transform: scale(1) rotate(180deg); color: var(--accent); }
+}
+
+/* Декоративная волна */
+.wave-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/wave.svg");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: 42%;
+    opacity: 0.28;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.wave-bg > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Отключенная анимация для предотвращения конфликтов */
+.floating-accent {
+    animation: none;
+}
+
+/* Tech stack badges */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.tech-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--accent-overlay-08);
+    border: 1px solid var(--accent-overlay-16);
+    color: var(--accent-hover);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    transition:
+        background var(--motion-duration-base) var(--motion-ease),
+        border-color var(--motion-duration-base) var(--motion-ease),
+        transform var(--motion-duration-base) var(--motion-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .tech-badge:hover {
+        background: var(--accent-overlay-16);
+        border-color: var(--accent-overlay-28);
+        transform: translateY(-2px);
+    }
+}

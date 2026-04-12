@@ -1,0 +1,142 @@
+/* ---------------------------------
+   Pricing Section
+--------------------------------- */
+
+.pricing-section {
+    padding: 80px 0;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.pricing-header .section-title {
+    margin-bottom: 12px;
+}
+
+.pricing-header .section-subtitle {
+    font-size: 18px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.pricing-card {
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 36px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.pricing-card--accent {
+    background:
+        radial-gradient(circle at 90% 10%, var(--surface-overlay-14), transparent 28%),
+        linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+    border-color: transparent;
+    box-shadow: var(--shadow-accent);
+}
+
+.pricing-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pricing-card-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.pricing-card--accent .pricing-card-header h3 {
+    color: var(--surface);
+}
+
+.pricing-range {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    min-height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: var(--accent-overlay-08);
+    border: 1px solid var(--accent-overlay-16);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-hover);
+    white-space: nowrap;
+}
+
+.pricing-card--accent .pricing-range {
+    background: var(--surface-overlay-14);
+    border-color: var(--surface-overlay-28);
+    color: var(--surface);
+}
+
+.pricing-price {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.pricing-card--accent .pricing-price {
+    color: var(--surface);
+}
+
+.pricing-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.pricing-list li {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    padding-left: 22px;
+    position: relative;
+}
+
+.pricing-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 13px;
+    top: 1px;
+}
+
+.pricing-card--accent .pricing-list li {
+    color: var(--surface-overlay-90);
+}
+
+.pricing-card--accent .pricing-list li::before {
+    color: var(--surface);
+}
+
+.pricing-note {
+    margin: 32px 0 0 0;
+    text-align: center;
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNAF STUDIO — дизайн и создание сайтов</title>
+    <meta
+        name="description"
+        content="SNAF STUDIO — дизайн и создание современных лендингов и сайтов: структура, визуальная подача, адаптивная верстка и помощь с запуском."
+    >
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SNAF STUDIO" />
+    <meta property="og:title" content="SNAF STUDIO — дизайн и создание сайтов" />
+    <meta property="og:description" content="SNAF STUDIO — дизайн и создание современных лендингов и сайтов: структура, визуальная подача, адаптивная верстка и помощь с запуском." />
+    <meta property="og:image" content="images/og-cover.png" />
+    <meta property="og:url" content="https://snafstudio.ru/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SNAF STUDIO — дизайн и создание сайтов" />
+    <meta name="twitter:description" content="SNAF STUDIO — дизайн и создание современных лендингов и сайтов: структура, визуальная подача, адаптивная верстка и помощь с запуском." />
+    <meta name="twitter:image" content="images/og-cover.png" />
+    <link rel="canonical" href="https://snafstudio.ru/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230ea5e9'/><text x='16' y='22' text-anchor='middle' fill='white' font-family='monospace' font-size='16' font-weight='bold'>&lt;/&gt;</text></svg>">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+<body>
+    <header class="header" id="top">
+        <div class="container header-inner">
+            <a href="#top" class="logo" aria-label="На главную">
+                <img src="images/logo.svg" alt="Логотип SNAF STUDIO" width="240" height="40">
+            </a>
+
+            <button
+                class="burger-btn"
+                type="button"
+                aria-label="Открыть меню"
+                aria-expanded="false"
+                aria-controls="site-menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="main-nav-wrap" id="site-menu">
+                <nav class="main-nav" aria-label="Основная навигация">
+                    <a href="#services" class="nav-link">Услуги</a>
+                    <a href="#about" class="nav-link">Обо мне</a>
+                    <a href="#value" class="nav-link">Что вы получите</a>
+                    <a href="#pricing" class="nav-link">Стоимость</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                </nav>
+
+                <div class="mobile-menu-meta">
+                    <a href="tel:+79965682047" class="mobile-phone">+7 996 568 20 47</a>
+
+                    <div class="mobile-socials" aria-label="Социальные сети">
+                        <a href="https://vk.com/smrtnnn" class="social-icon social-icon--vk" aria-label="ВКонтакте" target="_blank" rel="noopener noreferrer">
+                            <span aria-hidden="true">VK</span>
+                        </a>
+
+                        <a
+                            href="https://t.me/smrtnivn"
+                            class="social-icon social-icon--tg"
+                            aria-label="Telegram"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M21 4L10.5 14.5"></path>
+                                <path d="M21 4L14.5 20L10.5 14.5L4 10.5L21 4Z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contacts">
+                <a href="tel:+79965682047" class="phone">+7 996 568 20 47</a>
+
+                <div class="socials" aria-label="Социальные сети">
+                    <a href="https://vk.com/smrtnnn" class="social-icon social-icon--vk" aria-label="ВКонтакте" target="_blank" rel="noopener noreferrer">
+                        <span aria-hidden="true">VK</span>
+                    </a>
+
+                    <a
+                        href="https://t.me/smrtnivn"
+                        class="social-icon social-icon--tg"
+                        aria-label="Telegram"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 4L10.5 14.5"></path>
+                            <path d="M21 4L14.5 20L10.5 14.5L4 10.5L21 4Z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section" id="services" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-card surface-glow">
+                    <div class="hero-grid">
+                        <div class="hero-content">
+                            <span class="hero-badge">Дизайн · UI/UX · Frontend</span>
+
+                            <h1 class="hero-title" id="hero-title">
+                                Создаю красивые сайты,<br>которые работают
+                            </h1>
+
+                            <p class="hero-subtitle">
+                                Разрабатываю и запускаю современные лендинги и корпоративные сайты.
+                                Грамотный дизайн, адекватный UX/UI, адаптивность и внимание 
+                                к бизнес-задачам и потребностям клиента.
+                            </p>
+
+                            <div class="hero-points" aria-label="Ключевые преимущества">
+                                <span class="hero-point">Лендинги</span>
+                                <span class="hero-point">Корпоративные сайты</span>
+                                <span class="hero-point">Современная вёрстка</span>
+                            </div>
+
+                            <div class="hero-actions">
+                                <a
+                                    href="https://t.me/smrtnivn"
+                                    class="btn btn--primary"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Обсудить проект
+                                </a>
+                                <a href="#about" class="btn btn--outline">Узнать больше</a>
+                            </div>
+                        </div>
+
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="hero-code-card">
+                                <div class="hero-code-top">
+                                    <span class="code-dot"></span>
+                                    <span class="code-dot"></span>
+                                    <span class="code-dot"></span>
+                                    <span class="hero-code-label">build / ui / launch</span>
+                                </div>
+
+                                <div class="hero-code-lines">
+                                    <span class="code-line code-line--xl"></span>
+                                    <span class="code-line code-line--lg"></span>
+                                    <span class="code-line code-line--accent"></span>
+                                    <span class="code-line code-line--md"></span>
+                                    <span class="code-line code-line--sm"></span>
+                                </div>
+                            </div>
+
+                            <div class="hero-stack">
+                                <article class="hero-mini-card">
+                                    <span class="hero-mini-label">Мой подход</span>
+                                    <strong>UI/UX + frontend</strong>
+                                    <p>Я делаю красивые сайты, которые выполняют свои задачи</p>
+                                </article>
+
+                                <article class="hero-mini-card hero-mini-card--accent">
+                                    <span class="hero-mini-label">Акцент</span>
+                                    <strong>Скорость + качество</strong>
+                                    <p>Красивая и эффективная вёрстка, простая навигация, удобство.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="author-section reveal" id="about" aria-labelledby="about-title">
+            <div class="container">
+                <h2 class="section-title" id="about-title">Обо мне</h2>
+
+                <div class="author-wrapper reveal-stagger">
+                    <article class="author-main-card surface-glow">
+                        <img
+                            src="images/ivan.png"
+                            alt="Портрет Ивана Смертина"
+                            class="author-photo"
+                            width="742"
+                            height="945"
+                            loading="eager"
+                            decoding="async"
+                        >
+                        <div class="author-info">
+                            <h3 class="author-name">Иван Смертин</h3>
+                            <p class="author-regalia">
+                                Привет! Я создаю с нуля современные лендинги и сайты,
+                                которые выглядят привлекательно, работают быстро, вызывают доверие у клиентов,
+                                просты в использовании и удобны в обслуживании.
+                            </p>
+                        </div>
+                    </article>
+
+<div class="stats-grid" aria-label="Принципы, которых я придерживаюсь в работе">
+    <article class="stat-card stat-card--accent surface-glow">
+        <div class="stat-number text-on-accent">
+            <span class="counter" data-target="3">0</span>
+        </div>
+        <div class="stat-text-large text-on-accent">направления</div>
+        <p class="stat-desc text-on-accent">дизайн, верстка, запуск</p>
+    </article>
+
+    <article class="stat-card stat-card--muted surface-glow">
+        <p class="stat-title">Чистый<br>современный</p>
+        <p class="stat-desc">дизайн без визуального шума</p>
+    </article>
+
+<article class="stat-card stat-card--muted stat-wide surface-glow">
+    <p class="stat-title">Актуальный стек</p>
+    <div class="tech-stack">
+        <span class="tech-badge">HTML5</span>
+        <span class="tech-badge">CSS3</span>
+        <span class="tech-badge">BEM</span>
+        <span class="tech-badge">Vanilla JS</span>
+        <span class="tech-badge">Figma</span>
+        <span class="tech-badge">Git</span>
+    </div>
+</article>
+
+    <article class="stat-card stat-card--accent stat-wide wave-bg surface-glow">
+        <div class="stat-number text-on-accent">
+            <span class="counter" data-target="1">1</span>
+        </div>
+        <p class="stat-desc text-on-accent">
+            человек ведет проект<br>от концепции до публикации
+        </p>
+    </article>
+
+    <article class="stat-card stat-card--quote surface-glow stat-wide">
+        <p class="quote-text">
+            Моя главная цель — собрать
+            понятный, аккуратный и убедительный лендинг под конкретную
+            бизнес-задачу.
+        </p>
+    </article>
+</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits-section reveal" id="value" aria-labelledby="value-title">
+            <div class="container">
+                <div class="benefits-header reveal-stagger">
+                    <div class="benefits-title-wrapper">
+                        <h2 class="section-title" id="value-title">Что вы получите</h2>
+                        <p class="section-subtitle">
+                            Сайт, который выглядит современно, вызывает доверие и помогает
+                            продавать ваши услуги или товары
+                        </p>
+                    </div>
+
+                    <div class="slider-controls" aria-label="Управление каруселью">
+                        <button class="slider-btn prev-btn" type="button" aria-label="Прокрутить карточки назад">
+                            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M15 18l-6-6 6-6"></path>
+                            </svg>
+                        </button>
+
+                        <button class="slider-btn next-btn" type="button" aria-label="Прокрутить карточки вперед">
+                            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M9 18l6-6-6-6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="carousel-track reveal-stagger" id="benefitsCarousel" aria-label="Преимущества работы">
+                    <article class="carousel-card surface-glow">
+                        <h3 class="card-title">Продуманный визуальный образ</h3>
+                        <p class="card-text">
+                            Соберу аккуратный и современный интерфейс, который соответствует
+                            вашей нише и не выглядит шаблонно.
+                        </p>
+                    </article>
+
+                    <article class="carousel-card surface-glow">
+                        <h3 class="card-title">Понятную структуру страницы</h3>
+                        <p class="card-text">
+                            Помогу выстроить блоки, акценты и логику подачи так, чтобы
+                            посетитель быстро понимал, что именно вы предлагаете.
+                        </p>
+                    </article>
+
+                    <article class="carousel-card surface-glow">
+                        <h3 class="card-title">Чистую адаптивную верстку</h3>
+                        <p class="card-text">
+                            Сайт будет корректно выглядеть на компьютере, планшете и телефоне
+                            без ощущения сырой или случайной сборки.
+                        </p>
+                    </article>
+
+                    <article class="carousel-card surface-glow">
+                        <h3 class="card-title">Удобный запуск и доработку</h3>
+                        <p class="card-text">
+                            Проект можно будет спокойно развивать дальше: подключать формы,
+                            домен, аналитику, новые блоки и дополнительные страницы.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="carousel-progress" aria-hidden="true">
+                    <span class="carousel-progress-fill"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="process-section reveal" id="process" aria-labelledby="process-title">
+            <div class="container">
+                <h2 class="section-title" id="process-title">Как я работаю</h2>
+
+                <div class="process-steps reveal-stagger">
+                    <article class="process-step surface-glow">
+                        <div class="process-step-number">01</div>
+                        <h3 class="process-step-title">Бриф</h3>
+                        <p class="process-step-desc">Обсуждаем задачу, целевую аудиторию, структуру страницы и примеры, которые вам нравятся.</p>
+                    </article>
+
+                    <article class="process-step surface-glow">
+                        <div class="process-step-number">02</div>
+                        <h3 class="process-step-title">Дизайн</h3>
+                        <p class="process-step-desc">Собираю визуальный образ: цвета, шрифты, расположение блоков. Согласовываем результат.</p>
+                    </article>
+
+                    <article class="process-step surface-glow">
+                        <div class="process-step-number">03</div>
+                        <h3 class="process-step-title">Вёрстка</h3>
+                        <p class="process-step-desc">Верстаю адаптивно и аккуратно — сайт корректно работает на любом устройстве.</p>
+                    </article>
+
+                    <article class="process-step process-step--accent surface-glow">
+                        <div class="process-step-number">04</div>
+                        <h3 class="process-step-title">Запуск</h3>
+                        <p class="process-step-desc">Помогаю опубликовать сайт, подключить домен и формы. Проект готов к работе.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-section reveal" id="pricing" aria-labelledby="pricing-title">
+            <div class="container">
+                <div class="pricing-header">
+                    <h2 class="section-title" id="pricing-title">Стоимость</h2>
+                    <p class="section-subtitle">Простая и прозрачная цена — <strong>2 000 ₽ за один блок</strong> любой сложности</p>
+                </div>
+
+                <div class="pricing-grid reveal-stagger">
+                    <article class="pricing-card surface-glow">
+                        <div class="pricing-card-header">
+                            <h3>Лендинг</h3>
+                            <span class="pricing-range">5–8 блоков</span>
+                        </div>
+                        <div class="pricing-price">от 10 000 ₽</div>
+                        <ul class="pricing-list">
+                            <li>Дизайн и вёрстка</li>
+                            <li>Адаптивность под все устройства</li>
+                            <li>Форма обратной связи</li>
+                            <li>Помощь с запуском</li>
+                        </ul>
+                        <a href="https://t.me/smrtnivn" class="btn btn--outline" target="_blank" rel="noopener noreferrer">Обсудить проект</a>
+                    </article>
+
+                    <article class="pricing-card pricing-card--accent surface-glow">
+                        <div class="pricing-card-header">
+                            <h3>Корпоративный сайт</h3>
+                            <span class="pricing-range">от 10 блоков</span>
+                        </div>
+                        <div class="pricing-price">от 20 000 ₽</div>
+                        <ul class="pricing-list">
+                            <li>Многостраничная структура</li>
+                            <li>Дизайн и вёрстка</li>
+                            <li>Адаптивность под все устройства</li>
+                            <li>Подключение аналитики</li>
+                            <li>Помощь с запуском</li>
+                        </ul>
+                        <a href="https://t.me/smrtnivn" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Обсудить проект</a>
+                    </article>
+
+                    <article class="pricing-card surface-glow">
+                        <div class="pricing-card-header">
+                            <h3>Доработка сайта</h3>
+                            <span class="pricing-range">от 1 блока</span>
+                        </div>
+                        <div class="pricing-price">от 2 000 ₽</div>
+                        <ul class="pricing-list">
+                            <li>Новые блоки и секции</li>
+                            <li>Правки дизайна</li>
+                            <li>Адаптация под мобильные</li>
+                            <li>Исправление вёрстки</li>
+                        </ul>
+                        <a href="https://t.me/smrtnivn" class="btn btn--outline" target="_blank" rel="noopener noreferrer">Обсудить проект</a>
+                    </article>
+                </div>
+
+                <p class="pricing-note">Точная стоимость зависит от количества и сложности блоков. Напишите — оценю бесплатно.</p>
+            </div>
+        </section>
+
+        <section class="faq-section reveal" id="faq" aria-labelledby="faq-title">
+            <div class="container">
+                <h2 class="section-title" id="faq-title">Часто задаваемые вопросы</h2>
+
+                <div class="faq-list reveal-stagger">
+                    <article class="faq-item surface-glow">
+                        <h3 class="faq-question-heading">
+                            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
+                                <span class="faq-question-text">С чем вы можете помочь?</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-answer" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" aria-hidden="true">
+                            <p>
+                                Я могу сделать лендинг, небольшой сайт, промо-страницу или аккуратно
+                                переработать уже существующий сайт. Обычно помогаю с визуальной подачей,
+                                структурой блоков, версткой и подготовкой проекта к запуску.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item surface-glow">
+                        <h3 class="faq-question-heading">
+                            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-2" id="faq-button-2">
+                                <span class="faq-question-text">Вы делаете только дизайн или еще и верстку?</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-answer" id="faq-panel-2" role="region" aria-labelledby="faq-button-2" aria-hidden="true">
+                            <p>
+                                И дизайн, и верстку. Могу подключиться только на этапе визуальной концепции,
+                                но чаще беру проект целиком: от структуры и внешнего вида до готовой
+                                адаптивной страницы.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item surface-glow is-open">
+                        <h3 class="faq-question-heading">
+                            <button class="faq-question" type="button" aria-expanded="true" aria-controls="faq-panel-3" id="faq-button-3">
+                                <span class="faq-question-text">Сколько по времени занимает проект?</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-answer" id="faq-panel-3" role="region" aria-labelledby="faq-button-3" aria-hidden="false">
+                            <p>
+                                Зависит от объема. Небольшой лендинг можно собрать сравнительно быстро,
+                                а более детальная работа со структурой, текстами и дополнительными блоками
+                                требует больше времени.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item surface-glow">
+                        <h3 class="faq-question-heading">
+                            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-4" id="faq-button-4">
+                                <span class="faq-question-text">Что нужно от меня для начала работы?</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-answer" id="faq-panel-4" role="region" aria-labelledby="faq-button-4" aria-hidden="true">
+                            <p>
+                                Достаточно коротко описать задачу: чем вы занимаетесь, какой сайт нужен,
+                                есть ли примеры или референсы. Я помогу собрать это в понятную основу.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item surface-glow">
+                        <h3 class="faq-question-heading">
+                            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-5" id="faq-button-5">
+                                <span class="faq-question-text">Можно ли доработать уже существующий сайт?</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-answer" id="faq-panel-5" role="region" aria-labelledby="faq-button-5" aria-hidden="true">
+                            <p>
+                                Да. Необязательно делать все с нуля. Если у вас уже есть страница или
+                                набросок, я могу помочь привести это в более аккуратный вид.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item surface-glow">
+                        <h3 class="faq-question-heading">
+                            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-6" id="faq-button-6">
+                                <span class="faq-question-text">Поможете с запуском сайта?</span>
+                                <span class="faq-toggle" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                        <div class="faq-answer" id="faq-panel-6" role="region" aria-labelledby="faq-button-6" aria-hidden="true">
+                            <p>
+                                Да, при необходимости могу помочь с финальной сборкой, публикацией,
+                                подключением домена и форм.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="cta-bottom reveal">
+                    <h3 class="cta-bottom-title">Готовы обсудить вашу задачу?</h3>
+                    <p class="cta-bottom-text">
+                        Напишите мне в Telegram или ВК. Я на связи,
+                        проконсультирую бесплатно и сориентирую по срокам.
+                    </p>
+                    <div class="cta-bottom-actions">
+                        <a
+                            href="https://t.me/smrtnivn"
+                            class="btn btn--primary"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Написать в Telegram
+                        </a>
+                        <a href="tel:+79965682047" class="btn btn--outline">Позвонить</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer reveal" aria-label="Контакты и правовая информация">
+        <div class="container">
+            <div class="footer-card surface-glow">
+                <div class="footer-column footer-column--brand">
+                    <a href="#top" class="footer-logo" aria-label="На главную">
+                        <img src="images/logo.svg" alt="Логотип" width="240" height="40">
+                    </a>
+
+                    <a href="mailto:smertin.lingv@gmail.com" class="footer-link footer-contact">
+                        smertin.lingv@gmail.com
+                    </a>
+
+                    <div class="footer-legal-links">
+                        <a href="privacy.html" class="footer-link footer-link--muted" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
+                        <a href="offer.html" class="footer-link footer-link--muted" target="_blank" rel="noopener noreferrer">Договор-оферта</a>
+                    </div>
+                </div>
+
+                <div class="footer-column footer-column--contacts">
+                    <a href="tel:+79965682047" class="footer-link footer-phone">+7 996 568 20 47</a>
+                    <p class="footer-note">Связаться по поводу проекта</p>
+                    <p class="footer-note footer-note--muted">Самозанятый / работа по договоренности</p>
+                </div>
+
+                <div class="footer-column footer-column--social">
+                    <div class="footer-socials">
+                        <a href="https://vk.com/smrtnnn" class="footer-social social-icon--vk" aria-label="ВКонтакте" target="_blank" rel="noopener noreferrer">
+                            <span aria-hidden="true">VK</span>
+                        </a>
+
+                        <a
+                            href="https://t.me/smrtnivn"
+                            class="footer-social social-icon--tg"
+                            aria-label="Telegram"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M21 4L10.5 14.5"></path>
+                                <path d="M21 4L14.5 20L10.5 14.5L4 10.5L21 4Z"></path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="footer-meta">
+                        <p class="footer-copy">© Иван Смертин, 2026</p>
+                        <p class="footer-rights">Все права защищены</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js" defer></script>
+</body>
+</html>
