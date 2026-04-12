@@ -1,6 +1,6 @@
 {
-    "name": "SNAF STUDIO",
-    "short_name": "SNAF",
+    "name": "СНАФ СТУДИЯ",
+    "short_name": "СНАФ",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",

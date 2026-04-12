@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const cookieBanner = document.querySelector(".cookie-banner");
 
     let navHighlight = null;
-    let currentNavLink = navLinks[0] || null;
-    let hoverNavLink = null;
+    let activeNavLink = navLinks[0] || null;
+    let previewNavLink = null;
     let analyticsInitialized = false;
 
     const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
@@ -116,6 +116,10 @@ document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.style.setProperty("--header-offset", `${offset}px`);
     };
 
+    const getNavLinkByHash = (hash = window.location.hash) => (
+        navLinks.find((link) => link.getAttribute("href") === hash) || null
+    );
+
     const closeMenu = () => {
         if (!burgerButton || !navWrap) return;
         burgerButton.classList.remove("is-active");
@@ -164,25 +168,28 @@ document.addEventListener("DOMContentLoaded", () => {
         return navHighlight;
     };
 
-    const disableMobileHighlight = () => {
+    const disableNavHighlight = () => {
         if (!nav) return;
-        hoverNavLink = null;
         nav.classList.remove("has-highlight");
         if (navHighlight) {
             navHighlight.remove();
             navHighlight = null;
         }
-        updateNavClasses(currentNavLink, currentNavLink);
     };
 
-    const moveNavHighlight = (targetLink, instant = false) => {
-        if (!targetLink) return;
+    const syncNavUi = (instant = false) => {
+        const currentLink = activeNavLink || navLinks[0] || null;
+        const highlightedLink = previewNavLink || currentLink;
+        if (!currentLink || !highlightedLink) return;
 
         if (!desktopMedia.matches) {
-            disableMobileHighlight();
+            previewNavLink = null;
+            disableNavHighlight();
+            updateNavClasses(currentLink, currentLink);
             return;
         }
 
+        const targetLink = highlightedLink;
         const pill = ensureNavHighlight();
         if (!pill) return;
 
@@ -200,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         nav.style.setProperty("--pill-w", `${linkRect.width}px`);
         nav.style.setProperty("--pill-h", `${linkRect.height}px`);
 
-        updateNavClasses(currentNavLink, targetLink);
+        updateNavClasses(currentLink, targetLink);
 
         if (instant || motionReduced) {
             requestAnimationFrame(() => {
@@ -209,14 +216,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const setCurrentNavLink = (link, instant = false) => {
+    const syncNavUiAfterLayout = (instant = true) => {
+        requestAnimationFrame(() => {
+            syncNavUi(instant);
+        });
+    };
+
+    const setActiveNavLink = (link, instant = false) => {
         if (!link) return;
-        currentNavLink = link;
-        if (!hoverNavLink) {
-            moveNavHighlight(link, instant);
-        } else {
-            updateNavClasses(currentNavLink, hoverNavLink);
-        }
+        activeNavLink = link;
+        syncNavUi(instant);
+    };
+
+    const setPreviewNavLink = (link, instant = false) => {
+        if (!desktopMedia.matches || !link) return;
+        previewNavLink = link;
+        syncNavUi(instant);
+    };
+
+    const clearPreviewNavLink = (instant = false) => {
+        previewNavLink = null;
+        syncNavUi(instant);
     };
 
     const initNav = () => {
@@ -227,57 +247,79 @@ document.addEventListener("DOMContentLoaded", () => {
         navLinks.forEach((link) => {
             link.addEventListener("mouseenter", () => {
                 if (!desktopMedia.matches) return;
-                hoverNavLink = link;
-                moveNavHighlight(link);
+                setPreviewNavLink(link);
             });
 
             link.addEventListener("focus", () => {
                 if (!desktopMedia.matches) return;
-                hoverNavLink = link;
-                moveNavHighlight(link);
+                setPreviewNavLink(link);
             });
 
             link.addEventListener("click", () => {
-                setCurrentNavLink(link, true);
+                setActiveNavLink(link, true);
                 closeMenu();
             });
         });
 
         nav.addEventListener("mouseleave", () => {
-            hoverNavLink = null;
-            moveNavHighlight(currentNavLink);
+            clearPreviewNavLink();
         });
 
         nav.addEventListener("focusout", (event) => {
             if (!nav.contains(event.relatedTarget)) {
-                hoverNavLink = null;
-                moveNavHighlight(currentNavLink);
+                clearPreviewNavLink();
             }
         });
 
         const ready = document.fonts?.ready || Promise.resolve();
         ready.then(() => {
-            setCurrentNavLink(currentNavLink, true);
+            syncNavUiAfterLayout(true);
             syncOpenFaqHeight();
         });
 
         desktopMedia.addEventListener("change", (event) => {
             if (event.matches) {
-                moveNavHighlight(currentNavLink, true);
+                syncNavUiAfterLayout(true);
                 return;
             }
-            disableMobileHighlight();
+            previewNavLink = null;
+            disableNavHighlight();
+            updateNavClasses(activeNavLink, activeNavLink);
             closeMenu();
         });
 
         window.addEventListener("resize", () => {
             setHeaderOffset();
-            if (desktopMedia.matches) {
-                closeMenu();
-            }
-            moveNavHighlight(currentNavLink, true);
+            previewNavLink = null;
+            if (desktopMedia.matches) closeMenu();
+            syncNavUiAfterLayout(true);
             syncCarouselProgress();
             syncOpenFaqHeight();
+        });
+
+        window.addEventListener("orientationchange", () => {
+            setHeaderOffset();
+            previewNavLink = null;
+            syncNavUiAfterLayout(true);
+        });
+
+        window.addEventListener("pageshow", () => {
+            const hashLink = getNavLinkByHash();
+            if (hashLink) {
+                activeNavLink = hashLink;
+            }
+            previewNavLink = null;
+            syncNavUiAfterLayout(true);
+        });
+
+        window.addEventListener("hashchange", () => {
+            const hashLink = getNavLinkByHash();
+            if (hashLink) {
+                setActiveNavLink(hashLink, true);
+                return;
+            }
+            previewNavLink = null;
+            syncNavUiAfterLayout(true);
         });
     };
 
@@ -308,17 +350,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!best) return;
             const link = sectionMap.get(best[0]);
-            if (link) setCurrentNavLink(link);
+            if (link) setActiveNavLink(link);
         };
 
         const setInitialActiveSection = () => {
+            const hashLink = getNavLinkByHash();
+            if (hashLink) {
+                setActiveNavLink(hashLink, true);
+                return;
+            }
+
             const bestSection = [...sections].sort((a, b) => (
                 Math.abs(a.getBoundingClientRect().top) - Math.abs(b.getBoundingClientRect().top)
             ))[0];
 
             if (!bestSection) return;
             const link = sectionMap.get(bestSection);
-            if (link) setCurrentNavLink(link);
+            if (link) setActiveNavLink(link, true);
         };
 
         const observer = new IntersectionObserver((entries) => {

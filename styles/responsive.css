@@ -28,9 +28,41 @@
         align-items: center;
     }
 
+    .footer-column--brand,
+    .footer-column--contacts,
+    .footer-column--social {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column--social {
+        justify-content: flex-start;
+    }
+
     .footer-logo img {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .footer-contact,
+    .footer-phone,
+    .footer-meta {
+        text-align: center;
+    }
+
+    .footer-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-legal-links,
+    .footer-socials {
+        align-items: center;
+        justify-content: center;
     }
 }
 
@@ -378,6 +410,15 @@
         padding: 30px 24px;
         border-radius: 24px;
         gap: 26px;
+    }
+
+    .footer-column--brand,
+    .footer-column--contacts,
+    .footer-column--social,
+    .footer-meta,
+    .footer-legal-links,
+    .footer-socials {
+        width: 100%;
     }
 }
 
