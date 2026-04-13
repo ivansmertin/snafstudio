@@ -551,6 +551,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const applyState = (item, open) => {
             const button = item.querySelector(".faq-question");
             const panel = item.querySelector(".faq-answer");
+            if (!button || !panel) return;
 
             item.classList.toggle("is-open", open);
             button.setAttribute("aria-expanded", String(open));
@@ -566,6 +567,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         items.forEach((item) => {
             const button = item.querySelector(".faq-question");
+            if (!button || button.dataset.faqBound === "true") return;
+
+            button.dataset.faqBound = "true";
 
             button.addEventListener("click", () => {
                 const alreadyOpen = item.classList.contains("is-open");
@@ -578,6 +582,13 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     };
+
+    document.addEventListener("snaf:content-loaded", () => {
+        requestAnimationFrame(() => {
+            initFaq();
+            syncCarouselProgress();
+        });
+    });
 
     setHeaderOffset();
     initCookieBanner();
