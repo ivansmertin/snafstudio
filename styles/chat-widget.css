@@ -425,11 +425,23 @@
     color: var(--text-primary);
 }
 
+@media (max-width: 920px) {
+    .chat-widget {
+        top: calc(var(--header-offset) + 16px);
+        bottom: auto;
+        z-index: 100;
+    }
+
+    .chat-widget__panel {
+        max-height: calc(100vh - var(--header-offset) - 32px);
+        transform-origin: top right;
+    }
+}
+
 @media (max-width: 640px) {
     .chat-widget {
         left: 12px;
         right: 12px;
-        bottom: calc(12px + var(--snaf-chat-offset, 0px));
         align-items: stretch;
     }
 
@@ -440,9 +452,9 @@
 
     .chat-widget__panel {
         width: 100%;
-        max-height: min(82vh, calc(100vh - 24px - var(--snaf-chat-offset, 0px)));
+        max-height: calc(100vh - var(--header-offset) - 28px);
         border-radius: 24px;
-        transform-origin: bottom center;
+        transform-origin: top center;
     }
 
     .chat-widget__body,
