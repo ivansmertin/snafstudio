@@ -66,6 +66,25 @@
     }
 }
 
+@media (max-width: 1100px) and (min-width: 921px) {
+    .contacts {
+        gap: 10px;
+    }
+
+    .phone {
+        font-size: 14px;
+    }
+
+    .socials {
+        gap: 8px;
+    }
+
+    .social-icon {
+        width: 42px;
+        height: 42px;
+    }
+}
+
 @media (max-height: 900px) and (min-width: 1024px) {
     .hero-section {
         padding: 18px 0 52px;

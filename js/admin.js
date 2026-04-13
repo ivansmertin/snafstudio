@@ -529,6 +529,11 @@
             setNestedValue(data, input.getAttribute("data-field"), input.value);
         });
 
+        if (data.contact) {
+            delete data.contact.phone;
+            delete data.contact.phoneHref;
+        }
+
         data.benefits.items = collectListItems("benefits-list", ["title", "text"]);
         data.process.steps = collectListItems("process-list", ["number", "title", "description"], ["accent"]);
         data.pricing.plans = collectPricingItems();
@@ -1243,7 +1248,7 @@
         var normalized = data || {};
 
         if (!normalized.meta) normalized.meta = {};
-        if (!normalized.contact) normalized.contact = { phone: "", phoneHref: "", email: "", telegram: "", vk: "" };
+        if (!normalized.contact) normalized.contact = { email: "", telegram: "", vk: "" };
         if (!normalized.hero) normalized.hero = {};
         if (!normalized.about) normalized.about = { stats: [] };
         if (!Array.isArray(normalized.about.stats)) normalized.about.stats = [];

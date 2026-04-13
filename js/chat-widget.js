@@ -198,6 +198,18 @@
         document.addEventListener("snaf:content-loaded", function (event) {
             applyContent(event && event.detail);
         });
+        document.addEventListener("click", function (event) {
+            var trigger = event.target && event.target.closest
+                ? event.target.closest("[data-chat-trigger]")
+                : null;
+
+            if (!trigger) {
+                return;
+            }
+
+            event.preventDefault();
+            setOpen(true);
+        });
         document.addEventListener("keydown", function (event) {
             if (event.key === "Escape" && state.isOpen) {
                 setOpen(false);
@@ -350,6 +362,20 @@
     }
 
     function setOpen(nextOpen) {
+        if (nextOpen && state.isOpen) {
+            requestAnimationFrame(function () {
+                if (state.leadOpen) {
+                    var firstLeadField = dom.body.querySelector(".chat-widget__lead-input");
+                    if (firstLeadField) {
+                        firstLeadField.focus();
+                        return;
+                    }
+                }
+                dom.input.focus();
+            });
+            return;
+        }
+
         state.isOpen = Boolean(nextOpen);
         syncOpenState();
         if (state.isOpen) {
