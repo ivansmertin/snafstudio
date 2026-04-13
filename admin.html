@@ -64,6 +64,10 @@
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,7 12,13 2,7"/></svg>
                         Почта
                     </button>
+                    <button class="sidebar-link" data-section="inbox">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8"/><path d="M8 14h5"/></svg>
+                        Заявки
+                    </button>
                 </div>
 
                 <div class="sidebar-section">
@@ -95,6 +99,10 @@
                     <button class="sidebar-link" data-section="faq">
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                         FAQ
+                    </button>
+                    <button class="sidebar-link" data-section="chatBot">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M12 4h9"/><path d="M4 9h16"/><path d="M4 15h10"/><path d="M4 4h.01"/><path d="M4 20h.01"/></svg>
+                        Чат-бот
                     </button>
                     <button class="sidebar-link" data-section="cta">
                         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -180,6 +188,38 @@
                             <li>Если письма не видно, сначала проверьте <strong>Спам / Junk</strong>.</li>
                             <li>Если всё ещё пусто, откройте вкладку <strong>Logs</strong> в ImprovMX и посмотрите, дошло ли письмо до сервиса и как оно было обработано.</li>
                         </ol>
+                    </div>
+                </div>
+
+                <!-- Inbox Section -->
+                <div class="section-editor" data-editor="inbox">
+                    <h2 class="editor-title">Заявки</h2>
+                    <div class="editor-card">
+                        <p class="mail-note">Сюда попадают обращения из чат-виджета. Для работы раздела нужен backend на VDS и заполненный <code>chat.apiBaseUrl</code> в <code>js/site-config.js</code>.</p>
+
+                        <div class="inbox-toolbar">
+                            <div class="inbox-status" id="inbox-status">Подключение к backend не настроено</div>
+                            <div class="inbox-toolbar-actions">
+                                <button class="admin-btn admin-btn--outline admin-btn--sm" id="inbox-refresh-btn" type="button">Обновить</button>
+                            </div>
+                        </div>
+
+                        <div class="inbox-filters" id="inbox-filters">
+                            <button class="inbox-filter is-active" data-inbox-filter="new" type="button">Новые</button>
+                            <button class="inbox-filter" data-inbox-filter="in_progress" type="button">В работе</button>
+                            <button class="inbox-filter" data-inbox-filter="closed" type="button">Закрытые</button>
+                            <button class="inbox-filter" data-inbox-filter="spam" type="button">Спам</button>
+                            <button class="inbox-filter" data-inbox-filter="all" type="button">Все</button>
+                        </div>
+
+                        <div class="inbox-layout">
+                            <div class="inbox-list" id="inbox-list">
+                                <div class="inbox-empty">Здесь появятся заявки после подключения backend и первых обращений из чата.</div>
+                            </div>
+                            <div class="inbox-detail" id="inbox-detail">
+                                <div class="inbox-empty">Выберите заявку слева, чтобы посмотреть вопрос, контакт и историю переписки.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -309,6 +349,42 @@
                     <div class="editor-card">
                         <h4>Вопросы</h4>
                         <div id="faq-list" class="list-editor-container"></div>
+                    </div>
+                </div>
+
+                <!-- Chat Bot Section -->
+                <div class="section-editor" data-editor="chatBot">
+                    <h2 class="editor-title">Чат-бот</h2>
+                    <div class="editor-card">
+                        <p class="mail-note">Тексты ниже управляют самим виджетом. Смысловые ответы бот по-прежнему берёт из FAQ, цен и описания услуг в основном контенте сайта.</p>
+                        <div class="form-group">
+                            <label>Текст на кнопке запуска</label>
+                            <input class="form-input" data-field="chatBot.launcherLabel">
+                        </div>
+                        <div class="form-group">
+                            <label>Приветствие</label>
+                            <textarea class="form-input" data-field="chatBot.greeting" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Вступительный текст</label>
+                            <textarea class="form-input" data-field="chatBot.intro" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Текст перед сбором заявки</label>
+                            <textarea class="form-input" data-field="chatBot.capturePrompt" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Сообщение после успешной отправки</label>
+                            <textarea class="form-input" data-field="chatBot.successMessage" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Fallback-сообщение при недоступном backend</label>
+                            <textarea class="form-input" data-field="chatBot.fallbackMessage" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="editor-card">
+                        <h4>Быстрые ответы</h4>
+                        <div id="chatbot-quick-replies-list" class="list-editor-container"></div>
                     </div>
                 </div>
 

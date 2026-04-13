@@ -127,9 +127,9 @@
 
                     <div class="legal-meta" aria-label="Сведения об исполнителе">
                         <p><strong>Исполнитель:</strong> Иван Смертин, самозанятый</p>
-                        <p><strong>Контактная эл. почта:</strong> smertin.lingv@gmail.com</p>
-                        <p><strong>Телефон:</strong> +7 996 568 20 47</p>
-                        <p><strong>Дата обновления:</strong> 12 апреля 2026</p>
+                        <p><strong>Контактная эл. почта:</strong> <a href="mailto:mail@snafstudio.ru" class="legal-link" data-content="contact.email" data-href="contact.email" data-href-prefix="mailto:">mail@snafstudio.ru</a></p>
+                        <p><strong>Телефон:</strong> <a href="tel:+79965682047" class="legal-link" data-content="contact.phone" data-href="contact.phoneHref">+7 996 568 20 47</a></p>
+                        <p><strong>Дата обновления:</strong> 13 апреля 2026</p>
                     </div>
 
                     <div class="legal-content">
@@ -149,8 +149,8 @@
                             <h2>2. Исполнитель</h2>
                             <ul>
                                 <li>Исполнитель: Иван Смертин, самозанятый.</li>
-                                <li>Эл. почта: smertin.lingv@gmail.com.</li>
-                                <li>Телефон: +7 996 568 20 47.</li>
+                                <li>Эл. почта: <a href="mailto:mail@snafstudio.ru" class="legal-link" data-content="contact.email" data-href="contact.email" data-href-prefix="mailto:">mail@snafstudio.ru</a>.</li>
+                                <li>Телефон: <a href="tel:+79965682047" class="legal-link" data-content="contact.phone" data-href="contact.phoneHref">+7 996 568 20 47</a>.</li>
                                 <li>Дополнительные реквизиты и платёжные документы предоставляются заказчику по запросу или в счёте на оплату.</li>
                             </ul>
                         </section>
@@ -271,8 +271,8 @@
                         <img src="images/logo.svg" alt="Логотип СНАФ СТУДИЯ" width="240" height="40">
                     </a>
 
-                    <a href="mailto:smertin.lingv@gmail.com" class="footer-link footer-contact">
-                        smertin.lingv@gmail.com
+                    <a href="mailto:mail@snafstudio.ru" class="footer-link footer-contact" data-content="contact.email" data-href="contact.email" data-href-prefix="mailto:">
+                        mail@snafstudio.ru
                     </a>
 
                     <div class="footer-legal-links">
@@ -282,14 +282,14 @@
                 </div>
 
                 <div class="footer-column footer-column--contacts">
-                    <a href="tel:+79965682047" class="footer-link footer-phone">+7 996 568 20 47</a>
+                    <a href="tel:+79965682047" class="footer-link footer-phone" data-content="contact.phone" data-href="contact.phoneHref">+7 996 568 20 47</a>
                     <p class="footer-note">Связаться по поводу проекта</p>
                     <p class="footer-note footer-note--muted">Самозанятый / работа по договоренности</p>
                 </div>
 
                 <div class="footer-column footer-column--social">
                     <div class="footer-socials">
-                        <a href="https://vk.com/smrtnnn" class="footer-social social-icon--vk" aria-label="ВКонтакте" target="_blank" rel="noopener noreferrer">
+                        <a href="https://vk.com/smrtnnn" class="footer-social social-icon--vk" aria-label="ВКонтакте" target="_blank" rel="noopener noreferrer" data-href="contact.vk">
                             <span aria-hidden="true">VK</span>
                         </a>
 
@@ -299,6 +299,7 @@
                             aria-label="Телеграм"
                             target="_blank"
                             rel="noopener noreferrer"
+                            data-href="contact.telegram"
                         >
                             <svg viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M21 4L10.5 14.5"></path>
@@ -331,6 +332,8 @@
 
     <!-- Яндекс.Метрика / GA4: вставить код счётчика после получения ID -->
     <script src="js/site-config.js" defer></script>
+    <script src="js/content-loader.js" defer></script>
+    <script src="js/chat-widget.js" defer></script>
     <script src="js/main.js" defer></script>
 </body>
 </html>

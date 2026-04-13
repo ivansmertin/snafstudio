@@ -11,5 +11,10 @@ window.SNAF_CONFIG = {
         repoOwner: "",
         repoName: "",
         contentPath: "data/content.json"
+    },
+    chat: {
+        enabled: true,
+        // Укажите URL backend-сервиса на вашей VDS, например: https://api.snafstudio.ru
+        apiBaseUrl: ""
     }
 };

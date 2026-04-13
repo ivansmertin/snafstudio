@@ -159,6 +159,7 @@
     }
 
     function applyContent(data) {
+        window.SNAF_CONTENT = data;
         applySimpleFields(data);
         applyHrefFields(data);
         buildHeroPoints(data);
@@ -167,6 +168,9 @@
         buildPricingCards(data);
         buildFaqItems(data);
         buildTechBadges(data);
+        document.dispatchEvent(new CustomEvent("snaf:content-loaded", {
+            detail: data
+        }));
     }
 
     function loadContent() {
