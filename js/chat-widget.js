@@ -519,7 +519,7 @@
             })
             .finally(function () {
                 state.loading = false;
-                renderComposer();
+                render();
                 var input = composerEl && composerEl.querySelector("#chat-widget-input");
                 if (input) {
                     input.value = "";
