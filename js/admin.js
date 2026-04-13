@@ -7,6 +7,7 @@
 
     var GITHUB_API_BASE = "https://api.github.com";
     var PREVIEW_KEY = "snaf-admin-preview";
+    var BACKEND_REQUEST_TIMEOUT = 10000;
     var CHAT_DEFAULTS = {
         launcherLabel: "Задать вопрос",
         greeting: "Привет! Я помогу быстро сориентироваться по услугам СНАФ СТУДИИ.",
@@ -891,11 +892,21 @@
         }
 
         var requestOptions = options || {};
+        var controller = "AbortController" in window ? new AbortController() : null;
+        var timer = null;
+
+        if (controller) {
+            timer = window.setTimeout(function () {
+                controller.abort();
+            }, BACKEND_REQUEST_TIMEOUT);
+        }
+
         return fetch(buildBackendUrl(path), {
             method: requestOptions.method || "GET",
             headers: Object.assign({}, requestOptions.headers || {}),
             body: requestOptions.body,
-            credentials: "include"
+            credentials: "include",
+            signal: controller ? controller.signal : undefined
         })
             .then(function (response) {
                 if (!response.ok) {
@@ -906,6 +917,15 @@
                     });
                 }
                 return response.json();
+            })
+            .catch(function (error) {
+                if (error && error.name === "AbortError") {
+                    throw new Error("Backend отвечает слишком долго");
+                }
+                throw error;
+            })
+            .finally(function () {
+                if (timer) window.clearTimeout(timer);
             });
     }
 

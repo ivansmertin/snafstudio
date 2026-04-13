@@ -6,6 +6,7 @@
     var isEnabled = chatConfig.enabled !== false;
     var apiBaseUrl = trimTrailingSlash(chatConfig.apiBaseUrl || "");
     var contentPath = "data/content.json";
+    var CHAT_REQUEST_TIMEOUT = 12000;
     var widget = null;
     var launcher = null;
     var panel = null;
@@ -17,6 +18,7 @@
         isOpen: false,
         loading: false,
         sessionId: null,
+        sessionPromise: null,
         messages: [],
         suggestions: [],
         hasInteraction: false,
@@ -58,6 +60,7 @@
         loadSiteContent();
         syncCookieOffset();
         render();
+        primeSessionOnIdle();
     }
 
     function createWidget() {
@@ -186,7 +189,33 @@
         widget.classList.add("is-open");
         launcher.setAttribute("aria-expanded", "true");
         render();
+        primeSession();
         focusPrimaryControl();
+    }
+
+    function primeSessionOnIdle() {
+        if (!state.apiConfigured) return;
+
+        if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(function () {
+                primeSession();
+            }, { timeout: 2000 });
+            return;
+        }
+
+        window.setTimeout(function () {
+            primeSession();
+        }, 1200);
+    }
+
+    function primeSession() {
+        if (!state.apiConfigured || state.sessionId || state.sessionPromise) {
+            return;
+        }
+
+        createSession().catch(function () {
+            return null;
+        });
     }
 
     function closeWidget() {
@@ -449,7 +478,7 @@
 
         createSession()
             .then(function () {
-                return fetch(buildApiUrl("/api/chat/message"), {
+                return apiRequest("/api/chat/message", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -458,17 +487,7 @@
                         sourcePage: window.location.pathname + window.location.search,
                         referrer: document.referrer || ""
                     })
-                });
-            })
-            .then(function (response) {
-                if (!response.ok) {
-                    return response.json().then(function (payload) {
-                        throw new Error(payload && payload.error ? payload.error : "Request failed");
-                    }).catch(function () {
-                        throw new Error("Request failed");
-                    });
-                }
-                return response.json();
+                }, CHAT_REQUEST_TIMEOUT);
             })
             .then(function (payload) {
                 addMessage("bot", payload.reply || "Спасибо! Я передам вопрос дальше.");
@@ -479,8 +498,8 @@
                     render();
                 }
             })
-            .catch(function () {
-                showFallbackMessage();
+            .catch(function (error) {
+                showFallbackMessage(error && error.message);
             })
             .finally(function () {
                 state.loading = false;
@@ -497,7 +516,11 @@
             return Promise.resolve(state.sessionId);
         }
 
-        return fetch(buildApiUrl("/api/chat/session"), {
+        if (state.sessionPromise) {
+            return state.sessionPromise;
+        }
+
+        state.sessionPromise = apiRequest("/api/chat/session", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -505,15 +528,16 @@
                 referrer: document.referrer || "",
                 userAgent: navigator.userAgent
             })
-        })
-            .then(function (response) {
-                if (!response.ok) throw new Error("Failed to create session");
-                return response.json();
-            })
+        }, 8000)
             .then(function (payload) {
                 state.sessionId = payload.sessionId;
                 return state.sessionId;
+            })
+            .finally(function () {
+                state.sessionPromise = null;
             });
+
+        return state.sessionPromise;
     }
 
     function openLeadMode() {
@@ -555,7 +579,7 @@
 
         createSession()
             .then(function () {
-                return fetch(buildApiUrl("/api/chat/lead"), {
+                return apiRequest("/api/chat/lead", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -568,17 +592,7 @@
                         sourcePage: window.location.pathname + window.location.search,
                         referrer: document.referrer || ""
                     })
-                });
-            })
-            .then(function (response) {
-                if (!response.ok) {
-                    return response.json().then(function (payload) {
-                        throw new Error(payload && payload.error ? payload.error : "Lead submit failed");
-                    }).catch(function () {
-                        throw new Error("Lead submit failed");
-                    });
-                }
-                return response.json();
+                }, CHAT_REQUEST_TIMEOUT);
             })
             .then(function () {
                 state.leadMode = false;
@@ -594,8 +608,10 @@
                 };
                 render();
             })
-            .catch(function () {
-                state.leadError = "Не удалось отправить заявку. Попробуйте ещё раз или напишите в Telegram.";
+            .catch(function (error) {
+                state.leadError = error && error.message
+                    ? error.message
+                    : "Не удалось отправить заявку. Попробуйте ещё раз или напишите в Telegram.";
                 render();
             })
             .finally(function () {
@@ -612,10 +628,52 @@
         return "";
     }
 
-    function showFallbackMessage() {
-        addMessage("bot", state.content.chatBot.fallbackMessage);
+    function showFallbackMessage(reason) {
+        var text = state.content.chatBot.fallbackMessage;
+        if (reason && reason.indexOf("время ожидания") !== -1) {
+            text = "Backend отвечает слишком долго. Попробуйте ещё раз через пару секунд или напишите в Telegram.";
+        }
+        addMessage("bot", text);
         state.suggestions = [];
         render();
+    }
+
+    function apiRequest(path, options, timeoutMs) {
+        var controller = "AbortController" in window ? new AbortController() : null;
+        var timer = null;
+        var requestOptions = options || {};
+
+        if (controller && timeoutMs) {
+            timer = window.setTimeout(function () {
+                controller.abort();
+            }, timeoutMs);
+        }
+
+        return fetch(buildApiUrl(path), {
+            method: requestOptions.method || "GET",
+            headers: requestOptions.headers || {},
+            body: requestOptions.body,
+            signal: controller ? controller.signal : undefined
+        })
+            .then(function (response) {
+                if (!response.ok) {
+                    return response.json().then(function (payload) {
+                        throw new Error(payload && payload.error ? payload.error : "Request failed");
+                    }).catch(function () {
+                        throw new Error("Request failed");
+                    });
+                }
+                return response.json();
+            })
+            .catch(function (error) {
+                if (error && error.name === "AbortError") {
+                    throw new Error("Превышено время ожидания ответа backend");
+                }
+                throw error;
+            })
+            .finally(function () {
+                if (timer) window.clearTimeout(timer);
+            });
     }
 
     function addMessage(role, text) {
