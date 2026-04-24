@@ -11,7 +11,7 @@
     function isPreviewMode() {
         try {
             return new URL(window.location.href).searchParams.get("preview") === "1";
-        } catch (error) {
+        } catch {
             return false;
         }
     }
@@ -78,9 +78,12 @@
         var container = document.querySelector("[data-content-list='benefits']");
         if (!container || !data.benefits || !data.benefits.items) return;
         container.innerHTML = "";
-        data.benefits.items.forEach(function (item) {
+        data.benefits.items.forEach(function (item, index) {
             var article = document.createElement("article");
             article.className = "carousel-card surface-glow";
+            article.setAttribute("role", "group");
+            article.setAttribute("aria-roledescription", "slide");
+            article.setAttribute("aria-label", (index + 1) + " из " + data.benefits.items.length);
             article.innerHTML =
                 '<h3 class="card-title">' + escapeHtml(item.title) + "</h3>" +
                 '<p class="card-text">' + escapeHtml(item.text) + "</p>";
@@ -171,6 +174,87 @@
         });
     }
 
+    function buildBusinessSchema(data) {
+        var pricing = (data.pricing && data.pricing.plans) || [];
+        var contact = data.contact || {};
+
+        return {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "@id": "https://snafstudio.ru/#organization",
+            name: "СНАФ СТУДИЯ",
+            url: "https://snafstudio.ru/",
+            logo: "https://snafstudio.ru/images/logo.svg",
+            image: "https://snafstudio.ru/images/og-cover.png?v=2",
+            description: data.hero && data.hero.subtitle
+                ? data.hero.subtitle
+                : "Дизайн и создание современных лендингов и сайтов.",
+            priceRange: "от 2 000 ₽",
+            email: contact.email ? "mailto:" + contact.email : "mailto:mail@snafstudio.ru",
+            currenciesAccepted: "RUB",
+            areaServed: {
+                "@type": "Country",
+                name: "Россия"
+            },
+            founder: {
+                "@type": "Person",
+                name: data.about && data.about.name ? data.about.name : "Иван Смертин"
+            },
+            sameAs: [contact.telegram, contact.vk].filter(Boolean),
+            hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Услуги SNAF STUDIO",
+                itemListElement: pricing.map(function (plan) {
+                    var numericPrice = String(plan.price || "").replace(/[^\d]/g, "") || "2000";
+                    return {
+                        "@type": "Offer",
+                        name: plan.name,
+                        priceCurrency: "RUB",
+                        price: numericPrice,
+                        priceSpecification: {
+                            "@type": "PriceSpecification",
+                            priceCurrency: "RUB",
+                            minPrice: numericPrice,
+                            price: numericPrice
+                        },
+                        description: (plan.features || []).join(", ")
+                    };
+                })
+            }
+        };
+    }
+
+    function buildFaqSchema(data) {
+        var items = (data.faq && data.faq.items) || [];
+        return {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: items.map(function (item) {
+                return {
+                    "@type": "Question",
+                    name: item.question,
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: item.answer
+                    }
+                };
+            })
+        };
+    }
+
+    function updateStructuredData(data) {
+        var businessSchema = document.getElementById("business-schema");
+        var faqSchema = document.getElementById("faq-schema");
+
+        if (businessSchema) {
+            businessSchema.textContent = JSON.stringify(buildBusinessSchema(data), null, 4);
+        }
+
+        if (faqSchema) {
+            faqSchema.textContent = JSON.stringify(buildFaqSchema(data), null, 4);
+        }
+    }
+
     function escapeHtml(str) {
         if (!str) return "";
         var div = document.createElement("div");
@@ -188,6 +272,7 @@
         buildPricingCards(data);
         buildFaqItems(data);
         buildTechBadges(data);
+        updateStructuredData(data);
         document.dispatchEvent(new CustomEvent("snaf:content-loaded", {
             detail: data
         }));
@@ -210,7 +295,7 @@
                     applyContent(previewData);
                     return;
                 }
-            } catch (e) {
+            } catch {
                 // Ignore parse errors
             }
         }

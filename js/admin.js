@@ -470,7 +470,7 @@
         if (!state.content) return;
         try {
             localStorage.setItem(PREVIEW_KEY, JSON.stringify(collectContent()));
-        } catch (error) {
+        } catch {
             showToast("Не удалось сохранить превью", "error");
             return;
         }
@@ -1286,7 +1286,7 @@
     function getLeadIdFromUrl() {
         try {
             return new URL(window.location.href).searchParams.get("lead") || "";
-        } catch (error) {
+        } catch {
             return "";
         }
     }
@@ -1383,7 +1383,7 @@
                 dateStyle: "medium",
                 timeStyle: "short"
             }).format(new Date(dateString));
-        } catch (error) {
+        } catch {
             return dateString;
         }
     }

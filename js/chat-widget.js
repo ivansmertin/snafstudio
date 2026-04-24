@@ -425,7 +425,7 @@
             });
             var reply = safeText(response && response.reply) || state.content.fallbackMessage;
             state.messages.push({ role: "bot", text: reply });
-        } catch (error) {
+        } catch {
             state.messages.push({ role: "bot", text: state.content.fallbackMessage });
         } finally {
             state.isPending = false;
@@ -618,7 +618,7 @@
             state.leadOpen = false;
             state.leadError = "";
             render();
-        } catch (errorCaught) {
+        } catch {
             state.leadError = state.content.fallbackMessage;
             renderMessages();
         } finally {
@@ -755,7 +755,7 @@
     function readStoredSessionId() {
         try {
             return safeText(sessionStorage.getItem(SESSION_STORAGE_KEY));
-        } catch (error) {
+        } catch {
             return "";
         }
     }

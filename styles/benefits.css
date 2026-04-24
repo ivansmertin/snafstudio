@@ -60,6 +60,14 @@
     outline-offset: 2px;
 }
 
+.slider-btn:disabled,
+.slider-btn[aria-disabled="true"] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 .slider-btn:active {
     transform: translateY(0);
 }
@@ -77,10 +85,17 @@
     display: flex;
     gap: 20px;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     padding-bottom: 18px;
     background: transparent;
+}
+
+.carousel-track:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: var(--radius-lg);
 }
 
 .carousel-track::-webkit-scrollbar {

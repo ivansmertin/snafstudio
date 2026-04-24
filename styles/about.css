@@ -19,6 +19,10 @@
     box-shadow: var(--shadow-soft);
 }
 
+.author-photo-picture {
+    display: block;
+}
+
 .author-photo {
     display: block;
     width: 100%;

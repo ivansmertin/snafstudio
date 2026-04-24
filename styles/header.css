@@ -192,6 +192,11 @@
     outline-offset: 2px;
 }
 
+.mobile-phone:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 @media (hover: hover) and (pointer: fine) {
     .phone:hover {
         transform: translateY(-1px);
