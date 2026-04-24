@@ -8,6 +8,7 @@
         name="description"
         content="Политика конфиденциальности СНАФ СТУДИЯ: порядок обработки персональных данных, файлов cookie и обращений пользователей."
     >
+    <meta name="color-scheme" content="light dark">
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="СНАФ СТУДИЯ" />
     <meta property="og:title" content="Политика конфиденциальности — СНАФ СТУДИЯ" />
@@ -25,15 +26,16 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#0ea5e9">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/legal.css">
+    <meta name="theme-color" content="#0ea5e9" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#081120" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="styles/legal-page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    </noscript>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
@@ -335,9 +337,6 @@
     </div>
 
     <!-- Яндекс.Метрика / GA4: вставить код счётчика после получения ID -->
-    <script src="js/site-config.js" defer></script>
-    <script src="js/content-loader.js" defer></script>
-    <script src="js/chat-widget.js" defer></script>
-    <script src="js/main.js" defer></script>
+    <script type="module" src="js/site-entry.js"></script>
 </body>
 </html>

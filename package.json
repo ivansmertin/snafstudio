@@ -1,0 +1,29 @@
+{
+  "name": "snafstudio-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static SNAF STUDIO landing page with Vite build and quality checks.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "images": "node scripts/convert-images.mjs",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint \"js/**/*.js\" \"scripts/**/*.mjs\" \"*.mjs\"",
+    "lint:css": "stylelint \"styles/**/*.css\"",
+    "format": "prettier --write \"*.{html,json,md}\" \"*.mjs\" \"js/**/*.js\" \"styles/**/*.css\"",
+    "format:check": "prettier --check \"*.{html,json,md}\" \"*.mjs\" \"js/**/*.js\" \"styles/**/*.css\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "eslint": "^10.2.1",
+    "prettier": "^3.8.3",
+    "sharp": "^0.34.5",
+    "stylelint": "^17.9.0",
+    "stylelint-config-standard": "^40.0.0",
+    "vite": "^8.0.10"
+  }
+}

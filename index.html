@@ -8,6 +8,7 @@
         name="description"
         content="СНАФ СТУДИЯ — дизайн и создание современных лендингов и сайтов: структура, визуальная подача, адаптивная вёрстка и помощь с запуском."
     >
+    <meta name="color-scheme" content="light dark">
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="СНАФ СТУДИЯ" />
     <meta property="og:title" content="СНАФ СТУДИЯ — дизайн и создание сайтов" />
@@ -25,21 +26,32 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#0ea5e9">
+    <meta name="theme-color" content="#0ea5e9" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#081120" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap">
+    <link rel="preload" as="image" href="images/logo.svg" type="image/svg+xml" fetchpriority="high">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap"
         rel="stylesheet"
+        media="print"
+        onload="this.media='all'"
     >
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap"
+            rel="stylesheet"
+        >
+    </noscript>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
     <header class="header" id="top">
         <div class="container header-inner">
             <a href="#top" class="logo" aria-label="На главную">
-                <img src="images/logo.svg" alt="Логотип СНАФ СТУДИЯ" width="240" height="40">
+                <img src="images/logo.svg" alt="Логотип СНАФ СТУДИЯ" width="240" height="40" decoding="async" fetchpriority="high">
             </a>
 
             <button
@@ -48,13 +60,14 @@
                 aria-label="Открыть меню"
                 aria-expanded="false"
                 aria-controls="site-menu"
+                aria-haspopup="dialog"
             >
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <div class="main-nav-wrap" id="site-menu">
+            <div class="main-nav-wrap" id="site-menu" aria-hidden="false">
                 <nav class="main-nav" aria-label="Основная навигация">
                     <a href="#services" class="nav-link">Услуги</a>
                     <a href="#about" class="nav-link">Обо мне</a>
@@ -115,7 +128,7 @@
     </header>
     <div class="menu-overlay" aria-hidden="true"></div>
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
         <section class="hero-section" id="services" aria-labelledby="hero-title">
             <div class="container">
                 <div class="hero-card surface-glow">
@@ -196,15 +209,20 @@
 
                 <div class="author-wrapper reveal-stagger">
                     <article class="author-main-card surface-glow">
-                        <img
-                            src="images/ivan.png"
-                            alt="Портрет Ивана Смертина"
-                            class="author-photo"
-                            width="742"
-                            height="945"
-                            loading="eager"
-                            decoding="async"
-                        >
+                        <picture class="author-photo-picture">
+                            <source srcset="images/ivan.avif" type="image/avif">
+                            <source srcset="images/ivan.webp" type="image/webp">
+                            <img
+                                src="images/ivan.png"
+                                alt="Портрет Ивана Смертина"
+                                class="author-photo"
+                                width="742"
+                                height="945"
+                                loading="lazy"
+                                decoding="async"
+                                fetchpriority="low"
+                            >
+                        </picture>
                         <div class="author-info">
                             <h3 class="author-name" data-content="about.name">Иван Смертин</h3>
                             <p class="author-regalia" data-content="about.description">
@@ -274,13 +292,13 @@
                     </div>
 
                     <div class="slider-controls" aria-label="Управление каруселью">
-                        <button class="slider-btn prev-btn" type="button" aria-label="Прокрутить карточки назад">
+                        <button class="slider-btn prev-btn" type="button" aria-label="Прокрутить карточки назад" aria-controls="benefitsCarousel">
                             <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M15 18l-6-6 6-6"></path>
                             </svg>
                         </button>
 
-                        <button class="slider-btn next-btn" type="button" aria-label="Прокрутить карточки вперед">
+                        <button class="slider-btn next-btn" type="button" aria-label="Прокрутить карточки вперед" aria-controls="benefitsCarousel">
                             <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M9 18l6-6-6-6"></path>
                             </svg>
@@ -288,7 +306,9 @@
                     </div>
                 </div>
 
-                <div class="carousel-track reveal-stagger" id="benefitsCarousel" aria-label="Преимущества работы" data-content-list="benefits">
+                <p class="visually-hidden" id="benefitsCarouselStatus" aria-live="polite">Карточка 1 из 4</p>
+
+                <div class="carousel-track reveal-stagger" id="benefitsCarousel" role="region" aria-roledescription="carousel" aria-label="Преимущества работы" aria-describedby="benefitsCarouselStatus" data-content-list="benefits">
                     <article class="carousel-card surface-glow">
                         <h3 class="card-title">Продуманный визуальный образ</h3>
                         <p class="card-text">
@@ -423,7 +443,7 @@
             <div class="container">
                 <h2 class="section-title" id="faq-title">Вопросы и ответы</h2>
 
-                <div class="faq-list reveal-stagger" data-content-list="faq">
+                <div class="faq-list reveal-stagger" aria-label="Часто задаваемые вопросы" data-content-list="faq">
                     <article class="faq-item surface-glow">
                         <h3 class="faq-question-heading">
                             <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
@@ -607,10 +627,138 @@
         </div>
     </div>
 
+    <script id="business-schema" type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "@id": "https://snafstudio.ru/#organization",
+            "name": "СНАФ СТУДИЯ",
+            "url": "https://snafstudio.ru/",
+            "logo": "https://snafstudio.ru/images/logo.svg",
+            "image": "https://snafstudio.ru/images/og-cover.png?v=2",
+            "description": "СНАФ СТУДИЯ — дизайн и создание современных лендингов и сайтов: структура, визуальная подача, адаптивная вёрстка и помощь с запуском.",
+            "priceRange": "от 2 000 ₽",
+            "email": "mailto:mail@snafstudio.ru",
+            "currenciesAccepted": "RUB",
+            "areaServed": {
+                "@type": "Country",
+                "name": "Россия"
+            },
+            "founder": {
+                "@type": "Person",
+                "name": "Иван Смертин"
+            },
+            "sameAs": [
+                "https://t.me/smrtnivn",
+                "https://vk.com/smrtnnn"
+            ],
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Услуги SNAF STUDIO",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "name": "Лендинг",
+                        "priceCurrency": "RUB",
+                        "price": "10000",
+                        "priceSpecification": {
+                            "@type": "PriceSpecification",
+                            "priceCurrency": "RUB",
+                            "minPrice": "10000",
+                            "price": "10000"
+                        },
+                        "description": "Дизайн и вёрстка адаптивного лендинга с запуском проекта."
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Корпоративный сайт",
+                        "priceCurrency": "RUB",
+                        "price": "20000",
+                        "priceSpecification": {
+                            "@type": "PriceSpecification",
+                            "priceCurrency": "RUB",
+                            "minPrice": "20000",
+                            "price": "20000"
+                        },
+                        "description": "Многостраничный сайт с дизайном, вёрсткой и подключением аналитики."
+                    },
+                    {
+                        "@type": "Offer",
+                        "name": "Доработка сайта",
+                        "priceCurrency": "RUB",
+                        "price": "2000",
+                        "priceSpecification": {
+                            "@type": "PriceSpecification",
+                            "priceCurrency": "RUB",
+                            "minPrice": "2000",
+                            "price": "2000",
+                            "unitText": "блок"
+                        },
+                        "description": "Доработка существующего сайта, новые блоки, правки дизайна и адаптивности."
+                    }
+                ]
+            }
+        }
+    </script>
+
+    <script id="faq-schema" type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "С чем вы можете помочь?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Я могу сделать лендинг, небольшой сайт, промо-страницу или аккуратно переработать уже существующий сайт. Обычно помогаю с визуальной подачей, структурой блоков, версткой и подготовкой проекта к запуску."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Вы делаете только дизайн или еще и верстку?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "И дизайн, и верстку. Могу подключиться только на этапе визуальной концепции, но чаще беру проект целиком: от структуры и внешнего вида до готовой адаптивной страницы."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Сколько по времени занимает проект?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Зависит от объема. Небольшой лендинг можно собрать сравнительно быстро, а более детальная работа со структурой, текстами и дополнительными блоками требует больше времени."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Что нужно от меня для начала работы?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Достаточно коротко описать задачу: чем вы занимаетесь, какой сайт нужен, есть ли примеры или референсы. Я помогу собрать это в понятную основу."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Можно ли доработать уже существующий сайт?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Да. Необязательно делать все с нуля. Если у вас уже есть страница или набросок, я могу помочь привести это в более аккуратный вид."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Поможете с запуском сайта?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Да, при необходимости могу помочь с финальной сборкой, публикацией, подключением домена и форм."
+                    }
+                }
+            ]
+        }
+    </script>
+
     <!-- Яндекс.Метрика / GA4: вставить код счётчика после получения ID -->
-    <script src="js/site-config.js" defer></script>
-    <script src="js/content-loader.js" defer></script>
-    <script src="js/chat-widget.js" defer></script>
-    <script src="js/main.js" defer></script>
+    <script type="module" src="js/site-entry.js"></script>
 </body>
 </html>

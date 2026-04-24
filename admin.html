@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Админ-панель — СНАФ СТУДИЯ</title>
+    <meta name="color-scheme" content="light dark">
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="theme-color" content="#0ea5e9" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#081120" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="styles/admin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    </noscript>
 </head>
 <body>
     <header class="admin-header">
@@ -535,7 +542,6 @@
     <!-- Toast -->
     <div id="admin-toast" class="admin-toast"></div>
 
-    <script src="js/site-config.js" defer></script>
-    <script src="js/admin.js" defer></script>
+    <script type="module" src="js/admin-entry.js"></script>
 </body>
 </html>
