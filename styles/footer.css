@@ -3,15 +3,15 @@
 --------------------------------- */
 
 .site-footer {
-    padding: var(--section-space-compact) 0 var(--section-space);
+    padding: var(--section-space-compact) 0 calc(var(--section-space) + 12px);
 }
 
 .footer-card {
     display: grid;
-    grid-template-columns: minmax(260px, 1.15fr) minmax(230px, 0.95fr) minmax(180px, 0.72fr);
-    gap: clamp(24px, 3vw, 40px);
+    grid-template-columns: minmax(260px, 1.04fr) minmax(220px, 0.9fr) minmax(200px, 0.8fr);
+    gap: var(--layout-gap-wide);
     align-items: start;
-    padding: clamp(32px, 4vw, 48px);
+    padding: var(--card-padding-lg);
     border: 1px solid var(--neutral-overlay-12);
     border-radius: var(--radius-xl);
     background:
@@ -31,7 +31,7 @@
 .footer-column {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: 14px;
     min-width: 0;
 }
 
@@ -79,6 +79,7 @@
     font-size: 17px;
     font-weight: 600;
     overflow-wrap: anywhere;
+    max-width: 16ch;
 }
 
 .footer-legal-links {
@@ -114,7 +115,7 @@
 .footer-note {
     margin: 0;
     font-size: 15px;
-    line-height: 1.65;
+    line-height: 1.6;
     color: var(--text-inverse-soft);
 }
 

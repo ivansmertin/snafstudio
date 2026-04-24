@@ -6,7 +6,7 @@
     position: sticky;
     top: 0;
     z-index: 120;
-    padding: 16px 0 10px;
+    padding: 12px 0 8px;
     background: transparent;
     backdrop-filter: none;
     border-bottom: none;
@@ -17,10 +17,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-5);
+    gap: clamp(14px, 2vw, 24px);
     background:
         linear-gradient(180deg, var(--surface-overlay-96) 0%, var(--surface-overlay-90) 100%);
-    padding: 12px 18px;
+    padding: 10px 16px;
     border-radius: var(--radius-header);
     border: 1px solid var(--border);
     box-shadow:
@@ -45,7 +45,7 @@
 }
 
 .logo img {
-    width: 144px;
+    width: 140px;
     height: auto;
 }
 
@@ -119,8 +119,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 5px;
+    gap: 5px;
+    padding: 4px;
     background: linear-gradient(180deg, var(--surface-nav-start) 0%, var(--surface-nav-end) 100%);
     border-radius: 20px;
     border: 1px solid var(--border);
@@ -158,8 +158,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 44px;
-    padding: 0 17px;
+    min-height: 42px;
+    padding: 0 16px;
     border-radius: 16px;
     text-decoration: none;
     font-size: 14px;
@@ -201,7 +201,7 @@
 .mobile-phone {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
+    min-height: 42px;
     text-decoration: none;
     color: var(--text-primary);
     font-weight: 700;
@@ -209,7 +209,7 @@
 }
 
 .phone {
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: -0.01em;
     transition:
         transform var(--motion-duration-base) var(--motion-ease),
@@ -243,12 +243,12 @@
 
 .social-icon,
 .footer-social {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 16px;
+    border-radius: 15px;
     background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 100%);
     border: 1px solid var(--accent-overlay-16);
     color: var(--accent);

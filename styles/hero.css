@@ -11,7 +11,7 @@
         linear-gradient(180deg, var(--surface) 0%, var(--background) 100%);
     border: 1px solid var(--border);
     border-radius: var(--radius-hero);
-    padding: clamp(32px, 4vw, 52px);
+    padding: var(--card-padding-lg);
     box-shadow: var(--shadow-main);
 }
 
@@ -42,68 +42,70 @@
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: minmax(0, 1.22fr) minmax(300px, 0.78fr);
-    gap: clamp(28px, 3vw, 40px);
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+    gap: clamp(20px, 2.6vw, 34px);
     align-items: center;
 }
 
 .hero-content {
-    max-width: 680px;
+    display: grid;
+    align-content: start;
+    max-width: min(100%, var(--hero-content-rail));
 }
 
 .hero-badge {
     display: inline-flex;
     align-items: center;
-    min-height: 40px;
-    padding: 0 18px;
+    min-height: 38px;
+    padding: 0 16px;
     border-radius: 999px;
     background: linear-gradient(180deg, var(--accent-overlay-06) 0%, var(--accent-overlay-10) 100%);
     border: 1px solid var(--accent-overlay-18);
     color: var(--accent-hover);
     font-size: var(--font-meta);
     font-weight: 700;
-    margin-bottom: var(--space-6);
-    letter-spacing: var(--tracking-meta);
+    margin-bottom: 20px;
+    letter-spacing: 0.045em;
     text-transform: uppercase;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32);
 }
 
 .hero-title {
-    margin: 0 0 var(--space-6) 0;
-    max-width: 12.6ch;
+    margin: 0 0 18px 0;
+    max-width: 11.4ch;
     font-size: var(--font-display);
     line-height: var(--lh-display);
     font-weight: 800;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.04em;
     color: var(--text-primary);
     text-wrap: auto;
 }
 
 .hero-subtitle {
-    margin: 0 0 var(--space-7) 0;
-    max-width: 58ch;
-    font-size: var(--font-body-lg);
-    line-height: var(--lh-body);
+    margin: 0 0 20px 0;
+    max-width: 44ch;
+    font-size: clamp(16px, 1.28vw, 18px);
+    line-height: 1.62;
     color: var(--text-secondary);
 }
 
 .hero-points {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: var(--space-8);
+    gap: 10px;
+    margin-bottom: 22px;
 }
 
 .hero-point {
     display: inline-flex;
     align-items: center;
-    min-height: 40px;
-    padding: 0 16px;
+    min-height: 36px;
+    padding: 0 14px;
     border-radius: 999px;
     background: linear-gradient(180deg, var(--surface-overlay-95) 0%, var(--surface-overlay-88) 100%);
     border: 1px solid var(--border-overlay-90);
     color: var(--text-secondary);
-    font-size: var(--font-meta);
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: -0.01em;
     box-shadow:
@@ -114,12 +116,19 @@
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 14px;
+}
+
+.hero-actions .btn {
+    min-height: 52px;
+    padding-inline: 26px;
 }
 
 .hero-visual {
     display: grid;
-    gap: 18px;
+    justify-self: end;
+    width: min(100%, 33rem);
+    gap: 14px;
     align-items: start;
 }
 
@@ -135,7 +144,7 @@
 }
 
 .hero-code-card {
-    padding: 24px 24px 20px;
+    padding: 20px 20px 18px;
     animation: ambient-float 10.5s ease-in-out infinite alternate;
 }
 
@@ -143,7 +152,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .code-dot {
@@ -168,12 +177,12 @@
 
 .hero-code-lines {
     display: grid;
-    gap: 14px;
+    gap: 12px;
 }
 
 .code-line {
     display: block;
-    height: 11px;
+    height: 10px;
     border-radius: 999px;
     background: var(--neutral-overlay-18);
 }
@@ -187,11 +196,15 @@
 .hero-stack {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 14px;
 }
 
 .hero-mini-card {
-    padding: 24px;
+    display: flex;
+    min-height: 184px;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
     animation: ambient-float 11.5s ease-in-out infinite alternate;
 }
 
@@ -211,7 +224,7 @@
     letter-spacing: var(--tracking-meta);
     text-transform: uppercase;
     color: var(--text-secondary-82);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .hero-mini-card--accent .hero-mini-label {
@@ -220,10 +233,10 @@
 
 .hero-mini-card strong {
     display: block;
-    font-size: clamp(20px, 2vw, 26px);
-    line-height: 1.12;
+    font-size: clamp(18px, 1.7vw, 24px);
+    line-height: 1.08;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     letter-spacing: var(--tracking-tight);
     color: inherit;
 }
@@ -234,8 +247,8 @@
 
 .hero-mini-card p {
     margin: 0;
-    font-size: 15px;
-    line-height: 1.65;
+    font-size: 14px;
+    line-height: 1.55;
     color: var(--text-secondary);
 }
 

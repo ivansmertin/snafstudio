@@ -7,23 +7,24 @@
 }
 
 .pricing-header {
-    text-align: center;
-    margin-bottom: clamp(28px, 3.6vw, 48px);
+    text-align: left;
+    max-width: min(100%, var(--section-intro-rail));
+    margin-bottom: clamp(20px, 2.8vw, 36px);
 }
 
 .pricing-header .section-title {
-    margin-bottom: var(--space-5);
+    margin-bottom: 14px;
 }
 
 .pricing-header .section-subtitle {
-    margin-inline: auto;
-    max-width: 44rem;
+    margin-inline: 0;
+    max-width: min(100%, var(--content-measure));
 }
 
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: clamp(16px, 2vw, 28px);
+    gap: var(--layout-gap);
     align-items: start;
 }
 
@@ -31,11 +32,12 @@
     background: linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
     border: 1px solid var(--border);
     border-radius: var(--radius-card);
-    padding: clamp(28px, 3vw, 40px);
+    min-height: 100%;
+    padding: var(--card-padding);
     box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 }
 
 .pricing-card--accent {
@@ -110,7 +112,7 @@
 
 .pricing-list li {
     font-size: 15px;
-    line-height: 1.7;
+    line-height: 1.6;
     color: var(--text-secondary);
     padding-left: 22px;
     position: relative;
@@ -136,7 +138,7 @@
 
 .pricing-note {
     margin: var(--space-6) 0 0 0;
-    text-align: center;
+    text-align: left;
     font-size: 15px;
     color: var(--text-secondary);
     line-height: var(--lh-body);

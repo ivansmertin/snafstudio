@@ -5,7 +5,7 @@
 .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
 }
 
 .faq-item {
@@ -41,7 +41,7 @@
     text-align: left;
     background: none;
     border: none;
-    padding: 26px 30px;
+    padding: 24px 28px;
     font-family: inherit;
     font-size: 18px;
     font-weight: 700;
@@ -113,7 +113,8 @@
 
 .faq-answer p {
     margin: 0;
-    padding: 0 30px 30px;
+    max-width: 60ch;
+    padding: 0 28px 28px;
     color: var(--text-secondary);
     line-height: var(--lh-relaxed);
 }
@@ -128,9 +129,12 @@
         linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
     border: 1px solid var(--border-overlay-94);
     border-radius: var(--radius-xl);
-    padding: clamp(32px, 4vw, 56px);
+    display: grid;
+    gap: 0;
+    justify-items: center;
+    padding: var(--card-padding-lg);
     text-align: center;
-    margin-top: clamp(40px, 4.5vw, 64px);
+    margin-top: clamp(32px, 4vw, 56px);
     box-shadow:
         var(--shadow-soft),
         inset 0 1px 0 rgba(255, 255, 255, 0.36);
@@ -138,6 +142,7 @@
 
 .cta-bottom-title {
     margin: 0 0 var(--space-4) 0;
+    max-width: min(100%, 18ch);
     font-size: clamp(30px, 3vw, 40px);
     line-height: 1.08;
     font-weight: 800;
@@ -145,16 +150,17 @@
 }
 
 .cta-bottom-text {
-    margin: 0 auto var(--space-7);
-    max-width: 34rem;
+    margin: 0 0 var(--space-6);
+    max-width: min(100%, 40rem);
     font-size: var(--font-body-lg);
     line-height: var(--lh-body);
     color: var(--text-secondary);
+    margin-inline: auto;
 }
 
 .cta-bottom-actions {
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: 14px;
     flex-wrap: wrap;
 }

@@ -102,6 +102,11 @@ section[id] {
     font-feature-settings: "liga", "kern";
 }
 
+main {
+    position: relative;
+    z-index: 1;
+}
+
 @supports (text-wrap: balance) {
     :where(
         .hero-title,

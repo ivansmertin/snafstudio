@@ -9,19 +9,23 @@
 .benefits-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: clamp(20px, 2.4vw, 32px);
-    margin-bottom: clamp(32px, 4vw, 56px);
+    align-items: flex-end;
+    gap: var(--layout-gap);
+    margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+.benefits-title-wrapper {
+    max-width: min(100%, var(--section-intro-rail));
 }
 
 .benefits-title-wrapper .section-title {
-    margin-bottom: var(--space-4);
+    margin-bottom: 14px;
 }
 
 .slider-controls {
     display: flex;
     gap: 12px;
-    padding-top: 8px;
+    padding-top: 0;
     flex-shrink: 0;
 }
 
@@ -85,12 +89,12 @@
 
 .carousel-track {
     display: flex;
-    gap: 24px;
+    gap: 20px;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    padding: 2px 2px 18px;
+    padding: 2px 2px 16px;
     background: transparent;
 }
 
@@ -107,7 +111,7 @@
 .carousel-card {
     flex: 0 0 calc(50% - 10px);
     min-height: 100%;
-    padding: clamp(28px, 3vw, 40px);
+    padding: var(--card-padding);
     border-radius: var(--radius-card);
     scroll-snap-align: start;
     border: 1px solid var(--border);
@@ -117,8 +121,8 @@
 }
 
 .card-title {
-    margin: 0 0 var(--space-4) 0;
-    font-size: var(--font-h3);
+    margin: 0 0 14px 0;
+    font-size: clamp(24px, 2vw, 30px);
     line-height: 1.16;
     font-weight: 800;
     letter-spacing: var(--tracking-tight);
@@ -130,6 +134,7 @@
     font-size: 16px;
     line-height: var(--lh-relaxed);
     color: var(--text-secondary);
+    max-width: 34ch;
 }
 
 .carousel-progress {

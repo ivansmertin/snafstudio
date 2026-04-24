@@ -2,13 +2,158 @@
    Responsive
 --------------------------------- */
 
+@media (max-height: 940px) and (min-width: 1024px) {
+    :root {
+        --section-space: clamp(56px, 5.6vw, 84px);
+        --section-space-compact: clamp(38px, 4.2vw, 60px);
+        --card-padding: clamp(22px, 2.2vw, 30px);
+        --card-padding-lg: clamp(24px, 2.5vw, 34px);
+        --font-display: clamp(40px, 3.8vw, 58px);
+        --font-body-lg: clamp(16px, 1.2vw, 18px);
+    }
+
+    .header {
+        padding: 10px 0 6px;
+    }
+
+    .header-inner {
+        padding: 9px 14px;
+    }
+
+    .logo img {
+        width: 132px;
+    }
+
+    .nav-link {
+        min-height: 40px;
+        padding: 0 14px;
+    }
+
+    .phone {
+        font-size: 13px;
+    }
+
+    .social-icon,
+    .footer-social {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+    }
+
+    .hero-section {
+        padding: 10px 0 28px;
+    }
+
+    .hero-grid {
+        grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+        gap: 18px;
+    }
+
+    .hero-title {
+        max-width: 11.8ch;
+    }
+
+    .hero-subtitle {
+        max-width: 42ch;
+    }
+
+    .hero-points {
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .hero-point {
+        min-height: 34px;
+        padding: 0 13px;
+    }
+
+    .hero-actions .btn {
+        min-height: 50px;
+        padding-inline: 22px;
+    }
+
+    .hero-code-card {
+        padding: 16px 16px 14px;
+    }
+
+    .hero-code-top {
+        margin-bottom: 14px;
+    }
+
+    .hero-code-lines {
+        gap: 10px;
+    }
+
+    .hero-mini-card {
+        min-height: 164px;
+        padding: 16px;
+    }
+
+    .hero-mini-label {
+        margin-bottom: 6px;
+        font-size: 11px;
+    }
+
+    .hero-mini-card strong {
+        margin-bottom: 6px;
+        font-size: 17px;
+    }
+
+    .hero-mini-card p {
+        font-size: 12.5px;
+        line-height: 1.45;
+    }
+
+    .cookie-banner {
+        padding: 0 12px;
+    }
+
+    .cookie-banner__inner {
+        padding: 10px 14px;
+    }
+
+    .cookie-banner__text {
+        font-size: 13px;
+    }
+
+    .chat-widget__launcher {
+        min-height: 46px;
+        padding: 10px 14px;
+    }
+}
+
+@media (max-height: 820px) and (min-width: 1180px) {
+    :root {
+        --font-display: clamp(36px, 3.3vw, 50px);
+    }
+
+    .hero-section {
+        padding: 8px 0 24px;
+    }
+
+    .hero-card {
+        padding: 22px 26px;
+    }
+
+    .hero-title {
+        max-width: 12ch;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 16px;
+    }
+}
+
 @media (max-width: 1100px) {
     .hero-grid {
         grid-template-columns: 1fr;
+        gap: 22px;
     }
 
     .hero-visual {
-        max-width: 680px;
+        width: min(100%, 720px);
+        max-width: none;
+        justify-self: start;
     }
 
     .author-wrapper {
@@ -82,137 +227,6 @@
     .social-icon {
         width: 42px;
         height: 42px;
-    }
-}
-
-@media (max-height: 900px) and (min-width: 1024px) {
-    .hero-section {
-        padding: 12px 0 40px;
-    }
-
-    .hero-card {
-        padding: 34px 36px;
-    }
-
-    .hero-grid {
-        grid-template-columns: minmax(0, 1.26fr) minmax(280px, 0.74fr);
-        gap: 20px;
-    }
-
-    .hero-badge {
-        min-height: 36px;
-        margin-bottom: 14px;
-        padding: 0 16px;
-        font-size: 12px;
-    }
-
-    .hero-title {
-        max-width: 12.8ch;
-        font-size: clamp(34px, 3.6vw, 54px);
-        margin-bottom: 14px;
-    }
-
-    .hero-subtitle {
-        max-width: 52ch;
-        margin-bottom: 16px;
-        font-size: 16px;
-        line-height: 1.6;
-    }
-
-    .hero-points {
-        gap: 8px;
-        margin-bottom: 16px;
-    }
-
-    .hero-point {
-        min-height: 34px;
-        padding: 0 13px;
-        font-size: 13px;
-    }
-
-    .hero-actions {
-        gap: 12px;
-    }
-
-    .hero-actions .btn {
-        min-height: 50px;
-        padding: 0 24px;
-    }
-
-    .hero-visual {
-        gap: 12px;
-    }
-
-    .hero-code-card,
-    .hero-mini-card {
-        border-radius: 22px;
-    }
-
-    .hero-code-card {
-        padding: 16px 16px 14px;
-    }
-
-    .hero-code-top {
-        margin-bottom: 14px;
-    }
-
-    .hero-code-lines {
-        gap: 10px;
-    }
-
-    .code-line {
-        height: 9px;
-    }
-
-    .hero-mini-card {
-        padding: 16px;
-    }
-
-    .hero-mini-label {
-        margin-bottom: 6px;
-        font-size: 11px;
-    }
-
-    .hero-mini-card strong {
-        margin-bottom: 6px;
-        font-size: 17px;
-    }
-
-    .hero-mini-card p {
-        font-size: 12.5px;
-        line-height: 1.45;
-    }
-
-    .hero-stack {
-        gap: 12px;
-    }
-}
-
-@media (max-height: 820px) and (min-width: 1180px) {
-    .hero-section {
-        padding: 10px 0 30px;
-    }
-
-    .hero-card {
-        padding: 28px 30px;
-    }
-
-    .hero-title {
-        font-size: clamp(32px, 3.25vw, 48px);
-        margin-bottom: 12px;
-    }
-
-    .hero-subtitle {
-        margin-bottom: 14px;
-        font-size: 15px;
-    }
-
-    .hero-points {
-        margin-bottom: 14px;
-    }
-
-    .hero-actions .btn {
-        min-height: 48px;
     }
 }
 
@@ -347,21 +361,21 @@
     }
 
     .hero-section {
-        padding: 16px 0 48px;
+        padding: 12px 0 40px;
     }
 
     .hero-card {
-        padding: 30px 24px;
+        padding: 28px 22px;
         border-radius: var(--radius-card);
     }
 
     .hero-title {
-        font-size: 42px;
+        font-size: 40px;
     }
 
     .hero-subtitle {
-        font-size: 17px;
-        line-height: 1.72;
+        font-size: 16px;
+        line-height: 1.66;
     }
 
     .hero-stack {
@@ -372,6 +386,11 @@
     .cta-bottom-actions {
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .cta-bottom-actions {
+        width: min(100%, 26rem);
+        margin-inline: auto;
     }
 
     .btn {
@@ -413,7 +432,7 @@
     .benefits-header {
         flex-direction: column;
         align-items: flex-start;
-        margin-bottom: 36px;
+        margin-bottom: 28px;
     }
 
     .benefits-title-wrapper .section-title {
@@ -426,21 +445,21 @@
 
     .carousel-card {
         flex: 0 0 88%;
-        padding: 30px;
+        padding: 26px;
     }
 
     .faq-question {
-        padding: 24px 24px;
+        padding: 22px;
     }
 
     .faq-answer p {
-        padding: 0 24px 26px;
+        padding: 0 22px 24px;
     }
 
     .cta-bottom {
-        padding: 40px 26px;
+        padding: 34px 24px;
         border-radius: var(--radius-lg);
-        margin-top: 48px;
+        margin-top: 40px;
     }
 
     .cta-bottom-title {
@@ -516,7 +535,7 @@
     }
 
     .hero-title {
-        font-size: 36px;
+        font-size: 35px;
     }
 
     .hero-badge,

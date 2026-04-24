@@ -9,8 +9,8 @@
 .process-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: clamp(16px, 2vw, 28px);
-    margin-top: clamp(28px, 3.4vw, 48px);
+    gap: var(--layout-gap);
+    margin-top: clamp(20px, 2.8vw, 36px);
 }
 
 .process-step {
@@ -18,7 +18,11 @@
     background: linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
     border: 1px solid var(--border);
     border-radius: var(--radius-card);
-    padding: clamp(28px, 2.8vw, 38px);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 100%;
+    padding: var(--card-padding);
     box-shadow: var(--shadow-soft);
 }
 
@@ -43,7 +47,7 @@
     font-weight: 800;
     letter-spacing: var(--tracking-meta);
     color: var(--accent);
-    margin-bottom: var(--space-6);
+    margin-bottom: 20px;
     flex-shrink: 0;
 }
 
@@ -54,7 +58,7 @@
 }
 
 .process-step-title {
-    margin: 0 0 var(--space-3) 0;
+    margin: 0 0 12px 0;
     font-size: clamp(21px, 1.8vw, 26px);
     font-weight: 800;
     letter-spacing: var(--tracking-tight);
@@ -68,7 +72,7 @@
 
 .process-step-desc {
     margin: 0;
-    font-size: 15px;
+    font-size: 14.5px;
     line-height: var(--lh-relaxed);
     color: var(--text-secondary);
 }

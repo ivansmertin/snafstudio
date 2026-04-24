@@ -6,8 +6,8 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    min-height: 56px;
-    padding: 0 28px;
+    min-height: 54px;
+    padding: 0 26px;
     border-radius: 18px;
     border: 2px solid transparent;
     text-decoration: none;
@@ -95,7 +95,7 @@
 
 @media (hover: hover) and (pointer: fine) {
     .surface-glow:hover {
-        transform: translate3d(0, -4px, 0);
+        transform: translate3d(0, -3px, 0);
         border-color: var(--accent-overlay-36);
         box-shadow:
             var(--shadow-interactive),

@@ -3,7 +3,7 @@
 --------------------------------- */
 
 .hero-section {
-    padding: var(--space-6) 0 var(--section-space-compact);
+    padding: var(--space-5) 0 var(--section-space-compact);
 }
 
 .author-section,
@@ -15,8 +15,18 @@
     padding: var(--section-space-compact) 0 var(--section-space);
 }
 
+.author-section > .container,
+.benefits-section > .container,
+.process-section > .container,
+.pricing-section > .container,
+.faq-section > .container,
+.legal-section > .container {
+    display: grid;
+    gap: clamp(28px, 3vw, 40px);
+}
+
 .section-title {
-    margin: 0 0 clamp(32px, 4vw, 56px) 0;
+    margin: 0 0 clamp(24px, 3vw, 40px) 0;
     font-size: var(--font-h2);
     line-height: var(--lh-heading);
     font-weight: 800;
@@ -26,7 +36,7 @@
 
 .section-subtitle {
     margin: var(--space-3) 0 0 0;
-    max-width: var(--content-measure);
+    max-width: min(100%, var(--section-intro-rail));
     font-size: var(--font-body-lg);
     line-height: var(--lh-body);
     color: var(--text-secondary);
