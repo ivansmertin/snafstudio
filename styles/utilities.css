@@ -7,39 +7,50 @@
     justify-content: center;
     align-items: center;
     min-height: 56px;
-    padding: 0 30px;
-    border-radius: 16px;
+    padding: 0 28px;
+    border-radius: 18px;
     border: 2px solid transparent;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
+    letter-spacing: -0.01em;
     transition:
-        transform 0.22s ease,
-        box-shadow 0.22s ease,
-        background-color 0.22s ease,
-        border-color 0.22s ease,
-        color 0.22s ease;
+        transform var(--motion-duration-base) var(--motion-ease),
+        box-shadow var(--motion-duration-base) var(--motion-ease),
+        background-color var(--motion-duration-base) var(--motion-ease),
+        border-color var(--motion-duration-base) var(--motion-ease),
+        color var(--motion-duration-base) var(--motion-ease);
     cursor: pointer;
     text-align: center;
+    white-space: nowrap;
 }
 
 .btn--primary {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bright) 100%);
+    background:
+        linear-gradient(180deg, var(--surface-overlay-18) 0%, transparent 100%),
+        linear-gradient(135deg, var(--accent) 0%, var(--accent-bright) 100%);
     color: var(--surface);
-    box-shadow: 0 12px 26px var(--accent-overlay-24);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        0 16px 34px var(--accent-overlay-24);
 }
 
 @media (hover: hover) and (pointer: fine) {
     .btn--primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 18px 30px var(--accent-overlay-28);
-        background: linear-gradient(135deg, var(--accent-hover) 0%, var(--accent) 100%);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            0 22px 42px var(--accent-overlay-30);
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 100%),
+            linear-gradient(135deg, var(--accent-hover) 0%, var(--accent) 100%);
     }
 }
 
 .btn:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
+    box-shadow: 0 0 0 6px var(--accent-overlay-12);
 }
 
 .btn:active {
@@ -55,17 +66,20 @@
 }
 
 .btn--outline {
-    background-color: var(--surface-overlay-72);
+    background:
+        linear-gradient(180deg, var(--surface-overlay-95) 0%, var(--surface-overlay-88) 100%);
     color: var(--text-primary);
     border-color: var(--border);
-    backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(12px);
 }
 
 @media (hover: hover) and (pointer: fine) {
     .btn--outline:hover {
         transform: translateY(-2px);
-        background-color: var(--surface);
+        background: var(--surface);
         border-color: var(--border-strong);
+        box-shadow: 0 16px 32px var(--shadow-color-08);
     }
 }
 
@@ -81,10 +95,26 @@
 
 @media (hover: hover) and (pointer: fine) {
     .surface-glow:hover {
-        transform: translate3d(0, -2px, 0);
-        border-color: var(--accent-overlay-30);
+        transform: translate3d(0, -4px, 0);
+        border-color: var(--accent-overlay-36);
         box-shadow:
-            0 20px 42px var(--shadow-color-08),
-            0 0 0 1px var(--accent-overlay-04);
+            var(--shadow-interactive),
+            0 0 0 1px var(--accent-overlay-06);
+    }
+
+    .pricing-card--accent.surface-glow:hover,
+    .stat-card--accent.surface-glow:hover,
+    .process-step--accent.surface-glow:hover {
+        box-shadow:
+            0 28px 60px rgba(14, 165, 233, 0.34),
+            0 0 0 1px rgba(14, 165, 233, 0.2);
+        border-color: transparent;
+    }
+
+    .hero-mini-card--accent.surface-glow:hover {
+        box-shadow:
+            0 20px 40px rgba(14, 165, 233, 0.28),
+            0 0 0 1px rgba(14, 165, 233, 0.14);
+        border-color: transparent;
     }
 }

@@ -11,14 +11,19 @@ html {
 
 body {
     margin: 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-family-public);
+    font-size: var(--font-body);
     background:
-        radial-gradient(circle at 0% 0%, var(--accent-overlay-04), transparent 28%),
-        radial-gradient(circle at 100% 0%, var(--accent-secondary-overlay-08), transparent 26%),
+        radial-gradient(circle at 0% 0%, var(--accent-overlay-06), transparent 30%),
+        radial-gradient(circle at 100% 0%, var(--accent-secondary-overlay-08), transparent 28%),
+        radial-gradient(circle at 50% 100%, var(--accent-overlay-04), transparent 34%),
         var(--background);
     color: var(--text-primary);
-    line-height: 1.6;
+    line-height: var(--lh-body);
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body.menu-open {
@@ -37,6 +42,7 @@ img {
 :where(a[href], button, input, textarea, select, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
+    box-shadow: 0 0 0 6px var(--accent-overlay-12);
 }
 
 section[id] {
@@ -61,7 +67,7 @@ section[id] {
     border-radius: var(--radius-md);
     background: var(--surface);
     color: var(--text-primary);
-    box-shadow: var(--shadow-main);
+    box-shadow: var(--shadow-interactive);
     transform: translateY(-160%);
     transition: transform var(--motion-duration-base) var(--motion-ease);
     text-decoration: none;
@@ -84,6 +90,52 @@ section[id] {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+::selection {
+    background: var(--accent-overlay-18);
+    color: var(--text-primary);
+}
+
+:where(h1, h2, h3, h4) {
+    margin-block: 0;
+    font-feature-settings: "liga", "kern";
+}
+
+@supports (text-wrap: balance) {
+    :where(
+        .hero-title,
+        .section-title,
+        .author-name,
+        .stat-title,
+        .card-title,
+        .process-step-title,
+        .pricing-card-header h3,
+        .cta-bottom-title,
+        .legal-title,
+        .legal-content h2
+    ) {
+        text-wrap: balance;
+    }
+}
+
+@supports (text-wrap: pretty) {
+    :where(
+        .hero-subtitle,
+        .section-subtitle,
+        .author-regalia,
+        .card-text,
+        .process-step-desc,
+        .pricing-list li,
+        .faq-answer p,
+        .cta-bottom-text,
+        .legal-lead,
+        .legal-content p,
+        .legal-content li,
+        .hero-mini-card p
+    ) {
+        text-wrap: pretty;
+    }
 }
 
 .preview-indicator {

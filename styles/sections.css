@@ -3,31 +3,31 @@
 --------------------------------- */
 
 .hero-section {
-    padding: 24px 0 64px;
+    padding: var(--space-6) 0 var(--section-space-compact);
 }
 
 .author-section,
 .benefits-section {
-    padding: 64px 0;
+    padding: var(--section-space) 0;
 }
 
 .faq-section {
-    padding: 44px 0 64px;
+    padding: var(--section-space-compact) 0 var(--section-space);
 }
 
 .section-title {
-    margin: 0 0 64px 0;
-    font-size: clamp(36px, 4vw, 58px);
-    line-height: 1.04;
+    margin: 0 0 clamp(32px, 4vw, 56px) 0;
+    font-size: var(--font-h2);
+    line-height: var(--lh-heading);
     font-weight: 800;
-    letter-spacing: -0.04em;
+    letter-spacing: var(--tracking-heading);
     color: var(--text-primary);
 }
 
 .section-subtitle {
-    margin: 8px 0 0 0;
-    max-width: 720px;
-    font-size: 19px;
-    line-height: 1.65;
+    margin: var(--space-3) 0 0 0;
+    max-width: var(--content-measure);
+    font-size: var(--font-body-lg);
+    line-height: var(--lh-body);
     color: var(--text-secondary);
 }

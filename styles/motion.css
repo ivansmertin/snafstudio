@@ -2,34 +2,62 @@
    Reveal animations
 --------------------------------- */
 
-.reveal,
-.reveal-stagger > * {
+.reveal {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(34px) scale(0.99);
     transition:
         opacity var(--motion-duration-slow) var(--motion-ease),
         transform var(--motion-duration-slow) var(--motion-ease);
 }
 
-.is-revealed,
-.reveal-stagger.is-revealed > * {
-    opacity: 1;
-    transform: translateY(0);
+.reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(22px) scale(0.965);
+    transition:
+        opacity var(--motion-duration-enter) var(--motion-ease),
+        transform var(--motion-duration-enter) var(--motion-ease),
+        box-shadow var(--motion-duration-base) var(--motion-ease),
+        border-color var(--motion-duration-base) var(--motion-ease);
 }
 
-.reveal-stagger.is-revealed > *:nth-child(2) { transition-delay: 0.08s; }
-.reveal-stagger.is-revealed > *:nth-child(3) { transition-delay: 0.16s; }
-.reveal-stagger.is-revealed > *:nth-child(4) { transition-delay: 0.24s; }
+.is-revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
 
-/* Restore fast surface-glow transition after reveal completes */
+.reveal-stagger.is-revealed > * {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.reveal-stagger.is-revealed > *:nth-child(2) { transition-delay: 0.06s; }
+.reveal-stagger.is-revealed > *:nth-child(3) { transition-delay: 0.12s; }
+.reveal-stagger.is-revealed > *:nth-child(4) { transition-delay: 0.18s; }
+.reveal-stagger.is-revealed > *:nth-child(5) { transition-delay: 0.24s; }
+.reveal-stagger.is-revealed > *:nth-child(6) { transition-delay: 0.3s; }
+
 .reveal-stagger.is-revealed > .surface-glow,
 .reveal-stagger.is-revealed .surface-glow {
     transition:
         transform var(--motion-duration-base) var(--motion-ease),
         box-shadow var(--motion-duration-base) var(--motion-ease),
-        border-color var(--motion-duration-base) var(--motion-ease);
+        border-color var(--motion-duration-base) var(--motion-ease),
+        background-color var(--motion-duration-base) var(--motion-ease);
 }
 
+@keyframes ambient-float {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(0, -6px, 0);
+    }
+
+    100% {
+        transform: translate3d(0, -2px, 0);
+    }
+}
 
 @media (prefers-reduced-motion: reduce) {
     html {
@@ -48,6 +76,12 @@
     .reveal,
     .reveal-stagger > * {
         opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .hero-code-card,
+    .hero-mini-card {
+        animation: none !important;
         transform: none !important;
     }
 }

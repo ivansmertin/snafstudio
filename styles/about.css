@@ -5,7 +5,7 @@
 .author-wrapper {
     display: grid;
     grid-template-columns: minmax(280px, 0.88fr) minmax(380px, 1.22fr);
-    gap: 30px;
+    gap: clamp(22px, 2.6vw, 36px);
 }
 
 .author-main-card {
@@ -21,6 +21,16 @@
 
 .author-photo-picture {
     display: block;
+    position: relative;
+}
+
+.author-photo-picture::after {
+    content: "";
+    position: absolute;
+    inset: auto 24px 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-overlay-90), transparent);
+    pointer-events: none;
 }
 
 .author-photo {
@@ -29,53 +39,55 @@
     height: clamp(340px, 32vw, 480px);
     object-fit: cover;
     object-position: center 12%;
+    filter: saturate(1.02) contrast(1.01);
 }
 
 .author-info {
-    padding: 30px;
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
+    gap: var(--space-4);
+    padding: clamp(26px, 3vw, 36px);
 }
 
 .author-name {
-    margin: 0 0 12px 0;
-    font-size: 30px;
-    line-height: 1.1;
+    margin: 0;
+    font-size: clamp(30px, 2.7vw, 40px);
+    line-height: var(--lh-heading);
     font-weight: 800;
-    letter-spacing: -0.03em;
+    letter-spacing: var(--tracking-heading);
     color: var(--text-primary);
 }
 
 .author-regalia {
     margin: 0;
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 17px;
+    line-height: var(--lh-relaxed);
     color: var(--text-secondary);
 }
 
-/* Сетка карточек */
 .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: clamp(16px, 2vw, 28px);
 }
 
 .stat-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 210px;
-    padding: 36px;
-    border-radius: var(--radius-card);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-soft);
     position: relative;
+    display: flex;
+    min-height: 180px;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--space-3);
+    overflow: hidden;
+    padding: clamp(28px, 3vw, 38px);
+    border-radius: var(--radius-card);
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
+    box-shadow: var(--shadow-soft);
 }
 
-/* Акцентные карточки (сине-бирюзовые) */
 .stat-card--accent {
     background:
         radial-gradient(circle at 86% 18%, var(--surface-overlay-18), transparent 24%),
@@ -84,46 +96,45 @@
     box-shadow: var(--shadow-accent);
 }
 
-/* Светлые карточки */
 .stat-card--muted {
     background: linear-gradient(180deg, var(--surface) 0%, var(--surface-muted-alt) 100%);
 }
 
 .stat-wide {
     grid-column: span 2;
-    min-height: 180px;
+    min-height: 164px;
 }
 
-/* Типографика внутри карточек */
 .stat-number {
-    margin-bottom: 8px;
-    font-size: 74px;
+    margin-bottom: 0;
+    font-size: clamp(62px, 6vw, 78px);
     line-height: 0.95;
     font-weight: 800;
-    letter-spacing: -0.05em;
+    letter-spacing: var(--tracking-display);
     font-variant-numeric: tabular-nums;
 }
 
 .stat-text-large {
-    margin-bottom: 12px;
-    font-size: 24px;
-    line-height: 1.1;
+    margin-bottom: 0;
+    font-size: clamp(22px, 2vw, 28px);
+    line-height: 1.08;
     font-weight: 700;
+    letter-spacing: var(--tracking-tight);
 }
 
 .stat-title {
-    margin: 0 0 12px 0;
-    font-size: 30px;
-    line-height: 1.1;
+    margin: 0;
+    font-size: clamp(28px, 2.4vw, 34px);
+    line-height: var(--lh-heading);
     font-weight: 800;
-    letter-spacing: -0.03em;
+    letter-spacing: var(--tracking-heading);
     color: var(--text-primary);
 }
 
 .stat-desc {
     margin: 0;
     font-size: 16px;
-    line-height: 1.7;
+    line-height: var(--lh-relaxed);
     color: var(--text-secondary);
 }
 
@@ -131,60 +142,51 @@
     color: var(--surface) !important;
 }
 
-/* Карточка с цитатой и звездочкой */
 .stat-card--quote {
     background: linear-gradient(180deg, var(--surface) 0%, var(--surface-muted) 100%);
-    overflow: visible;
 }
 
 .quote-text {
     margin: 0;
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 17px;
+    line-height: var(--lh-relaxed);
     color: var(--text-secondary);
 }
 
-/* Звездочка-пасхалка */
 .stat-card--quote::after {
     content: "✦";
     position: absolute;
     top: 24px;
     right: 28px;
+    z-index: 10;
     font-size: 28px;
     color: var(--accent);
-    opacity: 0.3;
+    opacity: 0.36;
     transform: scale(0.8);
-    transition: opacity 0.4s var(--motion-ease), transform 0.4s var(--motion-ease);
+    transition:
+        opacity var(--motion-duration-enter) var(--motion-ease),
+        transform var(--motion-duration-enter) var(--motion-ease);
     pointer-events: none;
-    z-index: 10;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .stat-card--quote:hover::after {
-        opacity: 1;
-        transform: scale(1.1);
-        animation: pulse-star 2.5s infinite ease-in-out;
+        opacity: 0.92;
+        transform: translateY(-2px) scale(1.04);
     }
 }
 
-@keyframes pulse-star {
-    0% { transform: scale(1) rotate(0deg); color: var(--accent); }
-    50% { transform: scale(1.2) rotate(90deg); color: var(--accent-hover); text-shadow: 0 0 15px var(--accent-overlay-60); }
-    100% { transform: scale(1) rotate(180deg); color: var(--accent); }
-}
-
-/* Декоративная волна */
 .wave-bg::after {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     background-image: url("../images/wave.svg");
     background-position: right bottom;
     background-repeat: no-repeat;
     background-size: 42%;
-    opacity: 0.28;
+    opacity: 0.18;
     pointer-events: none;
-    z-index: 0;
 }
 
 .wave-bg > * {
@@ -192,27 +194,25 @@
     z-index: 1;
 }
 
-/* Отключенная анимация для предотвращения конфликтов */
 .floating-accent {
     animation: none;
 }
 
-/* Tech stack badges */
 .tech-stack {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 4px;
+    gap: 10px;
+    margin-top: 6px;
 }
 
 .tech-badge {
     display: inline-flex;
     align-items: center;
-    min-height: 32px;
-    padding: 0 14px;
+    min-height: 34px;
+    padding: 0 15px;
     border-radius: 999px;
-    background: var(--accent-overlay-08);
     border: 1px solid var(--accent-overlay-16);
+    background: linear-gradient(180deg, var(--accent-overlay-06) 0%, var(--accent-overlay-10) 100%);
     color: var(--accent-hover);
     font-size: 13px;
     font-weight: 700;
@@ -225,7 +225,7 @@
 
 @media (hover: hover) and (pointer: fine) {
     .tech-badge:hover {
-        background: var(--accent-overlay-16);
+        background: linear-gradient(180deg, var(--accent-overlay-10) 0%, var(--accent-overlay-16) 100%);
         border-color: var(--accent-overlay-28);
         transform: translateY(-2px);
     }
